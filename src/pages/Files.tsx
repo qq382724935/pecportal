@@ -8,8 +8,6 @@ import RNFS, {
   DocumentDirectoryPath,
   LibraryDirectoryPath,
   OS,
-  // readDir,
-  // readFile,
 } from '../utils/fs';
 
 // const defaultPath = OS === 'ios' ? MainBundlePath : DocumentDirectoryPath;
@@ -68,25 +66,6 @@ const catalog: ItemData[] = [
   },
 ];
 const Files = () => {
-  // readDir(DocumentDirectoryPath) // On Android, use "RNFS.DocumentDirectoryPath" (MainBundlePath is not defined)
-  //   .then((result) => {
-  //     console.log('GOT RESULT', result);
-  //     // stat the first file
-  //     return Promise.all([RNFS.stat(result[0].path), result[0].path]);
-  //   })
-  //   .then((statResult) => {
-  //     if (statResult[0].isFile()) {
-  //       return readFile(statResult[1]);
-  //     }
-  //     return 'no file';
-  //   })
-  //   .then((contents) => {
-  //     // log the file contents
-  //     console.log('contents', contents);
-  //   })
-  //   .catch((err) => {
-  //     console.log('err', err.message, err.code);
-  //   });
   return (
     <>
       <List.Item
