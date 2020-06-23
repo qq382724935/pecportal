@@ -10,7 +10,6 @@ import RNFS, {
   OS,
 } from '../utils/fs';
 
-// const defaultPath = OS === 'ios' ? MainBundlePath : DocumentDirectoryPath;
 const params = '/zt/portal/llj';
 
 const catalog: ItemData[] = [
