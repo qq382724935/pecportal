@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-22 15:51:35
+ * @LastEditTime: 2020-06-23 08:54:16
  * @Description:
  */
 import React from 'react';
@@ -18,9 +18,17 @@ const Home = (props: any) => {
       press: () => resetPage({name: 'deviceinfo', navigation}),
     },
     {
-      label: '详细目录',
+      label: '资源目录',
       press: () => resetPage({name: 'files', navigation}),
     },
+    {
+      label: '相机',
+      press: () => resetPage({name: 'files', navigation}),
+    },
+    // {
+    //   label: '相机功能',
+    //   press: () => resetPage({name: 'files', navigation}),
+    // },
   ];
   return (
     <View>

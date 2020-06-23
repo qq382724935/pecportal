@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-05-20 17:03:46
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-22 16:05:50
+ * @LastEditTime: 2020-06-23 08:45:06
  */
 
 import React, {Component} from 'react';
@@ -50,6 +50,10 @@ class DeviceInfo extends Component {
     });
   }
   UNSAFE_componentWillMount() {
+    this.unsubscribe && this.unsubscribe();
+  }
+
+  componentWillUnmount() {
     this.unsubscribe && this.unsubscribe();
   }
   render() {
