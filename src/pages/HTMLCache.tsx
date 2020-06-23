@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-22 17:07:43
+ * @LastEditTime: 2020-06-23 16:46:51
  * @Description:
  */
 import React from 'react';
@@ -12,7 +12,7 @@ import {Button} from '../components/index';
 const HTMLCache = ({navigation}: any) => {
   const list = [
     {
-      label: 'Demo1',
+      label: 'Angular Demo1',
       press: () =>
         resetPage(
           {name: 'WView', navigation},
@@ -24,7 +24,7 @@ const HTMLCache = ({navigation}: any) => {
         ),
     },
     {
-      label: 'Demo2',
+      label: 'Angular Demo2',
       press: () =>
         resetPage(
           {name: 'WView', navigation},

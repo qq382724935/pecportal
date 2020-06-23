@@ -5,9 +5,16 @@ interface FormItemProps {
   label: string;
   placeholder?: string;
   type?: string;
+  defaultValue?: string;
   onChange?: (text: string) => void | undefined;
 }
-const FormItem = ({label, placeholder, type, onChange}: FormItemProps) => {
+const FormItem = ({
+  label,
+  placeholder,
+  defaultValue,
+  type,
+  onChange,
+}: FormItemProps) => {
   return (
     <View style={styles.item}>
       <Text style={styles.label}>{label}</Text>
@@ -23,6 +30,7 @@ const FormItem = ({label, placeholder, type, onChange}: FormItemProps) => {
         selectTextOnFocus={false}
         onChangeText={onChange}
         placeholderTextColor="#ddd"
+        defaultValue={defaultValue}
       />
     </View>
   );

@@ -72,6 +72,9 @@ PODS:
     - boost-for-react-native
     - DoubleConversion
     - glog
+  - GCDWebServer (3.5.4):
+    - GCDWebServer/Core (= 3.5.4)
+  - GCDWebServer/Core (3.5.4)
   - glog (0.3.5)
   - JWT (3.0.0-beta.12):
     - Base64 (~> 1.1.2)
@@ -241,6 +244,14 @@ PODS:
     - React-cxxreact (= 0.62.2)
     - React-jsi (= 0.62.2)
   - React-jsinspector (0.62.2)
+  - react-native-camera (3.30.0):
+    - React
+    - react-native-camera/RCT (= 3.30.0)
+    - react-native-camera/RN (= 3.30.0)
+  - react-native-camera/RCT (3.30.0):
+    - React
+  - react-native-camera/RN (3.30.0):
+    - React
   - react-native-netinfo (5.9.3):
     - React
   - react-native-safe-area-context (3.0.5):
@@ -248,6 +259,9 @@ PODS:
   - react-native-splash-screen (3.2.0):
     - React
   - react-native-sqlite-storage (5.0.0):
+    - React
+  - react-native-static-server (0.5.0):
+    - GCDWebServer (~> 3.0)
     - React
   - react-native-webview (10.3.1):
     - React
@@ -322,6 +336,15 @@ PODS:
     - React
   - RNHttpCache (0.3.1):
     - React
+  - RNImageCropPicker (0.32.0):
+    - React-Core
+    - React-RCTImage
+    - RNImageCropPicker/QBImagePickerController (= 0.32.0)
+    - TOCropViewController
+  - RNImageCropPicker/QBImagePickerController (0.32.0):
+    - React-Core
+    - React-RCTImage
+    - TOCropViewController
   - RNReanimated (1.9.0):
     - React
   - RNScreens (2.9.0):
@@ -334,6 +357,7 @@ PODS:
     - React
     - SSZipArchive (= 2.2.2)
   - SSZipArchive (2.2.2)
+  - TOCropViewController (2.5.3)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -375,10 +399,12 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-camera (from `../node_modules/react-native-camera`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
+  - react-native-static-server (from `../node_modules/react-native-static-server`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -397,6 +423,7 @@ DEPENDENCIES:
   - RNFS (from `../node_modules/react-native-fs`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNHttpCache (from `../node_modules/@yz1311/react-native-http-cache`)"
+  - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNZipArchive (from `../node_modules/react-native-zip-archive`)
@@ -415,9 +442,11 @@ SPEC REPOS:
     - Flipper-PeerTalk
     - Flipper-RSocket
     - FlipperKit
+    - GCDWebServer
     - JWT
     - OpenSSL-Universal
     - SSZipArchive
+    - TOCropViewController
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -451,6 +480,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-camera:
+    :path: "../node_modules/react-native-camera"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-safe-area-context:
@@ -459,6 +490,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-splash-screen"
   react-native-sqlite-storage:
     :path: "../node_modules/react-native-sqlite-storage"
+  react-native-static-server:
+    :path: "../node_modules/react-native-static-server"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
   React-RCTActionSheet:
@@ -493,6 +526,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNHttpCache:
     :path: "../node_modules/@yz1311/react-native-http-cache"
+  RNImageCropPicker:
+    :path: "../node_modules/react-native-image-crop-picker"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -519,6 +554,7 @@ SPEC CHECKSUMS:
   Flipper-RSocket: 64e7431a55835eb953b0bf984ef3b90ae9fdddd7
   FlipperKit: 6dc9b8f4ef60d9e5ded7f0264db299c91f18832e
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
+  GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
   JWT: 9b5c05abbcc1a0e69c3c91e1655b3387fc7e581d
   OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
@@ -531,10 +567,12 @@ SPEC CHECKSUMS:
   React-jsi: b6dc94a6a12ff98e8877287a0b7620d365201161
   React-jsiexecutor: 1540d1c01bb493ae3124ed83351b1b6a155db7da
   React-jsinspector: 512e560d0e985d0e8c479a54a4e5c147a9c83493
+  react-native-camera: eeb5b5f4ba4c1365fed3563af8a72007cbad7aab
   react-native-netinfo: 1b8691be19549f020d0757b40aca4f355cafeeec
   react-native-safe-area-context: e768fca90207ee68924b3d0877633f2ce9cc9d68
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-sqlite-storage: 418ef4afc5e6df6ce3574c4617e5f0b65cffde55
+  react-native-static-server: 201b2a945a35096be3ae7f43e367c65bcbd61343
   react-native-webview: 40bbeb6d011226f34cb83f845aeb0fdf515cfc5f
   React-RCTActionSheet: f41ea8a811aac770e0cc6e0ad6b270c644ea8b7c
   React-RCTAnimation: 49ab98b1c1ff4445148b72a3d61554138565bad0
@@ -552,10 +590,12 @@ SPEC CHECKSUMS:
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNHttpCache: a0678072cede68e78173e30958c1a07d32490110
+  RNImageCropPicker: fc4b4d2a4d7176eeb6442fa191ba56493c14b6d6
   RNReanimated: b5ccb50650ba06f6e749c7c329a1bc3ae0c88b43
   RNScreens: c526239bbe0e957b988dacc8d75ac94ec9cb19da
   RNZipArchive: ab51bc004a31657f34010254a9182014c6a81217
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
+  TOCropViewController: 20a14b6a7a098308bf369e7c8d700dc983a974e6
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

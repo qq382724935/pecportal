@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-22 11:47:40
+ * @LastEditTime: 2020-06-23 09:34:38
  */
 
 import React, {PureComponent} from 'react';
@@ -13,18 +13,18 @@ const Stack = createStackNavigator();
 import DynamicTabNavigator from './TabNavigator';
 import {WView} from '../components/index';
 
+import DeviceInfo from '../pages/DeviceInfo';
 import Welcome from '../pages/Welcome';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
-// import messagePush from '../pages/messagePush';
 import Files from '../pages/Files';
+// import messagePush from '../pages/messagePush';
 // import qrCode from '../pages/qrCode';
 // import share from '../pages/share';
 // import imagePicker from '../pages/imagePicker';
 // import maps from '../pages/maps';
-import DeviceInfo from '../pages/DeviceInfo';
 // import DataBase from '../pages/DataBase';
-// import HTMLCache from '../pages/HTMLCache';
+import Camera from '../pages/Camera';
 
 interface RouteOptions {
   title?: string;
@@ -49,12 +49,7 @@ const routeList: RouteData[] = [
   {name: 'deviceinfo', component: DeviceInfo, options: {title: '设备信息'}},
   {name: 'files', component: Files, options: {title: '文件管理'}},
   {name: 'WView', component: WView.Custom, options: {title: 'WView'}},
-
-  // {
-  //   name: 'angular_one',
-  //   component: HTMLCache,
-  //   options: {title: 'Angular Demo1'},
-  // },
+  {name: 'camera', component: Camera, options: {title: '相机'}},
   // {
   //   name: 'angular_two',
   //   component: HTMLCache,
