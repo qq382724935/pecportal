@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-23 09:34:38
+ * @LastEditTime: 2020-06-23 17:45:09
  */
 
 import React, {PureComponent} from 'react';
@@ -19,7 +19,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Files from '../pages/Files';
 // import messagePush from '../pages/messagePush';
-// import qrCode from '../pages/qrCode';
+import Qrcode from '../pages/Qrcode';
 // import share from '../pages/share';
 // import imagePicker from '../pages/imagePicker';
 // import maps from '../pages/maps';
@@ -50,11 +50,7 @@ const routeList: RouteData[] = [
   {name: 'files', component: Files, options: {title: '文件管理'}},
   {name: 'WView', component: WView.Custom, options: {title: 'WView'}},
   {name: 'camera', component: Camera, options: {title: '相机'}},
-  // {
-  //   name: 'angular_two',
-  //   component: HTMLCache,
-  //   options: {title: 'Angular Demo2'},
-  // },
+  {name: 'qrcode', component: Qrcode, options: {title: '二维码'}},
 ];
 
 export default class AppNavigator extends PureComponent<PropsEntry> {

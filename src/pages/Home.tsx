@@ -2,13 +2,14 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-23 09:27:41
+ * @LastEditTime: 2020-06-24 13:33:44
  * @Description:
  */
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, Alert} from 'react-native';
 import {resetPage} from '../utils/navigation';
 import {Button} from '../components/index';
+import JPush from 'jpush-react-native';
 
 const Home = (props: any) => {
   const {navigation} = props;
@@ -25,10 +26,22 @@ const Home = (props: any) => {
       label: '相机',
       press: () => resetPage({name: 'camera', navigation}),
     },
-    // {
-    //   label: '相机功能',
-    //   press: () => resetPage({name: 'files', navigation}),
-    // },
+    {
+      label: '二维码',
+      press: () => resetPage({name: 'qrcode', navigation}),
+    },
+    {
+      label: '极光推送registerID',
+      press: () => {
+        JPush.getRegistrationID((result) =>
+          Alert.alert('registerID:' + JSON.stringify(result)),
+        );
+      },
+    },
+    {
+      label: '极光分享',
+      press: () => {},
+    },
   ];
   return (
     <View>

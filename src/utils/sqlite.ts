@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 18:21:46
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-20 23:13:33
+ * @LastEditTime: 2020-06-23 17:22:11
  * @Description:
  */
 
@@ -14,6 +14,7 @@ import {
   transactionExecuteRes,
   dataType,
 } from '../types/sqlite';
+import {Alert} from 'react-native';
 // 参考https://github.com/andpor/react-native-sqlite-storage
 const dbName = 'app.db'; // 数据库名称
 // const createFromLocation = 1; // 获取方式，android打不开
@@ -35,7 +36,7 @@ const db = openDatabase(
  * @return:
  */
 const executeError = (type: string, {code, message}: ExecuteError) => {
-  console.log(
+  Alert.alert(
     `sqlite fail dev--------dev：${type}：错误编码：${code}；描述信息：${message}`,
   );
 };

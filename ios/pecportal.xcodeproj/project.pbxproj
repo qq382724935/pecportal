@@ -8,19 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* pecportalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* pecportalTests.m */; };
-		039F941B9E701073772027BE /* libPods-pecportal-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC814BED68B8D811C49320EB /* libPods-pecportal-tvOS.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		14FBDB089ACBB17B49E8B0EF /* libPods-pecportal-pecportalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FE08D118D2069D791F68B0 /* libPods-pecportal-pecportalTests.a */; };
+		18FF8D9F18510F80CCE4D52A /* libPods-pecportal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C300D0DFBEDB7B09782B4A4 /* libPods-pecportal.a */; };
+		2035A0C724A30956008D55EF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2038905724A2E9FF00C6AE04 /* CFNetwork.framework */; };
+		2035A0C824A3095D008D55EF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2038905524A2E9F900C6AE04 /* CoreFoundation.framework */; };
+		2035A0C924A30964008D55EF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2038905324A2E9F500C6AE04 /* CoreTelephony.framework */; };
+		2035A0CA24A3096A008D55EF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2038905124A2E9EF00C6AE04 /* SystemConfiguration.framework */; };
+		2035A0CB24A30970008D55EF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2038904F24A2E9E900C6AE04 /* CoreGraphics.framework */; };
+		2035A0CE24A30981008D55EF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2038904B24A2E9DA00C6AE04 /* UIKit.framework */; };
+		2035A0CF24A30986008D55EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2038904D24A2E9E100C6AE04 /* Foundation.framework */; };
+		2035A0D024A3098B008D55EF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2038904724A2E9D100C6AE04 /* Security.framework */; };
+		203A3E1A24A2E44D00E6B506 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 203A3E1924A2E44D00E6B506 /* libz.tbd */; };
+		203A3E1C24A2E45500E6B506 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 203A3E1B24A2E45500E6B506 /* libresolv.tbd */; };
+		203A3E1E24A2E46100E6B506 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203A3E1D24A2E46100E6B506 /* UserNotifications.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		20FD3F7D24A05E6D003468FB /* www in Resources */ = {isa = PBXBuildFile; fileRef = 20FD3F7C24A05E6D003468FB /* www */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* pecportalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* pecportalTests.m */; };
-		59772A214AE57DB761786345 /* libPods-pecportal-pecportalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B97A4348497185911C1679CA /* libPods-pecportal-pecportalTests.a */; };
-		74843B52FC84BEA49CE177C5 /* libPods-pecportal-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 853461F6D82885F5414CB243 /* libPods-pecportal-tvOSTests.a */; };
-		EB5EECAEEB45CB3C0983EFF6 /* libPods-pecportal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD596852E64891C63602CB5 /* libPods-pecportal.a */; };
+		4D12E69E910C418D3F39201A /* libPods-pecportal-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD41A9BB085665800EFF6CB9 /* libPods-pecportal-tvOSTests.a */; };
+		817EB206157BC562F803AD88 /* libPods-pecportal-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E581CD656977A200A5B4D58 /* libPods-pecportal-tvOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +41,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = pecportal;
+		};
+		2035A0BD24A30839008D55EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2035A0B924A30839008D55EF /* RCTJCoreModule.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6212E9B41F3990DC00BDF51A;
+			remoteInfo = RCTJCoreModule;
+		};
+		2035A0C324A3084E008D55EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2035A0BF24A3084E008D55EF /* RCTJPushModule.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6280980A1CEDC407000D3A81;
+			remoteInfo = RCTJPushModule;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -45,6 +70,8 @@
 		00E356EE1AD99517003FC87E /* pecportalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pecportalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* pecportalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pecportalTests.m; sourceTree = "<group>"; };
+		08360233BB6EA7543467788A /* Pods-pecportal-pecportalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-pecportalTests.release.xcconfig"; path = "Target Support Files/Pods-pecportal-pecportalTests/Pods-pecportal-pecportalTests.release.xcconfig"; sourceTree = "<group>"; };
+		0C300D0DFBEDB7B09782B4A4 /* libPods-pecportal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* pecportal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pecportal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = pecportal/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = pecportal/AppDelegate.m; sourceTree = "<group>"; };
@@ -52,23 +79,37 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = pecportal/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = pecportal/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = pecportal/main.m; sourceTree = "<group>"; };
-		159C260B5DFFB0AC0EE933C7 /* Pods-pecportal-pecportalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-pecportalTests.release.xcconfig"; path = "Target Support Files/Pods-pecportal-pecportalTests/Pods-pecportal-pecportalTests.release.xcconfig"; sourceTree = "<group>"; };
+		1458AAD934B18A633BC31BC5 /* Pods-pecportal-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOSTests/Pods-pecportal-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		200E23FE24A2EE7700FEFDD3 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		2035A0B924A30839008D55EF /* RCTJCoreModule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTJCoreModule.xcodeproj; path = "../node_modules/jcore-react-native/ios/RCTJCoreModule.xcodeproj"; sourceTree = "<group>"; };
+		2035A0BF24A3084E008D55EF /* RCTJPushModule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTJPushModule.xcodeproj; path = "../node_modules/jpush-react-native/ios/RCTJPushModule.xcodeproj"; sourceTree = "<group>"; };
+		2035A0CC24A30977008D55EF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		2038904724A2E9D100C6AE04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		2038904B24A2E9DA00C6AE04 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2038904D24A2E9E100C6AE04 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2038904F24A2E9E900C6AE04 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2038905124A2E9EF00C6AE04 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2038905324A2E9F500C6AE04 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		2038905524A2E9F900C6AE04 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		2038905724A2E9FF00C6AE04 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		203A3E1824A2E3BE00E6B506 /* pecportal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = pecportal.entitlements; path = pecportal/pecportal.entitlements; sourceTree = "<group>"; };
+		203A3E1924A2E44D00E6B506 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		203A3E1B24A2E45500E6B506 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		203A3E1D24A2E46100E6B506 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		20FD3F7C24A05E6D003468FB /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../../temp/www; sourceTree = "<group>"; };
-		2BBC4A911151DB8C748FD117 /* Pods-pecportal-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOS/Pods-pecportal-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* pecportal-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pecportal-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* pecportal-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "pecportal-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		39DC50ABEA7E767738A3136F /* Pods-pecportal-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOSTests/Pods-pecportal-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		41D4A321C68C556B9B0E2E1C /* Pods-pecportal-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOSTests/Pods-pecportal-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4DD596852E64891C63602CB5 /* libPods-pecportal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E565EC2235678816DB29604 /* Pods-pecportal-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOS.release.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOS/Pods-pecportal-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		6750A83B9974C6288AA87248 /* Pods-pecportal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal.release.xcconfig"; path = "Target Support Files/Pods-pecportal/Pods-pecportal.release.xcconfig"; sourceTree = "<group>"; };
-		84623DB60452DC4DF89171CA /* Pods-pecportal-pecportalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-pecportalTests.debug.xcconfig"; path = "Target Support Files/Pods-pecportal-pecportalTests/Pods-pecportal-pecportalTests.debug.xcconfig"; sourceTree = "<group>"; };
-		853461F6D82885F5414CB243 /* libPods-pecportal-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B97A4348497185911C1679CA /* libPods-pecportal-pecportalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal-pecportalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC814BED68B8D811C49320EB /* libPods-pecportal-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3C9E81DD65560E128C1BEAA /* Pods-pecportal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal.debug.xcconfig"; path = "Target Support Files/Pods-pecportal/Pods-pecportal.debug.xcconfig"; sourceTree = "<group>"; };
+		3BFCAAF9708402CEEFF4469B /* Pods-pecportal-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOS.release.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOS/Pods-pecportal-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		5E581CD656977A200A5B4D58 /* libPods-pecportal-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		693F5A66BB0B758D5EABACA8 /* Pods-pecportal-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOSTests/Pods-pecportal-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		9FF1947E1158062CAFB7823C /* Pods-pecportal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal.debug.xcconfig"; path = "Target Support Files/Pods-pecportal/Pods-pecportal.debug.xcconfig"; sourceTree = "<group>"; };
+		AD41A9BB085665800EFF6CB9 /* libPods-pecportal-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8A73F432583A67A62C4A886 /* Pods-pecportal-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOS/Pods-pecportal-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		E1FE08D118D2069D791F68B0 /* libPods-pecportal-pecportalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal-pecportalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB6445A85F1790E13D519CDF /* Pods-pecportal-pecportalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-pecportalTests.debug.xcconfig"; path = "Target Support Files/Pods-pecportal-pecportalTests/Pods-pecportal-pecportalTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F51B804F779F4BFA16F0B197 /* Pods-pecportal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal.release.xcconfig"; path = "Target Support Files/Pods-pecportal/Pods-pecportal.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59772A214AE57DB761786345 /* libPods-pecportal-pecportalTests.a in Frameworks */,
+				14FBDB089ACBB17B49E8B0EF /* libPods-pecportal-pecportalTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +125,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB5EECAEEB45CB3C0983EFF6 /* libPods-pecportal.a in Frameworks */,
+				203A3E1C24A2E45500E6B506 /* libresolv.tbd in Frameworks */,
+				203A3E1A24A2E44D00E6B506 /* libz.tbd in Frameworks */,
+				2035A0D024A3098B008D55EF /* Security.framework in Frameworks */,
+				2035A0CF24A30986008D55EF /* Foundation.framework in Frameworks */,
+				2035A0CE24A30981008D55EF /* UIKit.framework in Frameworks */,
+				2035A0CB24A30970008D55EF /* CoreGraphics.framework in Frameworks */,
+				2035A0CA24A3096A008D55EF /* SystemConfiguration.framework in Frameworks */,
+				2035A0C924A30964008D55EF /* CoreTelephony.framework in Frameworks */,
+				2035A0C824A3095D008D55EF /* CoreFoundation.framework in Frameworks */,
+				2035A0C724A30956008D55EF /* CFNetwork.framework in Frameworks */,
+				203A3E1E24A2E46100E6B506 /* UserNotifications.framework in Frameworks */,
+				18FF8D9F18510F80CCE4D52A /* libPods-pecportal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				039F941B9E701073772027BE /* libPods-pecportal-tvOS.a in Frameworks */,
+				817EB206157BC562F803AD88 /* libPods-pecportal-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74843B52FC84BEA49CE177C5 /* libPods-pecportal-tvOSTests.a in Frameworks */,
+				4D12E69E910C418D3F39201A /* libPods-pecportal-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +179,7 @@
 		13B07FAE1A68108700A75B9A /* pecportal */ = {
 			isa = PBXGroup;
 			children = (
+				203A3E1824A2E3BE00E6B506 /* pecportal.entitlements */,
 				20FD3F7C24A05E6D003468FB /* www */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -139,15 +192,44 @@
 			name = pecportal;
 			sourceTree = "<group>";
 		};
+		2035A0BA24A30839008D55EF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2035A0BE24A30839008D55EF /* libRCTJCoreModule.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2035A0C024A3084E008D55EF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2035A0C424A3084E008D55EF /* libRCTJPushModule.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2035A0CC24A30977008D55EF /* AVFoundation.framework */,
+				200E23FE24A2EE7700FEFDD3 /* AdSupport.framework */,
+				2038905724A2E9FF00C6AE04 /* CFNetwork.framework */,
+				2038905524A2E9F900C6AE04 /* CoreFoundation.framework */,
+				2038905324A2E9F500C6AE04 /* CoreTelephony.framework */,
+				2038905124A2E9EF00C6AE04 /* SystemConfiguration.framework */,
+				2038904F24A2E9E900C6AE04 /* CoreGraphics.framework */,
+				2038904D24A2E9E100C6AE04 /* Foundation.framework */,
+				2038904B24A2E9DA00C6AE04 /* UIKit.framework */,
+				2038904724A2E9D100C6AE04 /* Security.framework */,
+				203A3E1D24A2E46100E6B506 /* UserNotifications.framework */,
+				203A3E1B24A2E45500E6B506 /* libresolv.tbd */,
+				203A3E1924A2E44D00E6B506 /* libz.tbd */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				4DD596852E64891C63602CB5 /* libPods-pecportal.a */,
-				B97A4348497185911C1679CA /* libPods-pecportal-pecportalTests.a */,
-				BC814BED68B8D811C49320EB /* libPods-pecportal-tvOS.a */,
-				853461F6D82885F5414CB243 /* libPods-pecportal-tvOSTests.a */,
+				0C300D0DFBEDB7B09782B4A4 /* libPods-pecportal.a */,
+				E1FE08D118D2069D791F68B0 /* libPods-pecportal-pecportalTests.a */,
+				5E581CD656977A200A5B4D58 /* libPods-pecportal-tvOS.a */,
+				AD41A9BB085665800EFF6CB9 /* libPods-pecportal-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -155,6 +237,8 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				2035A0BF24A3084E008D55EF /* RCTJPushModule.xcodeproj */,
+				2035A0B924A30839008D55EF /* RCTJCoreModule.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -188,14 +272,14 @@
 		E3BBB263C5D016CC2EB12775 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E3C9E81DD65560E128C1BEAA /* Pods-pecportal.debug.xcconfig */,
-				6750A83B9974C6288AA87248 /* Pods-pecportal.release.xcconfig */,
-				84623DB60452DC4DF89171CA /* Pods-pecportal-pecportalTests.debug.xcconfig */,
-				159C260B5DFFB0AC0EE933C7 /* Pods-pecportal-pecportalTests.release.xcconfig */,
-				2BBC4A911151DB8C748FD117 /* Pods-pecportal-tvOS.debug.xcconfig */,
-				5E565EC2235678816DB29604 /* Pods-pecportal-tvOS.release.xcconfig */,
-				41D4A321C68C556B9B0E2E1C /* Pods-pecportal-tvOSTests.debug.xcconfig */,
-				39DC50ABEA7E767738A3136F /* Pods-pecportal-tvOSTests.release.xcconfig */,
+				9FF1947E1158062CAFB7823C /* Pods-pecportal.debug.xcconfig */,
+				F51B804F779F4BFA16F0B197 /* Pods-pecportal.release.xcconfig */,
+				EB6445A85F1790E13D519CDF /* Pods-pecportal-pecportalTests.debug.xcconfig */,
+				08360233BB6EA7543467788A /* Pods-pecportal-pecportalTests.release.xcconfig */,
+				D8A73F432583A67A62C4A886 /* Pods-pecportal-tvOS.debug.xcconfig */,
+				3BFCAAF9708402CEEFF4469B /* Pods-pecportal-tvOS.release.xcconfig */,
+				1458AAD934B18A633BC31BC5 /* Pods-pecportal-tvOSTests.debug.xcconfig */,
+				693F5A66BB0B758D5EABACA8 /* Pods-pecportal-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -207,11 +291,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "pecportalTests" */;
 			buildPhases = (
-				2660CEEA045FCD319A78E8D2 /* [CP] Check Pods Manifest.lock */,
+				03803FD19E2B48A6E9EFB83A /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				806167F61A9085A819FCAE6D /* [CP] Copy Pods Resources */,
+				03EF54EC0EAD5895A43F60AB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -227,14 +311,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "pecportal" */;
 			buildPhases = (
-				F7E8812626FFB134B5A24842 /* [CP] Check Pods Manifest.lock */,
+				B60524F6C6C5EA0D683A03DD /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				20EBB0E424A0603D005D18E1 /* Run Script */,
-				512CC4BC1114D64F2A0F4587 /* [CP] Copy Pods Resources */,
+				4CD9F4D537D9BFB93268DCB8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -249,7 +333,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "pecportal-tvOS" */;
 			buildPhases = (
-				7CE60F79A48FE2EC16E6BCB7 /* [CP] Check Pods Manifest.lock */,
+				ACD64E05E3E50682EB7D34AA /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -269,7 +353,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "pecportal-tvOSTests" */;
 			buildPhases = (
-				F0E69C0AD21969E213E38E1F /* [CP] Check Pods Manifest.lock */,
+				33EAA4E1A5CA7940230E6255 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -322,6 +406,16 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2035A0BA24A30839008D55EF /* Products */;
+					ProjectRef = 2035A0B924A30839008D55EF /* RCTJCoreModule.xcodeproj */;
+				},
+				{
+					ProductGroup = 2035A0C024A3084E008D55EF /* Products */;
+					ProjectRef = 2035A0BF24A3084E008D55EF /* RCTJPushModule.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* pecportal */,
@@ -331,6 +425,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2035A0BE24A30839008D55EF /* libRCTJCoreModule.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTJCoreModule.a;
+			remoteRef = 2035A0BD24A30839008D55EF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2035A0C424A3084E008D55EF /* libRCTJPushModule.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTJPushModule.a;
+			remoteRef = 2035A0C324A3084E008D55EF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
@@ -382,25 +493,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		20EBB0E424A0603D005D18E1 /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "PACKAGE_VERSION=$(cat ../package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\\\",]//g' | tr -d '[[:space:]]')\n\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $PACKAGE_VERSION\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
-		};
-		2660CEEA045FCD319A78E8D2 /* [CP] Check Pods Manifest.lock */ = {
+		03803FD19E2B48A6E9EFB83A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -422,63 +515,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		512CC4BC1114D64F2A0F4587 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-pecportal/Pods-pecportal-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pecportal/Pods-pecportal-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7CE60F79A48FE2EC16E6BCB7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-pecportal-tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		806167F61A9085A819FCAE6D /* [CP] Copy Pods Resources */ = {
+		03EF54EC0EAD5895A43F60AB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -498,7 +535,39 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pecportal-pecportalTests/Pods-pecportal-pecportalTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F0E69C0AD21969E213E38E1F /* [CP] Check Pods Manifest.lock */ = {
+		20EBB0E424A0603D005D18E1 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PACKAGE_VERSION=$(cat ../package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[\\\",]//g' | tr -d '[[:space:]]')\n\n/usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString $PACKAGE_VERSION\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+		};
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		33EAA4E1A5CA7940230E6255 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -520,7 +589,49 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F7E8812626FFB134B5A24842 /* [CP] Check Pods Manifest.lock */ = {
+		4CD9F4D537D9BFB93268DCB8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pecportal/Pods-pecportal-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pecportal/Pods-pecportal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACD64E05E3E50682EB7D34AA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-pecportal-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B60524F6C6C5EA0D683A03DD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -647,7 +758,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 84623DB60452DC4DF89171CA /* Pods-pecportal-pecportalTests.debug.xcconfig */;
+			baseConfigurationReference = EB6445A85F1790E13D519CDF /* Pods-pecportal-pecportalTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -670,7 +781,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 159C260B5DFFB0AC0EE933C7 /* Pods-pecportal-pecportalTests.release.xcconfig */;
+			baseConfigurationReference = 08360233BB6EA7543467788A /* Pods-pecportal-pecportalTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -690,16 +801,75 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3C9E81DD65560E128C1BEAA /* Pods-pecportal.debug.xcconfig */;
+			baseConfigurationReference = 9FF1947E1158062CAFB7823C /* Pods-pecportal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = pecportal/pecportal.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2F2465R9XA;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Base64\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaLibEvent\"",
+					"\"${PODS_ROOT}/Headers/Public/CodePush\"",
+					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/FBLazyVector\"",
+					"\"${PODS_ROOT}/Headers/Public/FBReactNativeSpec\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Glog\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-PeerTalk\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-RSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/FlipperKit\"",
+					"\"${PODS_ROOT}/Headers/Public/GCDWebServer\"",
+					"\"${PODS_ROOT}/Headers/Public/JCore\"",
+					"\"${PODS_ROOT}/Headers/Public/JPush\"",
+					"\"${PODS_ROOT}/Headers/Public/JWT\"",
+					"\"${PODS_ROOT}/Headers/Public/OpenSSL-Universal\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTRequired\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTTypeSafety\"",
+					"\"${PODS_ROOT}/Headers/Public/RNCAsyncStorage\"",
+					"\"${PODS_ROOT}/Headers/Public/RNCMaskedView\"",
+					"\"${PODS_ROOT}/Headers/Public/RNDeviceInfo\"",
+					"\"${PODS_ROOT}/Headers/Public/RNFS\"",
+					"\"${PODS_ROOT}/Headers/Public/RNGestureHandler\"",
+					"\"${PODS_ROOT}/Headers/Public/RNHttpCache\"",
+					"\"${PODS_ROOT}/Headers/Public/RNImageCropPicker\"",
+					"\"${PODS_ROOT}/Headers/Public/RNReanimated\"",
+					"\"${PODS_ROOT}/Headers/Public/RNSVG\"",
+					"\"${PODS_ROOT}/Headers/Public/RNScreens\"",
+					"\"${PODS_ROOT}/Headers/Public/RNZipArchive\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTText\"",
+					"\"${PODS_ROOT}/Headers/Public/React-cxxreact\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsi\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsiexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsinspector\"",
+					"\"${PODS_ROOT}/Headers/Public/ReactCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/SSZipArchive\"",
+					"\"${PODS_ROOT}/Headers/Public/TOCropViewController\"",
+					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
+					"\"${PODS_ROOT}/Headers/Public/YogaKit\"",
+					"\"${PODS_ROOT}/Headers/Public/glog\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-camera\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-netinfo\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-safe-area-context\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-splash-screen\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-sqlite-storage\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-static-server\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-webview\"",
+					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
+					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/",
+					"$(SRCROOT)/../node_modules/jcore-react-native/ios/RCTJCoreModule/",
 				);
 				INFOPLIST_FILE = pecportal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -718,12 +888,71 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6750A83B9974C6288AA87248 /* Pods-pecportal.release.xcconfig */;
+			baseConfigurationReference = F51B804F779F4BFA16F0B197 /* Pods-pecportal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = pecportal/pecportal.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2F2465R9XA;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Base64\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaAsyncSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/CocoaLibEvent\"",
+					"\"${PODS_ROOT}/Headers/Public/CodePush\"",
+					"\"${PODS_ROOT}/Headers/Public/DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/FBLazyVector\"",
+					"\"${PODS_ROOT}/Headers/Public/FBReactNativeSpec\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-DoubleConversion\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Folly\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-Glog\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-PeerTalk\"",
+					"\"${PODS_ROOT}/Headers/Public/Flipper-RSocket\"",
+					"\"${PODS_ROOT}/Headers/Public/FlipperKit\"",
+					"\"${PODS_ROOT}/Headers/Public/GCDWebServer\"",
+					"\"${PODS_ROOT}/Headers/Public/JCore\"",
+					"\"${PODS_ROOT}/Headers/Public/JPush\"",
+					"\"${PODS_ROOT}/Headers/Public/JWT\"",
+					"\"${PODS_ROOT}/Headers/Public/OpenSSL-Universal\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTRequired\"",
+					"\"${PODS_ROOT}/Headers/Public/RCTTypeSafety\"",
+					"\"${PODS_ROOT}/Headers/Public/RNCAsyncStorage\"",
+					"\"${PODS_ROOT}/Headers/Public/RNCMaskedView\"",
+					"\"${PODS_ROOT}/Headers/Public/RNDeviceInfo\"",
+					"\"${PODS_ROOT}/Headers/Public/RNFS\"",
+					"\"${PODS_ROOT}/Headers/Public/RNGestureHandler\"",
+					"\"${PODS_ROOT}/Headers/Public/RNHttpCache\"",
+					"\"${PODS_ROOT}/Headers/Public/RNImageCropPicker\"",
+					"\"${PODS_ROOT}/Headers/Public/RNReanimated\"",
+					"\"${PODS_ROOT}/Headers/Public/RNSVG\"",
+					"\"${PODS_ROOT}/Headers/Public/RNScreens\"",
+					"\"${PODS_ROOT}/Headers/Public/RNZipArchive\"",
+					"\"${PODS_ROOT}/Headers/Public/React-Core\"",
+					"\"${PODS_ROOT}/Headers/Public/React-RCTText\"",
+					"\"${PODS_ROOT}/Headers/Public/React-cxxreact\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsi\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsiexecutor\"",
+					"\"${PODS_ROOT}/Headers/Public/React-jsinspector\"",
+					"\"${PODS_ROOT}/Headers/Public/ReactCommon\"",
+					"\"${PODS_ROOT}/Headers/Public/SSZipArchive\"",
+					"\"${PODS_ROOT}/Headers/Public/TOCropViewController\"",
+					"\"${PODS_ROOT}/Headers/Public/Yoga\"",
+					"\"${PODS_ROOT}/Headers/Public/YogaKit\"",
+					"\"${PODS_ROOT}/Headers/Public/glog\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-camera\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-netinfo\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-safe-area-context\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-splash-screen\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-sqlite-storage\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-static-server\"",
+					"\"${PODS_ROOT}/Headers/Public/react-native-webview\"",
+					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
+					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/",
+					"$(SRCROOT)/../node_modules/jcore-react-native/ios/RCTJCoreModule/",
+				);
 				INFOPLIST_FILE = pecportal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -740,7 +969,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BBC4A911151DB8C748FD117 /* Pods-pecportal-tvOS.debug.xcconfig */;
+			baseConfigurationReference = D8A73F432583A67A62C4A886 /* Pods-pecportal-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -768,7 +997,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5E565EC2235678816DB29604 /* Pods-pecportal-tvOS.release.xcconfig */;
+			baseConfigurationReference = 3BFCAAF9708402CEEFF4469B /* Pods-pecportal-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -796,7 +1025,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41D4A321C68C556B9B0E2E1C /* Pods-pecportal-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 1458AAD934B18A633BC31BC5 /* Pods-pecportal-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -823,7 +1052,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39DC50ABEA7E767738A3136F /* Pods-pecportal-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 693F5A66BB0B758D5EABACA8 /* Pods-pecportal-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

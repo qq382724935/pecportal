@@ -141,6 +141,10 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName appVersion
+        manifestPlaceholders = [
+            JPUSH_APPKEY: "9a67df2abbb4a892f08d1203",         //在此替换你的APPKey
+            JPUSH_CHANNEL: "default_developer"        //在此替换你的channel
+        ]
         missingDimensionStrategy 'react-native-camera', 'general'
         vectorDrawables.useSupportLibrary = true
     }
@@ -200,6 +204,9 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    
+    implementation project(':jpush-react-native')  // 添加 jpush 依赖
+    implementation project(':jcore-react-native')  // 添加 jcore 依赖
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
