@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 17,
-    width: 85,
+    minWidth: 85,
+    maxWidth: 130,
     paddingVertical: 2,
   },
   edit: {
