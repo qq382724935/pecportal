@@ -1,29 +1,30 @@
-import {loadToken} from './storage/index';
+import {loadToken, saveToken} from './storage/index';
 import {STORAGE_KEY} from './keys';
-import {
-  // DocumentDirectoryPath,
-  CachesDirectoryPath,
-  downloadFile,
-  unlink,
-  exists,
-} from '../utils/fs';
-// import config from '../httpconfig';
+
+import {CachesDirectoryPath, downloadFile, unlink, exists} from '../utils/fs';
 
 import {unzip} from './zip';
+export const pecJson = require('../assets/pec.json');
 
+// 初始化路由
 export const auth = async () => {
+  const advertising = await loadToken({key: 'config'})
+    .then((value) => value)
+    .catch(() => {});
+  if (advertising) {
+    if (advertising.show) {
+      return {checkLogin: true, initialRouteName: 'advertising'};
+    }
+  } else {
+    if (pecJson) {
+      await saveToken({key: 'config', data: pecJson.appConfig.advertising});
+      return {checkLogin: true, initialRouteName: 'advertising'};
+    }
+  }
+
   let initialRouteName = await loadToken({key: STORAGE_KEY.LOGIN})
     .then(() => 'main')
     .catch(() => 'login');
-
-  const advert = await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(false);
-    }, 0);
-  });
-  if (advert) {
-    initialRouteName = 'welcome';
-  }
   return {checkLogin: true, initialRouteName};
 };
 

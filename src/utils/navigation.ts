@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 18:04:44
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-19 15:21:01
+ * @LastEditTime: 2020-06-24 20:25:35
  * @Description: 全局导航跳转工具类 by CrazyCodeBoy
  */
 
@@ -24,7 +24,7 @@ interface NavigationOptions {
  */
 export const resetPage = (
   {navigation, name}: Navigation,
-  options?: NavigationOptions,
+  options?: NavigationOptions | {},
 ) => {
   navigation.navigate(name, options);
 };

@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-23 17:45:09
+ * @LastEditTime: 2020-06-24 16:33:39
  */
 
 import React, {PureComponent} from 'react';
@@ -14,7 +14,7 @@ import DynamicTabNavigator from './TabNavigator';
 import {WView} from '../components/index';
 
 import DeviceInfo from '../pages/DeviceInfo';
-import Welcome from '../pages/Welcome';
+import Advertising from '../pages/Advertising';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Files from '../pages/Files';
@@ -40,7 +40,7 @@ interface RouteData {
 const routeList: RouteData[] = [
   {name: 'login', component: Login, options: {title: '登录'}},
   {name: 'register', component: Register, options: {title: '注册'}},
-  {name: 'welcome', component: Welcome, options: {headerShown: false}},
+  {name: 'advertising', component: Advertising, options: {headerShown: false}},
   {
     name: 'main',
     component: DynamicTabNavigator,

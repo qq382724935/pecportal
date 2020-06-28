@@ -38,6 +38,7 @@ import RNFS, {
   unlink as RNFSunlink,
 } from 'react-native-fs';
 
+// eslint-disable-next-line no-undef
 export const OS = Platform.OS;
 
 // 在方法前加上RNFS避免下方定义参数冲突

@@ -2,57 +2,66 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-24 13:33:44
+ * @LastEditTime: 2020-06-24 21:08:27
  * @Description:
  */
-import React from 'react';
+import React, {Component} from 'react';
 import {StyleSheet, View, Text, Alert} from 'react-native';
 import {resetPage} from '../utils/navigation';
 import {Button} from '../components/index';
 import JPush from 'jpush-react-native';
 
-const Home = (props: any) => {
-  const {navigation} = props;
-  const list = [
-    {
-      label: '设备信息',
-      press: () => resetPage({name: 'deviceinfo', navigation}),
-    },
-    {
-      label: '资源目录',
-      press: () => resetPage({name: 'files', navigation}),
-    },
-    {
-      label: '相机',
-      press: () => resetPage({name: 'camera', navigation}),
-    },
-    {
-      label: '二维码',
-      press: () => resetPage({name: 'qrcode', navigation}),
-    },
-    {
-      label: '极光推送registerID',
-      press: () => {
-        JPush.getRegistrationID((result) =>
-          Alert.alert('registerID:' + JSON.stringify(result)),
-        );
+interface HomeProps {
+  navigation: any;
+}
+class Home extends Component<any> {
+  render() {
+    const {navigation} = this.props;
+    const list = [
+      {
+        label: '设备信息',
+        press: () => resetPage({name: 'deviceinfo', navigation}),
       },
-    },
-    {
-      label: '极光分享',
-      press: () => {},
-    },
-  ];
-  return (
-    <View>
-      {list.map((item, index) => (
-        <Button.APLSButton key={index} style={styles.item} onPress={item.press}>
-          <Text>{item.label}</Text>
-        </Button.APLSButton>
-      ))}
-    </View>
-  );
-};
+      {
+        label: '资源目录',
+        press: () => resetPage({name: 'files', navigation}),
+      },
+      {
+        label: '相机',
+        press: () => resetPage({name: 'camera', navigation}),
+      },
+      {
+        label: '广告配置(文件读写)',
+        press: () => resetPage({name: 'advertising', navigation}, {type: true}),
+      },
+      {
+        label: '二维码',
+        press: () => resetPage({name: 'qrcode', navigation}),
+      },
+      {
+        label: '极光推送registerID',
+        press: () => {
+          JPush.getRegistrationID((result) =>
+            Alert.alert('registerID:' + JSON.stringify(result)),
+          );
+        },
+      },
+    ];
+    return (
+      <View>
+        {list.map((item, index) => (
+          <Button.APLSButton
+            key={index}
+            style={styles.item}
+            onPress={item.press}>
+            <Text>{item.label}</Text>
+          </Button.APLSButton>
+        ))}
+      </View>
+    );
+  }
+}
+
 export default Home;
 const styles = StyleSheet.create({
   item: {
