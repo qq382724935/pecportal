@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-24 16:33:39
+ * @LastEditTime: 2020-06-28 11:35:16
  */
 
 import React, {PureComponent} from 'react';
@@ -25,6 +25,7 @@ import Qrcode from '../pages/Qrcode';
 // import maps from '../pages/maps';
 // import DataBase from '../pages/DataBase';
 import Camera from '../pages/Camera';
+import MyViewShot from '../pages/MyViewShot';
 
 interface RouteOptions {
   title?: string;
@@ -51,6 +52,7 @@ const routeList: RouteData[] = [
   {name: 'WView', component: WView.Custom, options: {title: 'WView'}},
   {name: 'camera', component: Camera, options: {title: '相机'}},
   {name: 'qrcode', component: Qrcode, options: {title: '二维码'}},
+  {name: 'viewshot', component: MyViewShot, options: {title: '文本转图片'}},
 ];
 
 export default class AppNavigator extends PureComponent<PropsEntry> {

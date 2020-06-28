@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-24 21:08:27
+ * @LastEditTime: 2020-06-28 11:30:42
  * @Description:
  */
 import React, {Component} from 'react';
@@ -19,6 +19,10 @@ class Home extends Component<any> {
     const {navigation} = this.props;
     const list = [
       {
+        label: '二维码',
+        press: () => resetPage({name: 'qrcode', navigation}),
+      },
+      {
         label: '设备信息',
         press: () => resetPage({name: 'deviceinfo', navigation}),
       },
@@ -27,24 +31,24 @@ class Home extends Component<any> {
         press: () => resetPage({name: 'files', navigation}),
       },
       {
-        label: '相机',
-        press: () => resetPage({name: 'camera', navigation}),
-      },
-      {
-        label: '广告配置(文件读写)',
-        press: () => resetPage({name: 'advertising', navigation}, {type: true}),
-      },
-      {
-        label: '二维码',
-        press: () => resetPage({name: 'qrcode', navigation}),
-      },
-      {
         label: '极光推送registerID',
         press: () => {
           JPush.getRegistrationID((result) =>
             Alert.alert('registerID:' + JSON.stringify(result)),
           );
         },
+      },
+      {
+        label: '广告配置(文件读写)',
+        press: () => resetPage({name: 'advertising', navigation}, {type: true}),
+      },
+      {
+        label: '文本转图片',
+        press: () => resetPage({name: 'viewshot', navigation}),
+      },
+      {
+        label: '相机',
+        press: () => resetPage({name: 'camera', navigation}),
       },
     ];
     return (
