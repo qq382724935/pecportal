@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "GetuiConfigure": "node node_modules/react-native-getui/GetuiConfiguration.js",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",

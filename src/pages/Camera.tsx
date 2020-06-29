@@ -20,9 +20,9 @@ class PickerFooter extends PureComponent<any> {
       <View
         style={{
           flexDirection: 'row',
-          alignItems: 'center',
-          alignSelf: 'center',
-          flex: 1,
+          justifyContent: 'center',
+          marginTop: 16,
+          marginBottom: 16,
         }}>
         <Text
           style={{color: '#ffffff', marginRight: 8}}
@@ -95,7 +95,7 @@ class Picker extends Component<any> {
     return (
       <View style={styles.container}>
         <PickerHeader fileDataChange={fileDataChange} />
-        <Image style={{height: 500}} source={{uri: fileData}} />
+        <Image style={{flex: 1}} source={{uri: fileData}} />
         <PickerFooter {...this.props} />
       </View>
     );
