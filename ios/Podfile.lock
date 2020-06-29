@@ -353,6 +353,8 @@ PODS:
     - React-Core
     - React-RCTImage
     - TOCropViewController
+  - RNImageMarker (0.6.1):
+    - React
   - RNReanimated (1.9.0):
     - React
   - RNScreens (2.9.0):
@@ -438,6 +440,7 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNHttpCache (from `../node_modules/@yz1311/react-native-http-cache`)"
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
+  - RNImageMarker (from `../node_modules/react-native-image-marker`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -551,6 +554,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@yz1311/react-native-http-cache"
   RNImageCropPicker:
     :path: "../node_modules/react-native-image-crop-picker"
+  RNImageMarker:
+    :path: "../node_modules/react-native-image-marker"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -620,6 +625,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNHttpCache: a0678072cede68e78173e30958c1a07d32490110
   RNImageCropPicker: fc4b4d2a4d7176eeb6442fa191ba56493c14b6d6
+  RNImageMarker: 3d2ad96afe3db0965ecff23ca97d65b812d06b47
   RNReanimated: b5ccb50650ba06f6e749c7c329a1bc3ae0c88b43
   RNScreens: c526239bbe0e957b988dacc8d75ac94ec9cb19da
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e

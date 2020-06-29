@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent, Component} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -10,6 +10,97 @@ import {
 } from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import ImagePicker from 'react-native-image-crop-picker';
+
+import Marker, {Position} from 'react-native-image-marker';
+
+class PickerFooter extends PureComponent<any> {
+  render() {
+    const {fileData, fileDataChange} = this.props;
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          alignSelf: 'center',
+          flex: 1,
+        }}>
+        <Text
+          style={{color: '#ffffff', marginRight: 8}}
+          onPress={() => {
+            ImagePicker.openCropper({
+              path: fileData,
+              width: 300,
+              height: 400,
+            })
+              .then((image) => {
+                fileDataChange(image.path);
+              })
+              .catch((err) => console.log(err));
+          }}>
+          图片裁剪
+        </Text>
+        <Text
+          style={{color: '#ffffff'}}
+          onPress={() => {
+            Marker.markText({
+              src: fileData,
+              text: '水印内容',
+              position: Position.center,
+              color: '#FF0000',
+              fontName: 'Arial-BoldItalicMT',
+              fontSize: 88,
+              scale: 1,
+              quality: 100,
+              shadowStyle: {
+                dx: 0,
+                dy: 0,
+                radius: 0,
+                color: '#0000FF',
+              },
+              textBackgroundStyle: {
+                type: 'stretchX',
+                paddingX: 0,
+                paddingY: 0,
+                color: '',
+              },
+            }).then((image) => {
+              fileDataChange(`file:///${image}`);
+            });
+          }}>
+          图片水印
+        </Text>
+      </View>
+    );
+  }
+}
+
+class PickerHeader extends PureComponent<any> {
+  render() {
+    return (
+      <View style={styles.header}>
+        <Text
+          style={{color: '#ffffff'}}
+          onPress={() => {
+            this.props.fileDataChange(null);
+          }}>
+          返回
+        </Text>
+      </View>
+    );
+  }
+}
+class Picker extends Component<any> {
+  render() {
+    const {fileData, fileDataChange} = this.props;
+    return (
+      <View style={styles.container}>
+        <PickerHeader fileDataChange={fileDataChange} />
+        <Image style={{height: 500}} source={{uri: fileData}} />
+        <PickerFooter {...this.props} />
+      </View>
+    );
+  }
+}
 
 const flashType = ['auto', 'open', 'close'];
 const switchType = ['photo', 'record', 'stopRecord'];
@@ -110,8 +201,9 @@ class CameraFooter extends PureComponent<any> {
       height: 400,
       cropping: true,
     })
-      .then((image) => {
-        console.log(image);
+      .then((image: any) => {
+        console.log('image', image);
+        this.props.fileDataChange(image.path);
       })
       .catch((error) => {
         console.log(error);
@@ -168,7 +260,7 @@ class CameraFooter extends PureComponent<any> {
     if (camera) {
       const options = {quality: 0.5, base64: true};
       const data = await camera.takePictureAsync(options);
-      console.log('拍照地址：', data.uri);
+      this.props.fileDataChange(data.uri);
     }
   };
 
@@ -181,7 +273,6 @@ class CameraFooter extends PureComponent<any> {
     };
     const {camera} = this.props;
     const data = await camera.recordAsync(options);
-    console.log('视频录制地址:', data);
   };
 
   //停止录像
@@ -274,6 +365,7 @@ class Camera extends PureComponent<any, any> {
       cameraType: RNCamera.Constants.Type.back, // 相机模式 前置后置
       switchState: switchType[0], // 相机状态 ，照片，录制中，未录制
       camera: null,
+      fileData: null,
     };
   }
   flashModeChange = (flashMode: string | number) => {
@@ -286,43 +378,54 @@ class Camera extends PureComponent<any, any> {
   switchChange = (switchState: string) => {
     this.setState({switchState});
   };
+
+  fileDataChange = (fileData: string) => {
+    this.setState({fileData});
+  };
   render() {
-    const {cameraType, flashMode, switchState, camera} = this.state;
+    const {cameraType, flashMode, switchState, camera, fileData} = this.state;
     return (
       <SafeAreaView style={styles.container}>
-        <CameraHeader
-          onChange={this.flashModeChange}
-          switchState={switchState}
-        />
-        <RNCamera
-          ref={(ref) => {
-            this.setState({camera: ref});
-          }}
-          style={styles.preview}
-          type={cameraType} // 摄像头 前置后置
-          flashMode={flashMode} // 闪光灯
-          androidCameraPermissionOptions={{
-            title: '允许使用摄像机',
-            message: '需要你的许可才能使用你的相机',
-            buttonPositive: '确认',
-            buttonNegative: '取消',
-          }}
-          androidRecordAudioPermissionOptions={{
-            title: '允许使用录音',
-            message: '需要你的许可才能使用你的音频',
-            buttonPositive: '确认',
-            buttonNegative: '取消',
-          }}
-          onGoogleVisionBarcodesDetected={({barcodes}) => {
-            console.log(barcodes);
-          }}
-        />
-        <CameraFooter
-          camera={camera}
-          cameraType={cameraType}
-          onChange={this.cameraTypeChange}
-          switchChange={this.switchChange}
-        />
+        {fileData ? (
+          <Picker fileData={fileData} fileDataChange={this.fileDataChange} />
+        ) : (
+          <>
+            <CameraHeader
+              onChange={this.flashModeChange}
+              switchState={switchState}
+            />
+            <RNCamera
+              ref={(ref) => {
+                this.setState({camera: ref});
+              }}
+              style={styles.preview}
+              type={cameraType} // 摄像头 前置后置
+              flashMode={flashMode} // 闪光灯
+              androidCameraPermissionOptions={{
+                title: '允许使用摄像机',
+                message: '需要你的许可才能使用你的相机',
+                buttonPositive: '确认',
+                buttonNegative: '取消',
+              }}
+              androidRecordAudioPermissionOptions={{
+                title: '允许使用录音',
+                message: '需要你的许可才能使用你的音频',
+                buttonPositive: '确认',
+                buttonNegative: '取消',
+              }}
+              onGoogleVisionBarcodesDetected={({barcodes}) => {
+                console.log(barcodes);
+              }}
+            />
+            <CameraFooter
+              camera={camera}
+              cameraType={cameraType}
+              onChange={this.cameraTypeChange}
+              switchChange={this.switchChange}
+              fileDataChange={this.fileDataChange}
+            />
+          </>
+        )}
       </SafeAreaView>
     );
   }
