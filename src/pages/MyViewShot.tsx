@@ -7,6 +7,7 @@ import {
   View,
   Image,
   Text,
+  Alert,
 } from 'react-native';
 import ViewShot from 'react-native-view-shot';
 import {APLSButton} from '../components/button/index';
@@ -46,7 +47,9 @@ const MyViewShot = () => {
 
         <APLSButton
           onPress={() => {
-            savePicture(preview.uri);
+            savePicture(preview.uri)
+              .then(() => Alert.alert('图片已保存到相册'))
+              .catch((err) => Alert.alert(`保存到相册失败！${err}`));
           }}>
           <Text>保存图片到相册</Text>
         </APLSButton>
