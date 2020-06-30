@@ -22,6 +22,7 @@
     "dva-core": "^2.0.2",
     "jcore-react-native": "^1.8.0",
     "jpush-react-native": "^2.8.1",
+    "jshare-react-native": "^1.4.1",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-camera": "^3.30.0",

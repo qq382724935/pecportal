@@ -14,6 +14,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		14FBDB089ACBB17B49E8B0EF /* libPods-pecportal-pecportalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FE08D118D2069D791F68B0 /* libPods-pecportal-pecportalTests.a */; };
 		18FF8D9F18510F80CCE4D52A /* libPods-pecportal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C300D0DFBEDB7B09782B4A4 /* libPods-pecportal.a */; };
+		200E38DA24AAD00600678088 /* RCTJShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 200E38D924AAD00600678088 /* RCTJShareConfig.plist */; };
 		2035A0C724A30956008D55EF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2038905724A2E9FF00C6AE04 /* CFNetwork.framework */; };
 		2035A0C824A3095D008D55EF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2038905524A2E9F900C6AE04 /* CoreFoundation.framework */; };
 		2035A0C924A30964008D55EF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2038905324A2E9F500C6AE04 /* CoreTelephony.framework */; };
@@ -81,6 +82,7 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = pecportal/main.m; sourceTree = "<group>"; };
 		1458AAD934B18A633BC31BC5 /* Pods-pecportal-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOSTests/Pods-pecportal-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		200E23FE24A2EE7700FEFDD3 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		200E38D924AAD00600678088 /* RCTJShareConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RCTJShareConfig.plist; sourceTree = "<group>"; };
 		2035A0B924A30839008D55EF /* RCTJCoreModule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTJCoreModule.xcodeproj; path = "../node_modules/jcore-react-native/ios/RCTJCoreModule.xcodeproj"; sourceTree = "<group>"; };
 		2035A0BF24A3084E008D55EF /* RCTJPushModule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTJPushModule.xcodeproj; path = "../node_modules/jpush-react-native/ios/RCTJPushModule.xcodeproj"; sourceTree = "<group>"; };
 		2035A0CC24A30977008D55EF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -246,6 +248,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				200E38D924AAD00600678088 /* RCTJShareConfig.plist */,
 				13B07FAE1A68108700A75B9A /* pecportal */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* pecportalTests */,
@@ -455,6 +458,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				200E38DA24AAD00600678088 /* RCTJShareConfig.plist in Resources */,
 				20FD3F7D24A05E6D003468FB /* www in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
@@ -870,6 +874,7 @@
 					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
 					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/",
 					"$(SRCROOT)/../node_modules/jcore-react-native/ios/RCTJCoreModule/",
+					"$(SRCROOT)/../node_modules/jshare-react-native/ios/RCTJShareModule",
 				);
 				INFOPLIST_FILE = pecportal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -952,6 +957,7 @@
 					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
 					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/",
 					"$(SRCROOT)/../node_modules/jcore-react-native/ios/RCTJCoreModule/",
+					"$(SRCROOT)/../node_modules/jshare-react-native/ios/RCTJShareModule",
 				);
 				INFOPLIST_FILE = pecportal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

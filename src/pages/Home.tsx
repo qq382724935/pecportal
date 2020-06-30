@@ -2,19 +2,25 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-28 11:30:42
+ * @LastEditTime: 2020-06-30 10:19:36
  * @Description:
  */
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Alert} from 'react-native';
+import {StyleSheet, View, Text, Alert, Platform} from 'react-native';
 import {resetPage} from '../utils/navigation';
 import {Button} from '../components/index';
 import JPush from 'jpush-react-native';
+import JShareModule from 'jshare-react-native';
 
 interface HomeProps {
   navigation: any;
 }
+
 class Home extends Component<any> {
+  constructor(props: any) {
+    super(props);
+    Platform.OS === 'ios' && JShareModule.setup();
+  }
   render() {
     const {navigation} = this.props;
     const list = [
@@ -49,6 +55,26 @@ class Home extends Component<any> {
       {
         label: '相机',
         press: () => resetPage({name: 'camera', navigation}),
+      },
+      {
+        label: '第三方平台(微信)分享',
+        press: () => {
+          const message = {
+            platform: 'wechat_session',
+            type: 'text',
+            text: 'JShare test text',
+            imagePath: '',
+          };
+          JShareModule.share(
+            message,
+            (map: any) => {
+              console.log('share succeed, map: ' + map);
+            },
+            (map: any) => {
+              console.log('share failed, map: ' + JSON.stringify(map));
+            },
+          );
+        },
       },
     ];
     return (
