@@ -61,6 +61,9 @@
       <meta-data android:name="JSHARE_PKGNAME" android:value="${applicationId}" />
        <!-- Optional 微信分享回调,wxapi必须在包名路径下，否则回调不成功-->
       <activity android:name=".wxapi.WXEntryActivity" android:theme="@android:style/Theme.NoTitleBar" android:exported="true" />
+
+      <meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="gqRjZHN6UQpgN81VPj9WxewhZ7IB7r6x"/>
+      
     </application>
 
 </manifest>

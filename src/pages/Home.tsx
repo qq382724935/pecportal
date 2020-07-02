@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-30 10:19:36
+ * @LastEditTime: 2020-07-01 09:31:58
  * @Description:
  */
 import React, {Component} from 'react';
@@ -75,6 +75,10 @@ class Home extends Component<any> {
             },
           );
         },
+      },
+      {
+        label: '百度地图',
+        press: () => resetPage({name: 'bdmap', navigation}),
       },
     ];
     return (

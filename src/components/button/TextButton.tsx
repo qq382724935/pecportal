@@ -11,5 +11,6 @@ export default TextButton;
 const styles = StyleSheet.create({
   buttonText: {
     color: '#1890ff',
+    marginRight: 8,
   },
 });
