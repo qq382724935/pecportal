@@ -1,5 +1,6 @@
 import {PermissionsAndroid, Platform} from 'react-native';
 import CameraRoll from '@react-native-community/cameraroll';
+import ImagePicker, {Options} from 'react-native-image-crop-picker';
 
 async function hasAndroidPermission() {
   const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
@@ -17,8 +18,15 @@ async function savePicture(tag: string, type = {}) {
   if (Platform.OS === 'android' && !(await hasAndroidPermission())) {
     return;
   }
-
   CameraRoll.save(tag, type);
 }
 
-export {savePicture};
+const openPicker = (options?: Options) =>
+  ImagePicker.openPicker({
+    width: 300,
+    height: 400,
+    cropping: true,
+    ...options,
+  });
+
+export {savePicture, openPicker};

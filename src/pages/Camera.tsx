@@ -13,6 +13,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 
 import Marker, {Position} from 'react-native-image-marker';
 
+import {openPicker} from '../utils/cameraroll';
 class PickerFooter extends PureComponent<any> {
   render() {
     const {fileData, fileDataChange} = this.props;
@@ -195,20 +196,6 @@ class CameraFooter extends PureComponent<any> {
     switchState: switchType[0], // 相机状态 ，照片，录制中，未录制
   };
 
-  openPicker = () => {
-    ImagePicker.openPicker({
-      width: 300,
-      height: 400,
-      cropping: true,
-    })
-      .then((image: any) => {
-        console.log('image', image);
-        this.props.fileDataChange(image.path);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
   //切换前后摄像头
   switchCamera = () => {
     const {cameraType, onChange} = this.props;
@@ -331,7 +318,17 @@ class CameraFooter extends PureComponent<any> {
               </Text>
             </View>
             <View style={{...styles.switch, ...styles.operation}}>
-              <TouchableOpacity onPress={this.openPicker}>
+              <TouchableOpacity
+                onPress={() => {
+                  openPicker()
+                    .then((image: any) => {
+                      console.log('image', image);
+                      this.props.fileDataChange(image.path);
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                    });
+                }}>
                 <Image
                   source={require('../assets/album.png')}
                   style={styles.imageStyle}

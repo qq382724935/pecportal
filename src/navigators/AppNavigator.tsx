@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-01 09:32:18
+ * @LastEditTime: 2020-07-03 09:38:10
  */
 
 import React, {PureComponent} from 'react';
@@ -46,7 +46,7 @@ const routeList: RouteData[] = [
   {
     name: 'main',
     component: DynamicTabNavigator,
-    options: {title: 'React Native', headerLeft: undefined},
+    options: {title: '统一企业移动终端', headerLeft: undefined},
   },
   {name: 'deviceinfo', component: DeviceInfo, options: {title: '设备信息'}},
   {name: 'files', component: Files, options: {title: '文件管理'}},
@@ -78,70 +78,6 @@ export default class AppNavigator extends PureComponent<PropsEntry> {
       <NavigationContainer>
         <Stack.Navigator initialRouteName={initialRouteName}>
           {this.routeRender(routeList)}
-          {/* <Stack.Screen
-            name="Login"
-            component={Login}
-            options={{title: '登录'}}
-          />
-
-          <Stack.Screen
-            name="Register"
-            component={Register}
-            options={{title: '注册'}}
-          />
-
-          <Stack.Screen
-            name="Welcome"
-            component={Welcome}
-            options={{headerShown: false}}
-          />
-
-          <Stack.Screen
-            name="Main"
-            component={DynamicTabNavigator}
-            options={{title: 'RN', headerLeft: undefined}}
-          /> */}
-
-          {/* <Stack.Screen
-            name="messagePush"
-            component={messagePush}
-            options={{ title: '消息推送' }}
-          />
-          <Stack.Screen
-            name="files"
-            component={files}
-            options={{ title: 'json/文本数据处理' }}
-          />
-          <Stack.Screen
-            name="qrCode"
-            component={qrCode}
-            options={{ title: '二维码' }}
-          />
-          <Stack.Screen
-            name="share"
-            component={share}
-            options={{ title: '第三方分享' }}
-          />
-          <Stack.Screen
-            name="imagePicker"
-            component={imagePicker}
-            options={{ title: '相机和图片处理' }}
-          />
-          <Stack.Screen
-            name="maps"
-            component={maps}
-            options={{ title: '定位+地图' }}
-          />
-          <Stack.Screen
-            name="deviceinfo"
-            component={DeviceInfo}
-            options={{ title: '设备信息获取' }}
-          />
-          <Stack.Screen
-            name="database"
-            component={DataBase}
-            options={{ title: '数据库操作' }}
-          /> */}
         </Stack.Navigator>
       </NavigationContainer>
     );

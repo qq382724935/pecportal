@@ -8,7 +8,7 @@
         "advertising": {
             "name": "欢迎页",
             "url": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2444296791,1030007830&fm=26&gp=0.jpg",
-            "show": true,
+            "show": false,
             "showTime": 3000
         }
     },

@@ -11,12 +11,10 @@ import {
 import {
   BaiduMapManager,
   MapView,
-  MapTypes,
   Geolocation,
   Overlay,
-  MapApp,
 } from 'react-native-baidu-map';
-const {Marker, Cluster, Circle, Polyline} = Overlay;
+const {Marker, Circle, Polyline} = Overlay;
 Platform.OS === 'ios' &&
   BaiduMapManager.initSDK('EACHkfyDnSgv1gxQQA4j487lCxZYf04T');
 

@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-01 08:47:20
+ * @LastEditTime: 2020-07-03 09:27:47
  * @Description:
  */
 import React, {useState} from 'react';
@@ -75,6 +75,7 @@ const Login = (props: any) => {
         onChange={(value: string) => setForm({...form, username: value})}
       />
       <Form.Item
+        label="密码"
         defaultValue={password}
         placeholder="123456"
         onChange={(value: string) => {
