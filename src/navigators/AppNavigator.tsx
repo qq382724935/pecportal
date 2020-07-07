@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-03 09:38:10
+ * @LastEditTime: 2020-07-07 11:40:48
  */
 
 import React, {PureComponent} from 'react';
@@ -27,6 +27,7 @@ import Qrcode from '../pages/Qrcode';
 import Camera from '../pages/Camera';
 import MyViewShot from '../pages/MyViewShot';
 import BDMap from '../pages/BDMap';
+import Journalism from '../pages/Journalism';
 
 interface RouteOptions {
   title?: string;
@@ -55,6 +56,7 @@ const routeList: RouteData[] = [
   {name: 'qrcode', component: Qrcode, options: {title: '二维码'}},
   {name: 'viewshot', component: MyViewShot, options: {title: '文本转图片'}},
   {name: 'bdmap', component: BDMap, options: {title: '百度地图'}},
+  {name: 'journalism', component: Journalism, options: {title: '新闻页'}},
 ];
 
 export default class AppNavigator extends PureComponent<PropsEntry> {

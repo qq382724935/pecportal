@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-03 09:27:47
+ * @LastEditTime: 2020-07-07 15:46:13
  * @Description:
  */
 import React, {useState} from 'react';
@@ -16,10 +16,7 @@ import {Form} from '../components/index';
 import {APLSButton, TextButton} from '../components/button/index';
 
 const Login = (props: any) => {
-  const [form, setForm] = useState({
-    username: 'admin',
-    password: '123456',
-  });
+  const [form, setForm] = useState({username: '', password: ''});
   const {username, password} = form;
   const loginClick = () => {
     if (username === 'llj') {
@@ -71,13 +68,13 @@ const Login = (props: any) => {
       <Form.Item
         defaultValue={username}
         label="账号"
-        placeholder="admin"
+        placeholder="请输入账号"
         onChange={(value: string) => setForm({...form, username: value})}
       />
       <Form.Item
         label="密码"
         defaultValue={password}
-        placeholder="123456"
+        placeholder="请输入密码"
         onChange={(value: string) => {
           setForm({...form, password: value});
         }}
@@ -92,7 +89,7 @@ const Login = (props: any) => {
           }}>
           新用户注册
         </TextButton>
-        <TextButton>忘记密码？</TextButton>
+        {/* <TextButton>忘记密码？</TextButton> */}
       </View>
     </View>
   );

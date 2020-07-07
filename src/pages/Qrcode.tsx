@@ -23,10 +23,7 @@ class Qrcode extends Component {
         <QRCode
           size={200}
           value={this.state.qrValue}
-          logo={{
-            uri:
-              'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2684613759,2628279694&fm=26&gp=0.jpg',
-          }}
+          logo={require('../assets/logo.png')}
           logoSize={50}
         />
       </View>

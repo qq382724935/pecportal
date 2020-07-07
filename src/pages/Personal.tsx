@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-23 17:25:20
+ * @LastEditTime: 2020-07-07 15:34:31
  */
 import React, {Component} from 'react';
 import {Button, View, Text, Alert} from 'react-native';
@@ -12,7 +12,7 @@ import {List, Button as myButton} from '../components/index';
 import {qtData, dtData, QueryTableDataProps} from '../utils/sqlite';
 import {loadToken, removeToken} from '../utils/storage';
 import {STORAGE_KEY} from '../utils/keys';
-import {resetHome, resetRegister} from '../utils/navigation';
+import {resetHome, resetLogin, resetRegister} from '../utils/navigation';
 import {
   getCacheSize,
   clearCache,
@@ -22,7 +22,7 @@ import {
   getImageCacheSize,
 } from '@yz1311/react-native-http-cache';
 
-class Personal extends Component {
+class Personal extends Component<any> {
   state = {userName: '', cType: null, userData: []};
   componentDidMount() {
     loadToken({key: STORAGE_KEY.LOGIN})
@@ -36,6 +36,7 @@ class Personal extends Component {
 
   render() {
     const {userName, cType} = this.state;
+    const {navigation} = this.props;
     const describeList = [
       {
         label: '用户名',
@@ -50,17 +51,36 @@ class Personal extends Component {
 
     return (
       <>
-        <List.Describe list={describeList} />
-        {list.map((item, index) => (
-          <myButton.APLSButton
-            key={index}
-            style={{backgroundColor: '#d9d9d9'}}
-            onPress={item.press}>
-            <Text>{item.label}</Text>
-          </myButton.APLSButton>
-        ))}
-        {cType === '1' ? <UserManage {...this.props} /> : null}
-        {cType === '2' ? <CacheManage {...this.props} /> : null}
+        {userName ? (
+          <>
+            <List.Describe list={describeList} />
+            {list.map((item, index) => (
+              <myButton.APLSButton
+                key={index}
+                style={{backgroundColor: '#d9d9d9'}}
+                onPress={item.press}>
+                <Text>{item.label}</Text>
+              </myButton.APLSButton>
+            ))}
+            {cType === '1' ? <UserManage {...this.props} /> : null}
+            {cType === '2' ? <CacheManage {...this.props} /> : null}
+          </>
+        ) : (
+          <View
+            style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <myButton.APLSButton
+              style={{
+                backgroundColor: '#d9d9d9',
+                marginLeft: 8,
+                marginRight: 8,
+              }}
+              onPress={() => {
+                resetLogin({navigation});
+              }}>
+              <Text>登录</Text>
+            </myButton.APLSButton>
+          </View>
+        )}
       </>
     );
   }
@@ -177,9 +197,8 @@ class UserManage extends Component<any, any> {
     const {navigation} = this.props;
     return (
       <>
-        <Text style={{margin: 8, fontSize: 16}}>操作用户表</Text>
         <View style={{flexDirection: 'row', flexWrap: 'wrap', marginBottom: 8}}>
-          <View style={{marginRight: 8}}>
+          {/* <View style={{marginRight: 8}}>
             <Button
               title="查询数据"
               onPress={() => {
@@ -195,13 +214,13 @@ class UserManage extends Component<any, any> {
                 resetRegister({navigation});
               }}
             />
-          </View>
+          </View> */}
           <View style={{marginRight: 8}}>
             <Button
               title="退出登录"
               onPress={() => {
                 removeToken({key: STORAGE_KEY.LOGIN}).then(() =>
-                  resetHome({navigation, name: 'login'}),
+                  resetHome({navigation}),
                 );
               }}
             />

@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">统一</string>
+    <string name="app_name">统一终端</string>
     <string moduleConfig="true" name="CodePushDeploymentKey">ytOg6NBDbr2RVrgvArolrb_fR6-1Y1CR_kXDR</string>
 </resources>
