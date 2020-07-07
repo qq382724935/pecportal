@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-06 10:03:58
+ * @LastEditTime: 2020-07-06 13:04:38
  * @Description:
  */
 import React, {Component} from 'react';
@@ -13,7 +13,8 @@ import {
   Dimensions,
   Image,
   Text,
-  TouchableHighlight,
+  TouchableOpacity,
+  Alert,
 } from 'react-native';
 import JShareModule from 'jshare-react-native';
 import Swiper from 'react-native-swiper';
@@ -33,15 +34,16 @@ interface FAListProps {
 class FrequentlyApp extends Component<any> {
   appRednder = (list: FAListProps[]) => {
     return list.map((item, index: number) => (
-      <TouchableHighlight
+      <TouchableOpacity
+        key={index}
         onPress={() => {
           item.press();
         }}>
-        <View style={styles.faLink} key={index}>
+        <View style={styles.faLink}>
           <Image source={item.uri} style={{marginBottom: 2}} />
           <Text>{item.text}</Text>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     ));
   };
 
@@ -52,7 +54,7 @@ class FrequentlyApp extends Component<any> {
       {
         text: 'ECRC',
         uri: require('../assets/MBE风格多色图标-云盘.png'),
-        press: () => resetPage({name: 'qrcode', navigation}),
+        press: () => Alert.alert('敬请期待！'),
       },
       {
         text: '设备信息',
@@ -67,7 +69,8 @@ class FrequentlyApp extends Component<any> {
       {
         text: '定位',
         uri: require('../assets//MBE风格多色图标-指南针.png'),
-        press: () => resetPage({name: 'bdmap', navigation}),
+        // press: () => resetPage({name: 'bdmap', navigation}),
+        press: () => Alert.alert('敬请期待！'),
       },
       {
         text: '资源目录',
@@ -117,15 +120,21 @@ class FrequentlyApp extends Component<any> {
       {
         text: '公司新闻',
         uri: require('../assets/MBE风格多色图标-广播.png'),
-        press: () => resetPage({name: 'qrcode', navigation}),
+        press: () => Alert.alert('敬请期待！'),
       },
       {
         text: '全部',
         uri: require('../assets/MBE风格多色图标-群组.png'),
-        press: () => resetPage({name: 'qrcode', navigation}),
+        press: () => Alert.alert('敬请期待！'),
       },
     ];
     return <View style={styles.faView}>{this.appRednder(list)}</View>;
+  }
+}
+
+class Notice extends Component {
+  render() {
+    return <View></View>;
   }
 }
 class Home extends Component<any> {
@@ -149,6 +158,7 @@ class Home extends Component<any> {
           </Swiper>
         </View>
         <FrequentlyApp {...this.props} />
+        <Notice {...this.props} />
       </View>
     );
   }
@@ -167,8 +177,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   faLink: {
-    borderWidth: 1,
-    borderColor: '#FFF',
     width: 66,
     marginLeft: 8,
     marginBottom: 8,

@@ -7,9 +7,13 @@ import {auth, webApp} from './utils/auth';
 import {subscribe} from './utils/zip';
 
 class Router extends PureComponent<any> {
+  // state = {
+  //   checkLogin: false,
+  //   initialRouteName: '',
+  // };
   state = {
-    checkLogin: false,
-    initialRouteName: '',
+    checkLogin: true,
+    initialRouteName: 'main',
   };
   zipProgress: any;
   constructor(props: any) {
@@ -28,8 +32,8 @@ class Router extends PureComponent<any> {
   }
 
   initAuth = async () => {
-    const authData = await auth();
-    this.setState(authData);
+    // const authData = await auth();
+    // this.setState(authData);
     SplashScreen.hide();
   };
 
