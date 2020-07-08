@@ -878,7 +878,6 @@
 					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
 					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/",
 					"$(SRCROOT)/../node_modules/jcore-react-native/ios/RCTJCoreModule/",
-					"$(SRCROOT)/../node_modules/jshare-react-native/ios/RCTJShareModule",
 				);
 				INFOPLIST_FILE = pecportal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -904,6 +903,7 @@
 				CODE_SIGN_ENTITLEMENTS = pecportal/pecportal.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2F2465R9XA;
+				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -961,7 +961,6 @@
 					"\"$(PODS_ROOT)/Headers/Private/React-Core\"",
 					"$(SRCROOT)/../node_modules/jpush-react-native/ios/RCTJPushModule/",
 					"$(SRCROOT)/../node_modules/jcore-react-native/ios/RCTJCoreModule/",
-					"$(SRCROOT)/../node_modules/jshare-react-native/ios/RCTJShareModule",
 				);
 				INFOPLIST_FILE = pecportal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

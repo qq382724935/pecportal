@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-07 13:06:22
+ * @LastEditTime: 2020-07-08 15:32:29
  * @Description:
  */
 import React, {Component} from 'react';
@@ -16,7 +16,7 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import JShareModule from 'jshare-react-native';
+// import JShareModule from 'jshare-react-native';
 import Swiper from 'react-native-swiper';
 import {resetPage} from '../utils/navigation';
 import {openPicker} from '../utils/cameraroll';
@@ -51,6 +51,18 @@ class FrequentlyApp extends Component<any> {
     const {navigation} = this.props;
     let list: FAListProps[] = [
       {
+        text: 'ECRC',
+        uri: require('../assets/MBE风格多色图标-云盘.png'),
+        press: () =>
+          resetPage(
+            {name: 'WView', navigation},
+            {
+              uri: 'https://ecrc.pec.com.cn/#/main/510011040421/5100/ios',
+              title: 'ECRC',
+            },
+          ),
+      },
+      {
         text: 'U订货',
         uri: require('../assets/MBE风格多色图标-广播.png'),
         press: () =>
@@ -68,18 +80,6 @@ class FrequentlyApp extends Component<any> {
             {
               uri: 'http://shwt.pec.com.cn:8086/frontend/dianwei/index.html',
               title: '运营中台',
-            },
-          ),
-      },
-      {
-        text: 'ECRC',
-        uri: require('../assets/MBE风格多色图标-云盘.png'),
-        press: () =>
-          resetPage(
-            {name: 'WView', navigation},
-            {
-              uri: 'https://ecrc.pec.com.cn/#/main/510011040421/5100/ios',
-              title: 'ECRC',
             },
           ),
       },
@@ -121,23 +121,24 @@ class FrequentlyApp extends Component<any> {
       {
         text: '极光分享',
         uri: require('../assets/MBE风格多色图标-分享.png'),
-        press: () => {
-          const message = {
-            platform: 'wechat_session',
-            type: 'text',
-            text: 'JShare test text',
-            imagePath: '',
-          };
-          JShareModule.share(
-            message,
-            (map: any) => {
-              console.log('share succeed, map: ' + map);
-            },
-            (map: any) => {
-              console.log('share failed, map: ' + JSON.stringify(map));
-            },
-          );
-        },
+        // press: () => {
+        //   const message = {
+        //     platform: 'wechat_session',
+        //     type: 'text',
+        //     text: 'JShare test text',
+        //     imagePath: '',
+        //   };
+        //   JShareModule.share(
+        //     message,
+        //     (map: any) => {
+        //       console.log('share succeed, map: ' + map);
+        //     },
+        //     (map: any) => {
+        //       console.log('share failed, map: ' + JSON.stringify(map));
+        //     },
+        //   );
+        // },
+        press: () => Alert.alert('此功能已关闭'),
       },
       {
         text: '全部',
@@ -213,7 +214,7 @@ class Notice extends Component<NoticeProps> {
 class Home extends Component<any> {
   constructor(props: any) {
     super(props);
-    Platform.OS === 'ios' && JShareModule.setup();
+    // Platform.OS === 'ios' && JShareModule.setup();
   }
   list = [require('../assets/轮播1.jpg'), require('../assets/轮播2.png')];
 

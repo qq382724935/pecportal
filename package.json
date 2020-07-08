@@ -1,6 +1,6 @@
 {
   "name": "pecportal",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -22,7 +22,6 @@
     "dva-core": "^2.0.2",
     "jcore-react-native": "^1.8.0",
     "jpush-react-native": "^2.8.1",
-    "jshare-react-native": "^1.4.1",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-baidu-map": "^1.0.37",

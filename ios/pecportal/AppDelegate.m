@@ -4,7 +4,7 @@
 
 /* 极光开始 */
 #import <RCTJPushModule.h>
-#import <RCTJShareModule.h>
+// #import <RCTJShareModule.h>
 /* 极光结束 */
 
 #import <React/RCTBridge.h>
@@ -41,20 +41,20 @@ static void InitializeFlipper(UIApplication *application) {
 
 // ************************************************JShar start************************************************
 // work in iOS(8.0)
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-  [JSHAREService handleOpenUrl:url];
-  return YES;
-}
-// work in iOS(9_0)
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-  [JSHAREService handleOpenUrl:url];
-  return YES;
-}
-// work in iOS(9_0,++)
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-  [JSHAREService handleOpenUrl:url];
-  return YES;
-}
+// - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+//   [JSHAREService handleOpenUrl:url];
+//   return YES;
+// }
+// // work in iOS(9_0)
+// - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+//   [JSHAREService handleOpenUrl:url];
+//   return YES;
+// }
+// // work in iOS(9_0,++)
+// - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+//   [JSHAREService handleOpenUrl:url];
+//   return YES;
+// }
 // ************************************************JShar end************************************************
 
 
