@@ -12,8 +12,6 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		14FBDB089ACBB17B49E8B0EF /* libPods-pecportal-pecportalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FE08D118D2069D791F68B0 /* libPods-pecportal-pecportalTests.a */; };
-		18FF8D9F18510F80CCE4D52A /* libPods-pecportal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C300D0DFBEDB7B09782B4A4 /* libPods-pecportal.a */; };
 		200E38DA24AAD00600678088 /* RCTJShareConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 200E38D924AAD00600678088 /* RCTJShareConfig.plist */; };
 		2035A0C724A30956008D55EF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2038905724A2E9FF00C6AE04 /* CFNetwork.framework */; };
 		2035A0C824A3095D008D55EF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2038905524A2E9F900C6AE04 /* CoreFoundation.framework */; };
@@ -31,8 +29,10 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* pecportalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* pecportalTests.m */; };
-		4D12E69E910C418D3F39201A /* libPods-pecportal-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD41A9BB085665800EFF6CB9 /* libPods-pecportal-tvOSTests.a */; };
-		817EB206157BC562F803AD88 /* libPods-pecportal-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E581CD656977A200A5B4D58 /* libPods-pecportal-tvOS.a */; };
+		3A72F8D0B5E5843AB6F0355A /* libPods-pecportal-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9437022CDD3C1F4445C8F6F /* libPods-pecportal-tvOS.a */; };
+		63F34C38633B4F7B1741FE89 /* libPods-pecportal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F44128520C11EC12DBDF130F /* libPods-pecportal.a */; };
+		842F79C8B035F8AAAFB21832 /* libPods-pecportal-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64304EF9E1DE61B1F2599EAF /* libPods-pecportal-tvOSTests.a */; };
+		F7497830B70E3BF9C2EDBD91 /* libPods-pecportal-pecportalTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D316FF6B08A8EB227F3CBD38 /* libPods-pecportal-pecportalTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,8 +71,6 @@
 		00E356EE1AD99517003FC87E /* pecportalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pecportalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* pecportalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pecportalTests.m; sourceTree = "<group>"; };
-		08360233BB6EA7543467788A /* Pods-pecportal-pecportalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-pecportalTests.release.xcconfig"; path = "Target Support Files/Pods-pecportal-pecportalTests/Pods-pecportal-pecportalTests.release.xcconfig"; sourceTree = "<group>"; };
-		0C300D0DFBEDB7B09782B4A4 /* libPods-pecportal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* pecportal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pecportal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = pecportal/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = pecportal/AppDelegate.m; sourceTree = "<group>"; };
@@ -80,7 +78,7 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = pecportal/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = pecportal/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = pecportal/main.m; sourceTree = "<group>"; };
-		1458AAD934B18A633BC31BC5 /* Pods-pecportal-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOSTests/Pods-pecportal-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1B5449C3798657A385C0BDB8 /* Pods-pecportal-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOS/Pods-pecportal-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		200E23FE24A2EE7700FEFDD3 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		200E38D924AAD00600678088 /* RCTJShareConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RCTJShareConfig.plist; sourceTree = "<group>"; };
 		2035A0B924A30839008D55EF /* RCTJCoreModule.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTJCoreModule.xcodeproj; path = "../node_modules/jcore-react-native/ios/RCTJCoreModule.xcodeproj"; sourceTree = "<group>"; };
@@ -101,17 +99,19 @@
 		20FD3F7C24A05E6D003468FB /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../../temp/www; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* pecportal-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pecportal-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* pecportal-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "pecportal-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3BFCAAF9708402CEEFF4469B /* Pods-pecportal-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOS.release.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOS/Pods-pecportal-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		5E581CD656977A200A5B4D58 /* libPods-pecportal-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		693F5A66BB0B758D5EABACA8 /* Pods-pecportal-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOSTests/Pods-pecportal-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		9FF1947E1158062CAFB7823C /* Pods-pecportal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal.debug.xcconfig"; path = "Target Support Files/Pods-pecportal/Pods-pecportal.debug.xcconfig"; sourceTree = "<group>"; };
-		AD41A9BB085665800EFF6CB9 /* libPods-pecportal-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8A73F432583A67A62C4A886 /* Pods-pecportal-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOS/Pods-pecportal-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		E1FE08D118D2069D791F68B0 /* libPods-pecportal-pecportalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal-pecportalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB6445A85F1790E13D519CDF /* Pods-pecportal-pecportalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-pecportalTests.debug.xcconfig"; path = "Target Support Files/Pods-pecportal-pecportalTests/Pods-pecportal-pecportalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4D26C8DA28DBA95D7E595C0F /* Pods-pecportal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal.debug.xcconfig"; path = "Target Support Files/Pods-pecportal/Pods-pecportal.debug.xcconfig"; sourceTree = "<group>"; };
+		64304EF9E1DE61B1F2599EAF /* libPods-pecportal-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E0054BF26487A5FC54F9EB0 /* Pods-pecportal-pecportalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-pecportalTests.debug.xcconfig"; path = "Target Support Files/Pods-pecportal-pecportalTests/Pods-pecportal-pecportalTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8DAF135B69698A2A721DBC99 /* Pods-pecportal-pecportalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-pecportalTests.release.xcconfig"; path = "Target Support Files/Pods-pecportal-pecportalTests/Pods-pecportal-pecportalTests.release.xcconfig"; sourceTree = "<group>"; };
+		965052B60AC38E7753091A17 /* Pods-pecportal-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOSTests/Pods-pecportal-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		B11146606F6933CC1446A66A /* Pods-pecportal-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOSTests/Pods-pecportal-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C2D682FB48D5097F9B837F04 /* Pods-pecportal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal.release.xcconfig"; path = "Target Support Files/Pods-pecportal/Pods-pecportal.release.xcconfig"; sourceTree = "<group>"; };
+		D316FF6B08A8EB227F3CBD38 /* libPods-pecportal-pecportalTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal-pecportalTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F51B804F779F4BFA16F0B197 /* Pods-pecportal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal.release.xcconfig"; path = "Target Support Files/Pods-pecportal/Pods-pecportal.release.xcconfig"; sourceTree = "<group>"; };
+		F44128520C11EC12DBDF130F /* libPods-pecportal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9437022CDD3C1F4445C8F6F /* libPods-pecportal-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pecportal-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEBB1CDCB7CB2BEA63D84671 /* Pods-pecportal-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal-tvOS.release.xcconfig"; path = "Target Support Files/Pods-pecportal-tvOS/Pods-pecportal-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14FBDB089ACBB17B49E8B0EF /* libPods-pecportal-pecportalTests.a in Frameworks */,
+				F7497830B70E3BF9C2EDBD91 /* libPods-pecportal-pecportalTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +138,7 @@
 				2035A0C824A3095D008D55EF /* CoreFoundation.framework in Frameworks */,
 				2035A0C724A30956008D55EF /* CFNetwork.framework in Frameworks */,
 				203A3E1E24A2E46100E6B506 /* UserNotifications.framework in Frameworks */,
-				18FF8D9F18510F80CCE4D52A /* libPods-pecportal.a in Frameworks */,
+				63F34C38633B4F7B1741FE89 /* libPods-pecportal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				817EB206157BC562F803AD88 /* libPods-pecportal-tvOS.a in Frameworks */,
+				3A72F8D0B5E5843AB6F0355A /* libPods-pecportal-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D12E69E910C418D3F39201A /* libPods-pecportal-tvOSTests.a in Frameworks */,
+				842F79C8B035F8AAAFB21832 /* libPods-pecportal-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,10 +228,10 @@
 				203A3E1924A2E44D00E6B506 /* libz.tbd */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				0C300D0DFBEDB7B09782B4A4 /* libPods-pecportal.a */,
-				E1FE08D118D2069D791F68B0 /* libPods-pecportal-pecportalTests.a */,
-				5E581CD656977A200A5B4D58 /* libPods-pecportal-tvOS.a */,
-				AD41A9BB085665800EFF6CB9 /* libPods-pecportal-tvOSTests.a */,
+				F44128520C11EC12DBDF130F /* libPods-pecportal.a */,
+				D316FF6B08A8EB227F3CBD38 /* libPods-pecportal-pecportalTests.a */,
+				F9437022CDD3C1F4445C8F6F /* libPods-pecportal-tvOS.a */,
+				64304EF9E1DE61B1F2599EAF /* libPods-pecportal-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -275,14 +275,14 @@
 		E3BBB263C5D016CC2EB12775 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9FF1947E1158062CAFB7823C /* Pods-pecportal.debug.xcconfig */,
-				F51B804F779F4BFA16F0B197 /* Pods-pecportal.release.xcconfig */,
-				EB6445A85F1790E13D519CDF /* Pods-pecportal-pecportalTests.debug.xcconfig */,
-				08360233BB6EA7543467788A /* Pods-pecportal-pecportalTests.release.xcconfig */,
-				D8A73F432583A67A62C4A886 /* Pods-pecportal-tvOS.debug.xcconfig */,
-				3BFCAAF9708402CEEFF4469B /* Pods-pecportal-tvOS.release.xcconfig */,
-				1458AAD934B18A633BC31BC5 /* Pods-pecportal-tvOSTests.debug.xcconfig */,
-				693F5A66BB0B758D5EABACA8 /* Pods-pecportal-tvOSTests.release.xcconfig */,
+				4D26C8DA28DBA95D7E595C0F /* Pods-pecportal.debug.xcconfig */,
+				C2D682FB48D5097F9B837F04 /* Pods-pecportal.release.xcconfig */,
+				7E0054BF26487A5FC54F9EB0 /* Pods-pecportal-pecportalTests.debug.xcconfig */,
+				8DAF135B69698A2A721DBC99 /* Pods-pecportal-pecportalTests.release.xcconfig */,
+				1B5449C3798657A385C0BDB8 /* Pods-pecportal-tvOS.debug.xcconfig */,
+				FEBB1CDCB7CB2BEA63D84671 /* Pods-pecportal-tvOS.release.xcconfig */,
+				B11146606F6933CC1446A66A /* Pods-pecportal-tvOSTests.debug.xcconfig */,
+				965052B60AC38E7753091A17 /* Pods-pecportal-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -294,11 +294,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "pecportalTests" */;
 			buildPhases = (
-				03803FD19E2B48A6E9EFB83A /* [CP] Check Pods Manifest.lock */,
+				965D314E89B19B5B4B417CD2 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				03EF54EC0EAD5895A43F60AB /* [CP] Copy Pods Resources */,
+				7D60B36C283860B220F6A46D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -314,14 +314,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "pecportal" */;
 			buildPhases = (
-				B60524F6C6C5EA0D683A03DD /* [CP] Check Pods Manifest.lock */,
+				85017FC7A3625220E082C7C3 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				20EBB0E424A0603D005D18E1 /* Run Script */,
-				4CD9F4D537D9BFB93268DCB8 /* [CP] Copy Pods Resources */,
+				F2A817FD1C65B542895977CD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -336,7 +336,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "pecportal-tvOS" */;
 			buildPhases = (
-				ACD64E05E3E50682EB7D34AA /* [CP] Check Pods Manifest.lock */,
+				57439FECC9EF297A4821CECF /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -356,7 +356,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "pecportal-tvOSTests" */;
 			buildPhases = (
-				33EAA4E1A5CA7940230E6255 /* [CP] Check Pods Manifest.lock */,
+				BF2CC5AA6BFF7D78F41ED843 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -497,50 +497,6 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		03803FD19E2B48A6E9EFB83A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-pecportal-pecportalTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		03EF54EC0EAD5895A43F60AB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-pecportal-pecportalTests/Pods-pecportal-pecportalTests-resources.sh",
-				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/mapapi.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pecportal-pecportalTests/Pods-pecportal-pecportalTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		20EBB0E424A0603D005D18E1 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -573,51 +529,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		33EAA4E1A5CA7940230E6255 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-pecportal-tvOSTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4CD9F4D537D9BFB93268DCB8 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-pecportal/Pods-pecportal-resources.sh",
-				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/mapapi.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pecportal/Pods-pecportal-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ACD64E05E3E50682EB7D34AA /* [CP] Check Pods Manifest.lock */ = {
+		57439FECC9EF297A4821CECF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -639,7 +551,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B60524F6C6C5EA0D683A03DD /* [CP] Check Pods Manifest.lock */ = {
+		7D60B36C283860B220F6A46D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pecportal-pecportalTests/Pods-pecportal-pecportalTests-resources.sh",
+				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/mapapi.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pecportal-pecportalTests/Pods-pecportal-pecportalTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85017FC7A3625220E082C7C3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -659,6 +593,72 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		965D314E89B19B5B4B417CD2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-pecportal-pecportalTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF2CC5AA6BFF7D78F41ED843 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-pecportal-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2A817FD1C65B542895977CD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-pecportal/Pods-pecportal-resources.sh",
+				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/mapapi.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-pecportal/Pods-pecportal-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -766,7 +766,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EB6445A85F1790E13D519CDF /* Pods-pecportal-pecportalTests.debug.xcconfig */;
+			baseConfigurationReference = 7E0054BF26487A5FC54F9EB0 /* Pods-pecportal-pecportalTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -789,7 +789,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 08360233BB6EA7543467788A /* Pods-pecportal-pecportalTests.release.xcconfig */;
+			baseConfigurationReference = 8DAF135B69698A2A721DBC99 /* Pods-pecportal-pecportalTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -809,7 +809,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9FF1947E1158062CAFB7823C /* Pods-pecportal.debug.xcconfig */;
+			baseConfigurationReference = 4D26C8DA28DBA95D7E595C0F /* Pods-pecportal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -897,7 +897,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F51B804F779F4BFA16F0B197 /* Pods-pecportal.release.xcconfig */;
+			baseConfigurationReference = C2D682FB48D5097F9B837F04 /* Pods-pecportal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -979,7 +979,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8A73F432583A67A62C4A886 /* Pods-pecportal-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 1B5449C3798657A385C0BDB8 /* Pods-pecportal-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1007,7 +1007,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3BFCAAF9708402CEEFF4469B /* Pods-pecportal-tvOS.release.xcconfig */;
+			baseConfigurationReference = FEBB1CDCB7CB2BEA63D84671 /* Pods-pecportal-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1035,7 +1035,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1458AAD934B18A633BC31BC5 /* Pods-pecportal-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = B11146606F6933CC1446A66A /* Pods-pecportal-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1062,7 +1062,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 693F5A66BB0B758D5EABACA8 /* Pods-pecportal-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 965052B60AC38E7753091A17 /* Pods-pecportal-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
