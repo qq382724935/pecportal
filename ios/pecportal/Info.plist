@@ -91,17 +91,17 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Your message to user when the camera is accessed for the first time</string>
+	<string>是否允许使用相机</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Continuous access to geographic location</string>
+	<string>连续访问地理位置</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Get geographic location when using</string>
+	<string>使用时获取地理位置</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Your message to user when the microphone is accessed for the first time</string>
+	<string>是否允许使用麦克风</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Your message to user when the photo library is accessed for the first time</string>
+	<string>是否允许打开照片库</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Your message to user when the photo library is accessed for the first time</string>
+	<string>是否允许打开照片库</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
