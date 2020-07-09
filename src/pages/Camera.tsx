@@ -229,14 +229,14 @@ class CameraFooter extends PureComponent<any> {
           photoPng: require('../assets/stop_record.png'),
           switchState: switchType[2],
         });
-        // this.takeRecord();
+        this.takeRecord();
         break;
       case switchType[2]:
         this.setState({
           photoPng: require('../assets/record.png'),
           switchState: switchType[1],
         });
-        // this.stopRecord();
+        this.stopRecord();
         break;
     }
   };

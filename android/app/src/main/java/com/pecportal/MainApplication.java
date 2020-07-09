@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-22 11:12:02
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-30 10:13:55
+ * @LastEditTime: 2020-07-09 13:16:08
  * @Description: 
  */ 
 package com.pecportal;
@@ -20,7 +20,7 @@ import java.util.List;
 
 import com.microsoft.codepush.react.CodePush; // codepush
 import cn.jiguang.plugins.push.JPushModule;
-import cn.jiguang.share.android.api.JShareInterface;
+// import cn.jiguang.share.android.api.JShareInterface;
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
@@ -61,7 +61,7 @@ public class MainApplication extends Application implements ReactApplication {
     SoLoader.init(this, /* native exopackage */ false);
      //调用此方法：点击通知让应用从后台切到前台
     JPushModule.registerActivityLifecycle(this);
-    JShareInterface.init(this);
+    // JShareInterface.init(this);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
   }
 
