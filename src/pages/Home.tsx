@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-08 15:32:29
+ * @LastEditTime: 2020-07-09 13:32:33
  * @Description:
  */
 import React, {Component} from 'react';
@@ -72,7 +72,7 @@ class FrequentlyApp extends Component<any> {
           ),
       },
       {
-        text: '运营中台',
+        text: '中台(离线)',
         uri: require('../assets/MBE风格多色图标-文档.png'),
         press: () =>
           resetPage(
@@ -266,7 +266,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   faLink: {
-    width: 66,
+    minWidth: 66,
+    maxWidth: 74,
     marginBottom: 8,
     alignItems: 'center',
   },
