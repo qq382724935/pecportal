@@ -2,11 +2,9 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 18:21:46
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-23 17:22:11
+ * @LastEditTime: 2020-07-10 13:50:01
  * @Description:
  */
-
-import {openDatabase} from 'react-native-sqlite-storage';
 
 import {
   ExecuteError,
@@ -14,21 +12,35 @@ import {
   transactionExecuteRes,
   dataType,
 } from '../types/sqlite';
-import {Alert} from 'react-native';
-// 参考https://github.com/andpor/react-native-sqlite-storage
-const dbName = 'app.db'; // 数据库名称
-// const createFromLocation = 1; // 获取方式，android打不开
-const createFromLocation = Platform.OS === 'ios' ? 1 : '~app.db';
-const location = 'default';
+import {Alert, Platform} from 'react-native';
+import SQLite from 'react-native-sqlite-storage';
 const okCallback = () => console.log('打开数据库成功');
 const errorCallback = (error: any) => console.log('打开数据库失败', error);
-// 打开数据库文件
-const db = openDatabase(
-  {name: dbName, createFromLocation, location},
-  okCallback,
-  errorCallback,
-);
+let db: any;
+export const openDB = () => {
+  if (!db) {
+    // SQLite.DEBUG(true);
+    // SQLite.enablePromise(false);
+    const dbName = 'app.db'; // 数据库名称
+    // const createFromLocation = 1; // 获取方式，android打不开
+    const createFromLocation = Platform.OS === 'ios' ? 1 : '~app.db';
+    // 打开数据库文件
+    db = SQLite.openDatabase(
+      {name: dbName, createFromLocation: createFromLocation},
+      okCallback,
+      errorCallback,
+    );
+  }
+};
 
+openDB();
+
+export const closeDB = () => {
+  if (db) {
+    db.close();
+    db = null;
+  }
+};
 /**
  * @description: 数据库执行失败回调处理
  * @param {type} 类型：例：add,del,update,query

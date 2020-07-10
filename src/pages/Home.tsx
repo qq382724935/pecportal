@@ -2,19 +2,20 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-09 13:32:33
+ * @LastEditTime: 2020-07-10 16:10:59
  * @Description:
  */
 import React, {Component} from 'react';
 import {
   StyleSheet,
   View,
-  Platform,
   Dimensions,
   Image,
   Text,
   TouchableOpacity,
   Alert,
+  SafeAreaView,
+  ScrollView,
 } from 'react-native';
 // import JShareModule from 'jshare-react-native';
 import Swiper from 'react-native-swiper';
@@ -78,8 +79,9 @@ class FrequentlyApp extends Component<any> {
           resetPage(
             {name: 'WView', navigation},
             {
-              uri: 'http://shwt.pec.com.cn:8086/frontend/dianwei/index.html',
               title: '运营中台',
+              uri: 'http://shwt.pec.com.cn:8086/frontend/dianwei/index.html',
+              path: 'dianwei',
             },
           ),
       },
@@ -94,10 +96,10 @@ class FrequentlyApp extends Component<any> {
         press: () => resetPage({name: 'camera', navigation}),
       },
       {
-        text: '定位',
+        text: '目录机构',
         uri: require('../assets//MBE风格多色图标-指南针.png'),
-        // press: () => resetPage({name: 'bdmap', navigation}),
-        press: () => Alert.alert('敬请期待！'),
+        press: () => resetPage({name: 'files', navigation}),
+        // press: () => Alert.alert('敬请期待！'),
       },
 
       {
@@ -239,16 +241,20 @@ class Home extends Component<any> {
     ];
 
     return (
-      <View style={styles.container}>
-        <View style={{height: 150}}>
-          <Swiper autoplay>{this.swiperRender(this.list)}</Swiper>
-        </View>
-        <View style={{margin: 10}}>
-          <FrequentlyApp {...this.props} />
-          <Notice list={list} title="新闻专区" {...this.props} />
-          <Notice list={[]} title="公告专区" {...this.props} />
-        </View>
-      </View>
+      <SafeAreaView>
+        <ScrollView>
+          <View style={styles.container}>
+            <View style={{height: 150}}>
+              <Swiper autoplay>{this.swiperRender(this.list)}</Swiper>
+            </View>
+            <View style={{margin: 10}}>
+              <FrequentlyApp {...this.props} />
+              <Notice list={list} title="新闻专区" {...this.props} />
+              <Notice list={[]} title="公告专区" {...this.props} />
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }

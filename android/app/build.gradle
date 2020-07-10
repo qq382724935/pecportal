@@ -177,11 +177,11 @@ android {
         }
     }
 
-    sourceSets {
-        main {
-            assets.srcDirs = ['assets']
-        }
-    }
+    // sourceSets {
+    //     main {
+    //         assets.srcDirs = ['assets']
+    //     }
+    // }
 
     packagingOptions {
         pickFirst "lib/armeabi-v7a/libc++_shared.so"

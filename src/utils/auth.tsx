@@ -1,11 +1,9 @@
 import {loadToken, saveToken} from './storage/index';
 import {STORAGE_KEY} from './keys';
-
 import {CachesDirectoryPath, downloadFile, unlink, exists} from '../utils/fs';
 
 import {unzip} from './zip';
 export const pecJson = require('../assets/pec.json');
-
 // 初始化路由
 export const auth = async () => {
   const advertising = await loadToken({key: 'config'})

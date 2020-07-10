@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-07 11:40:48
+ * @LastEditTime: 2020-07-10 12:55:49
  */
 
 import React, {PureComponent} from 'react';
@@ -18,12 +18,7 @@ import Advertising from '../pages/Advertising';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Files from '../pages/Files';
-// import messagePush from '../pages/messagePush';
 import Qrcode from '../pages/Qrcode';
-// import share from '../pages/share';
-// import imagePicker from '../pages/imagePicker';
-// import maps from '../pages/maps';
-// import DataBase from '../pages/DataBase';
 import Camera from '../pages/Camera';
 import MyViewShot from '../pages/MyViewShot';
 import BDMap from '../pages/BDMap';

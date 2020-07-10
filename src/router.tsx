@@ -1,19 +1,14 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 import AppNavigator from './navigators/AppNavigator';
-
 import SplashScreen from 'react-native-splash-screen';
 import {auth, webApp} from './utils/auth';
 import {subscribe} from './utils/zip';
 
 class Router extends PureComponent<any> {
-  // state = {
-  //   checkLogin: false,
-  //   initialRouteName: '',
-  // };
   state = {
-    checkLogin: true,
-    initialRouteName: 'main',
+    checkLogin: false,
+    initialRouteName: '',
   };
   zipProgress: any;
   constructor(props: any) {
@@ -32,15 +27,13 @@ class Router extends PureComponent<any> {
   }
 
   initAuth = async () => {
-    // const authData = await auth();
-    // this.setState(authData);
+    const authData = await auth();
+    this.setState(authData);
     SplashScreen.hide();
   };
 
   initWeb = async () => {
-    // await webApp(['linedemo1.zip', 'linedemo1.zip']);
-    await webApp('linedemo1.zip');
-    await webApp('linedemo2.zip');
+    await webApp('dianwei.zip');
   };
 
   // 下载配置文件
