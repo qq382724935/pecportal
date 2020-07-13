@@ -6466,6 +6466,11 @@ react-native-code-push@^6.2.1:
     semver "^7.2.1"
     xcode "2.1.0"
 
+react-native-config-reader@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-config-reader/-/react-native-config-reader-4.1.1.tgz#478b69e32adcc2e9a14f6ef5fa2cbbe012b9a27e"
+  integrity sha512-f+I9DkmJS5UYE++vgSBIFG/TUxxCy9GSpcDFmVj7TDNW9w+Nozc98pdene/VYFzg9QRE7hejRoA6yV1Lv+QbCw==
+
 react-native-device-info@^5.6.1:
   version "5.6.1"
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-5.6.1.tgz#3ae88d8659b7b64d204dbfc39f69126b769363d4"

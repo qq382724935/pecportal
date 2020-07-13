@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-07 15:52:24
+ * @LastEditTime: 2020-07-13 16:26:20
  */
 import React, {Component} from 'react';
 import {Button, View, Text, Alert} from 'react-native';
@@ -22,6 +22,7 @@ import {
   getImageCacheSize,
 } from '@yz1311/react-native-http-cache';
 
+import {checkForUpdate} from '../utils/CodePushUtils';
 class Personal extends Component<any> {
   state = {userName: '', cType: null, userData: []};
   componentDidMount() {
@@ -47,6 +48,7 @@ class Personal extends Component<any> {
     const list = [
       {label: '用户管理', press: () => this.setState({cType: '1'})},
       {label: '缓存管理', press: () => this.setState({cType: '2'})},
+      {label: '版本升级', press: () => checkForUpdate()},
     ];
 
     return (

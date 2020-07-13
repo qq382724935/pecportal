@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-13 10:19:46
+ * @LastEditTime: 2020-07-13 16:11:31
  * @Description:
  */
 import React, {Component} from 'react';
@@ -53,7 +53,7 @@ class FrequentlyApp extends Component<any> {
     let list: FAListProps[] = [
       {
         text: 'ECRC',
-        uri: require('../assets/MBE风格多色图标-云盘.png'),
+        uri: require('../assets/font14.png'),
         press: () =>
           resetPage(
             {name: 'WView', navigation},
@@ -65,7 +65,7 @@ class FrequentlyApp extends Component<any> {
       },
       {
         text: 'U订货',
-        uri: require('../assets/MBE风格多色图标-广播.png'),
+        uri: require('../assets/font4.png'),
         press: () =>
           resetPage(
             {name: 'WView', navigation},
@@ -74,7 +74,7 @@ class FrequentlyApp extends Component<any> {
       },
       {
         text: '中台(离线)',
-        uri: require('../assets/MBE风格多色图标-文档.png'),
+        uri: require('../assets/font10.png'),
         press: () =>
           resetPage(
             {name: 'WView', navigation},
@@ -87,24 +87,23 @@ class FrequentlyApp extends Component<any> {
       },
       {
         text: '设备信息',
-        uri: require('../assets/MBE风格多色图标-安全.png'),
+        uri: require('../assets/font1.png'),
         press: () => resetPage({name: 'deviceinfo', navigation}),
       },
       {
         text: '相机',
-        uri: require('../assets/MBE风格多色图标-相机.png'),
+        uri: require('../assets/font13.png'),
         press: () => resetPage({name: 'camera', navigation}),
       },
       {
-        text: '目录机构',
-        uri: require('../assets//MBE风格多色图标-指南针.png'),
-        press: () => resetPage({name: 'files', navigation}),
-        // press: () => Alert.alert('敬请期待！'),
+        text: '定位',
+        uri: require('../assets/font15.png'),
+        press: () => Alert.alert('敬请期待！'),
       },
 
       {
         text: '相册',
-        uri: require('../assets/MBE风格多色图标-图片.png'),
+        uri: require('../assets/font9.png'),
         press: () => {
           openPicker()
             .then((image: any) => {
@@ -117,12 +116,12 @@ class FrequentlyApp extends Component<any> {
       },
       {
         text: '二维码',
-        uri: require('../assets/MBE风格多色图标-时间.png'),
+        uri: require('../assets/font7.png'),
         press: () => resetPage({name: 'qrcode', navigation}),
       },
       {
         text: '极光分享',
-        uri: require('../assets/MBE风格多色图标-分享.png'),
+        uri: require('../assets/font2.png'),
         // press: () => {
         //   const message = {
         //     platform: 'wechat_session',
@@ -144,7 +143,7 @@ class FrequentlyApp extends Component<any> {
       },
       {
         text: '全部',
-        uri: require('../assets/MBE风格多色图标-群组.png'),
+        uri: require('../assets/font6.png'),
         press: () => navigation.navigate('application'),
       },
     ];

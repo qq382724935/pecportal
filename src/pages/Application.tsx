@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-13 10:23:44
+ * @LastEditTime: 2020-07-13 16:14:46
  */
 import React from 'react';
 import {
@@ -33,7 +33,7 @@ const FrequentlyApp = ({navigation}: any) => {
   let list = [
     {
       text: 'ECRC',
-      uri: require('../assets/MBE风格多色图标-云盘.png'),
+      uri: require('../assets/font14.png'),
       press: () =>
         resetPage(
           {name: 'WView', navigation},
@@ -45,7 +45,7 @@ const FrequentlyApp = ({navigation}: any) => {
     },
     {
       text: 'U订货',
-      uri: require('../assets/MBE风格多色图标-广播.png'),
+      uri: require('../assets/font4.png'),
       press: () =>
         resetPage(
           {name: 'WView', navigation},
@@ -54,7 +54,7 @@ const FrequentlyApp = ({navigation}: any) => {
     },
     {
       text: '中台(离线)',
-      uri: require('../assets/MBE风格多色图标-文档.png'),
+      uri: require('../assets/font10.png'),
       press: () =>
         resetPage(
           {name: 'WView', navigation},
@@ -67,78 +67,78 @@ const FrequentlyApp = ({navigation}: any) => {
     },
     {
       text: '设备信息',
-      uri: require('../assets/MBE风格多色图标-安全.png'),
+      uri: require('../assets/font1.png'),
       press: () => resetPage({name: 'deviceinfo', navigation}),
     },
     {
       text: '相机',
-      uri: require('../assets/MBE风格多色图标-相机.png'),
+      uri: require('../assets/font13.png'),
       press: () => resetPage({name: 'camera', navigation}),
     },
     {
       text: '目录机构',
-      uri: require('../assets//MBE风格多色图标-指南针.png'),
+      uri: require('../assets/font15.png'),
       press: () => resetPage({name: 'files', navigation}),
       // press: () => Alert.alert('敬请期待！'),
     },
     {
       text: '二维码',
-      uri: require('../assets/MBE风格多色图标-时间.png'),
+      uri: require('../assets/font7.png'),
       press: () => resetPage({name: 'qrcode', navigation}),
     },
   ];
   const list2 = [
     {
       text: '地图',
-      uri: require('../assets/icon1/地图.png'),
+      uri: require('../assets/icon/icon1.png'),
       press: () => Alert.alert('敬请期待！'),
     },
     {
       text: '联系人',
-      uri: require('../assets/icon1/联系人.png'),
+      uri: require('../assets/icon/icon2.png'),
       press: () => Alert.alert('敬请期待！'),
     },
 
     {
       text: '短信',
-      uri: require('../assets/icon1/短信.png'),
+      uri: require('../assets/icon/icon3.png'),
       press: () => Alert.alert('敬请期待！'),
     },
     {
       text: '游览器',
-      uri: require('../assets/icon1/游览器.png'),
+      uri: require('../assets/icon/icon4.png'),
       press: () => Alert.alert('敬请期待！'),
     },
     {
       text: '文件夹',
-      uri: require('../assets/icon1/文件夹.png'),
+      uri: require('../assets/icon/icon5.png'),
       press: () => Alert.alert('敬请期待！'),
     },
     {
       text: '摇一摇',
-      uri: require('../assets/icon1/摇一摇.png'),
+      uri: require('../assets/icon/icon6.png'),
       press: () => Alert.alert('敬请期待！'),
     },
     {
       text: '搜索',
-      uri: require('../assets/icon1/搜索.png'),
+      uri: require('../assets/icon/icon7.png'),
       press: () => Alert.alert('敬请期待！'),
     },
     {
       text: '邮箱',
-      uri: require('../assets/icon1/邮箱.png'),
+      uri: require('../assets/icon/icon8.png'),
       press: () => Alert.alert('敬请期待！'),
     },
     {
       text: '计算器',
-      uri: require('../assets/icon1/计算器.png'),
+      uri: require('../assets/icon/icon9.png'),
       press: () => Alert.alert('敬请期待！'),
     },
   ];
   const list3 = [
     {
       text: 'ECRC',
-      uri: require('../assets/MBE风格多色图标-云盘.png'),
+      uri: require('../assets/font15.png'),
       press: () =>
         resetPage(
           {name: 'WView', navigation},
@@ -150,7 +150,7 @@ const FrequentlyApp = ({navigation}: any) => {
     },
     {
       text: 'U订货',
-      uri: require('../assets/MBE风格多色图标-广播.png'),
+      uri: require('../assets/font4.png'),
       press: () =>
         resetPage(
           {name: 'WView', navigation},
@@ -159,7 +159,7 @@ const FrequentlyApp = ({navigation}: any) => {
     },
     {
       text: '中台(离线)',
-      uri: require('../assets/MBE风格多色图标-文档.png'),
+      uri: require('../assets/font10.png'),
       press: () =>
         resetPage(
           {name: 'WView', navigation},
@@ -172,12 +172,12 @@ const FrequentlyApp = ({navigation}: any) => {
     },
     {
       text: '运营app',
-      uri: require('../assets/icon1/文件夹.png'),
+      uri: require('../assets/icon/icon10.png'),
       press: () => Alert.alert('敬请期待！'),
     },
     {
       text: 'up售货机',
-      uri: require('../assets/icon1/音乐.png'),
+      uri: require('../assets/icon/icon5.png'),
       press: () => Alert.alert('敬请期待！'),
     },
   ];
@@ -187,14 +187,14 @@ const FrequentlyApp = ({navigation}: any) => {
         <Text style={{marginTop: 8, marginLeft: 8}}>常用应用</Text>
         <View style={styles.faView}>{appRednder(list)}</View>
       </View>
-      <View>
+      {/* <View>
         <Text style={{marginTop: 8, marginLeft: 8}}>子公司应用</Text>
         <View style={styles.faView}>{appRednder(list3)}</View>
       </View>
       <View>
         <Text style={{marginTop: 8, marginLeft: 8}}>其它应用</Text>
         <View style={styles.faView}>{appRednder(list2)}</View>
-      </View>
+      </View> */}
     </>
   );
 };
