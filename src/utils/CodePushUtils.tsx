@@ -12,13 +12,13 @@ interface CodePushDeploymentKeyProps {
 const CodePushDeploymentKey: CodePushDeploymentKeyProps = {
   ios: {
     debug: '',
-    staging: '944zuIiRSds-ZZY6AQF82aRl0b1vUL_mMxiie',
-    release: 'yyJfk2vtpLUUlOCg3FnvCcky9o4U1lEWR1UJV',
+    staging: 'YHS_Xl_95qrAf2JzUv9ZTPfMMfBrjtJ3DosYR',
+    release: 'W0v3Wkjg6mhRCYYdn5ryydvuIrRVg-D11t23A',
   },
   android: {
     debug: '',
-    releasestaging: 'tOncLvKACzzSkUaML9tCOUfPZxHVnobfaNIUe',
-    release: 'Gtc4iXTPn24yu6CBrbl_V2GTy21xtdQyfm6x1',
+    releasestaging: 'ytOg6NBDbr2RVrgvArolrb_fR6-1Y1CR_kXDR',
+    release: '4XHFgV5n2snRSrRfApAaOsvosUWrDNleYZezMO',
   },
 };
 
