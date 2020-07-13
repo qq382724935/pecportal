@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-10 16:10:59
+ * @LastEditTime: 2020-07-13 10:19:46
  * @Description:
  */
 import React, {Component} from 'react';
@@ -145,7 +145,7 @@ class FrequentlyApp extends Component<any> {
       {
         text: '全部',
         uri: require('../assets/MBE风格多色图标-群组.png'),
-        press: () => Alert.alert('敬请期待！'),
+        press: () => navigation.navigate('application'),
       },
     ];
     return <View style={styles.faView}>{this.appRednder(list)}</View>;

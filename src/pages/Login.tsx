@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-10 13:49:27
+ * @LastEditTime: 2020-07-13 10:51:50
  * @Description:
  */
 import React, {useState} from 'react';
@@ -16,7 +16,7 @@ import {Form} from '../components/index';
 import {APLSButton, TextButton} from '../components/button/index';
 
 const Login = (props: any) => {
-  const [form, setForm] = useState({username: '', password: ''});
+  const [form, setForm] = useState({username: 'admin', password: '123456'});
   const {username, password} = form;
   const loginClick = () => {
     if (username === 'llj') {

@@ -24,7 +24,7 @@
 		203A3E1A24A2E44D00E6B506 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 203A3E1924A2E44D00E6B506 /* libz.tbd */; };
 		203A3E1C24A2E45500E6B506 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 203A3E1B24A2E45500E6B506 /* libresolv.tbd */; };
 		203A3E1E24A2E46100E6B506 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203A3E1D24A2E46100E6B506 /* UserNotifications.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		20FD3F7D24A05E6D003468FB /* www in Resources */ = {isa = PBXBuildFile; fileRef = 20FD3F7C24A05E6D003468FB /* www */; };
+		20DC638624BBF3A40069894D /* www in Resources */ = {isa = PBXBuildFile; fileRef = 20DC638524BBF3A40069894D /* www */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -96,7 +96,7 @@
 		203A3E1924A2E44D00E6B506 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		203A3E1B24A2E45500E6B506 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		203A3E1D24A2E46100E6B506 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		20FD3F7C24A05E6D003468FB /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../../temp/www; sourceTree = "<group>"; };
+		20DC638524BBF3A40069894D /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../www; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* pecportal-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "pecportal-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* pecportal-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "pecportal-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D26C8DA28DBA95D7E595C0F /* Pods-pecportal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pecportal.debug.xcconfig"; path = "Target Support Files/Pods-pecportal/Pods-pecportal.debug.xcconfig"; sourceTree = "<group>"; };
@@ -181,8 +181,8 @@
 		13B07FAE1A68108700A75B9A /* pecportal */ = {
 			isa = PBXGroup;
 			children = (
+				20DC638524BBF3A40069894D /* www */,
 				203A3E1824A2E3BE00E6B506 /* pecportal.entitlements */,
-				20FD3F7C24A05E6D003468FB /* www */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -458,8 +458,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20DC638624BBF3A40069894D /* www in Resources */,
 				200E38DA24AAD00600678088 /* RCTJShareConfig.plist in Resources */,
-				20FD3F7D24A05E6D003468FB /* www in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
