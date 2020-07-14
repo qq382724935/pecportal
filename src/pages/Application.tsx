@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-14 09:41:53
+ * @LastEditTime: 2020-07-14 13:44:24
  */
 import React from 'react';
 import {
@@ -187,14 +187,14 @@ const FrequentlyApp = ({navigation}: any) => {
         <Text style={{marginTop: 8, marginLeft: 8}}>常用应用</Text>
         <View style={styles.faView}>{appRednder(list)}</View>
       </View>
-      {/* <View>
+      <View>
         <Text style={{marginTop: 8, marginLeft: 8}}>子公司应用</Text>
         <View style={styles.faView}>{appRednder(list3)}</View>
       </View>
       <View>
         <Text style={{marginTop: 8, marginLeft: 8}}>其它应用</Text>
         <View style={styles.faView}>{appRednder(list2)}</View>
-      </View> */}
+      </View>
     </>
   );
 };
