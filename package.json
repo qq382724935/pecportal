@@ -7,7 +7,13 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "gradle:clean": "cd android && ./gradlew clean",
+    "an:release": "yarn gradle:clean && cd android && ./gradlew app:assembleRelease",
+    "an:staging": "yarn gradle:clean && cd android && ./gradlew app:assembleReleaseStaging",
+    "release-react": "yarn release-react-ios && yarn release-react-android",
+    "release-react-ios": "appcenter codepush release-react --app liulijun0810-gmail.com/ios_cpdemo",
+    "release-react-android": "appcenter codepush release-react --app liulijun0810-gmail.com/android_cpdemo"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",
