@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-10 12:55:49
+ * @LastEditTime: 2020-07-15 11:36:06
  */
 
 import React, {PureComponent} from 'react';
@@ -21,7 +21,7 @@ import Files from '../pages/Files';
 import Qrcode from '../pages/Qrcode';
 import Camera from '../pages/Camera';
 import MyViewShot from '../pages/MyViewShot';
-import BDMap from '../pages/BDMap';
+import AMap from '../pages/AMap';
 import Journalism from '../pages/Journalism';
 
 interface RouteOptions {
@@ -50,7 +50,7 @@ const routeList: RouteData[] = [
   {name: 'camera', component: Camera, options: {title: '相机'}},
   {name: 'qrcode', component: Qrcode, options: {title: '二维码'}},
   {name: 'viewshot', component: MyViewShot, options: {title: '文本转图片'}},
-  {name: 'bdmap', component: BDMap, options: {title: '百度地图'}},
+  {name: 'amap', component: AMap, options: {title: '地图'}},
   {name: 'journalism', component: Journalism, options: {title: '新闻页'}},
 ];
 

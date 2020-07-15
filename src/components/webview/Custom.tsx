@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-15 09:58:28
+ * @LastEditTime: 2020-07-15 11:11:41
  */
 
 import React, {Component} from 'react';
@@ -71,7 +71,6 @@ export default class Custom extends Component<CustomProps, CustomState> {
   };
   render() {
     const {uri, path} = this.state;
-    console.log('uri', uri);
 
     if (uri) {
       return <WebView source={{uri}} />;

@@ -11,6 +11,8 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 
+#import <AMapFoundationKit/AMapFoundationKit.h>
+
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
@@ -75,11 +77,15 @@ static void InitializeFlipper(UIApplication *application) {
   [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
   // 地理围栏
   [JPUSHService registerLbsGeofenceDelegate:self withLaunchOptions:launchOptions];
+  
+  // 高德地图
+  [AMapServices sharedServices].apiKey = @"1500d840227f49e3fcbfb7f8463a3382";
 
 
-#if DEBUG
-  InitializeFlipper(application);
-#endif
+
+  #if DEBUG
+    InitializeFlipper(application);
+  #endif
 
   // ReactNative环境配置
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];

@@ -65,7 +65,7 @@
       <activity android:name=".wxapi.WXEntryActivity" android:theme="@android:style/Theme.NoTitleBar" android:exported="true" />
 
       <meta-data android:name="com.baidu.lbsapi.API_KEY" android:value="gqRjZHN6UQpgN81VPj9WxewhZ7IB7r6x"/>
-      
+      <meta-data android:name="com.amap.api.v2.apikey" android:value="53866f0e985f22e495b4a8f1a26bc1d3" />
     </application>
 
 </manifest>

@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-13 16:11:31
+ * @LastEditTime: 2020-07-15 11:35:41
  * @Description:
  */
 import React, {Component} from 'react';
@@ -96,9 +96,9 @@ class FrequentlyApp extends Component<any> {
         press: () => resetPage({name: 'camera', navigation}),
       },
       {
-        text: '定位',
+        text: '地图',
         uri: require('../assets/font15.png'),
-        press: () => Alert.alert('敬请期待！'),
+        press: () => resetPage({name: 'amap', navigation}),
       },
 
       {
