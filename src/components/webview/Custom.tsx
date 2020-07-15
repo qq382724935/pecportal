@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-11 15:31:50
+ * @LastEditTime: 2020-07-15 09:58:28
  */
 
 import React, {Component} from 'react';
@@ -55,10 +55,12 @@ export default class Custom extends Component<CustomProps, CustomState> {
         if (OS === 'ios') {
           this.setState({path: this.getFilePtah(path)});
         } else {
-          let server = new StaticServer(8080, CachesDirectoryPath);
-          server
-            .start()
-            .then((value: string) => this.setState({uri: `${value}/${path}`}));
+          let server = new StaticServer(8080, CachesDirectoryPath, {
+            localOnly: true,
+          });
+          server.start().then((value: string) => {
+            this.setState({uri: `${value}/${path}`});
+          });
         }
       } else {
         this.setState({uri});
@@ -69,6 +71,8 @@ export default class Custom extends Component<CustomProps, CustomState> {
   };
   render() {
     const {uri, path} = this.state;
+    console.log('uri', uri);
+
     if (uri) {
       return <WebView source={{uri}} />;
     }
