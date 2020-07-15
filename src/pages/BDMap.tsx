@@ -8,17 +8,17 @@ import {
   ScrollView,
   Platform,
 } from 'react-native';
-import {
-  BaiduMapManager,
-  MapView,
-  Geolocation,
-  Overlay,
-} from 'react-native-baidu-map';
-const {Marker, Circle, Polyline} = Overlay;
-Platform.OS === 'ios' &&
-  BaiduMapManager.initSDK('EACHkfyDnSgv1gxQQA4j487lCxZYf04T');
+// import {
+//   BaiduMapManager,
+//   MapView,
+//   Geolocation,
+//   Overlay,
+// } from 'react-native-baidu-map';
+// const {Marker, Circle, Polyline} = Overlay;
+// Platform.OS === 'ios' &&
+//   BaiduMapManager.initSDK('EACHkfyDnSgv1gxQQA4j487lCxZYf04T');
 
-const {width} = Dimensions.get('window');
+// const {width} = Dimensions.get('window');
 import {Button, List} from '../components/index';
 const CoorType = 'bd09ll';
 class BDMap extends Component {
@@ -93,7 +93,7 @@ class BDMap extends Component {
     return (
       <SafeAreaView>
         <ScrollView>
-          <View style={styles.body}>
+          {/* <View style={styles.body}>
             <MapView
               showsUserLocation={true}
               locationData={location}
@@ -136,7 +136,7 @@ class BDMap extends Component {
                 }}
               />
             </MapView>
-          </View>
+          </View> */}
           <View style={styles.footer}>
             <Button.TextButton onPress={this.getCurrentPosition}>
               <Text>当前位置</Text>
