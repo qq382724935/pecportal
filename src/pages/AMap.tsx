@@ -1,25 +1,14 @@
 import React, {Component} from 'react';
+import {Button, Alert, StyleSheet, Text, View} from 'react-native';
 import {
   init,
   Geolocation,
   setLocatingWithReGeocode,
   addLocationListener,
-  start,
-  stop,
 } from 'react-native-amap-geolocation';
 // 使用自己申请的高德 App Key 进行初始化
 import {MapView} from 'react-native-amap3d';
-import {
-  Button,
-  Alert,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
-
 const {alert} = Alert;
-
 export class AMap extends Component {
   state = {
     latitude: 31.21847113715278,
@@ -65,12 +54,14 @@ export class AMap extends Component {
   };
   componentDidMount() {
     setLocatingWithReGeocode(true);
-    addLocationListener((location) => console.log('location：', location));
+    addLocationListener((location) => {
+      if (location.errorCode !== 0) {
+        alert(`${location.locationDetail}`);
+      }
+    });
     this.initMap();
   }
-  componentWillUnmount() {
-    stop();
-  }
+
   getCurrentPosition = () => {
     Geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
       this.setState({latitude, longitude});
@@ -105,7 +96,7 @@ export class AMap extends Component {
             onInfoWindowPress={this._onInfoWindowPress}
             coordinate={this._coordinates[0]}
           />
-          <MapView.Marker color="purple" coordinate={this._coordinates[1]} />
+          <MapView.Marker coordinate={this._coordinates[1]} />
           <MapView.Marker
             image="flag"
             title="自定义图片"
@@ -125,7 +116,7 @@ export class AMap extends Component {
           />
 
           <MapView.Marker color="red" coordinate={this._coordinates[4]} />
-          <MapView.Marker color="purple" coordinate={this._coordinates[6]} />
+          <MapView.Marker coordinate={this._coordinates[6]} />
           <MapView.Marker color="green" coordinate={this._coordinates[5]} />
         </MapView>
         <View style={{marginBottom: 16}}>
