@@ -8,6 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "update:deps": "yarn upgrade-interactive --latest",
     "gradle:clean": "cd android && ./gradlew clean",
     "an:release": "yarn gradle:clean && cd android && ./gradlew app:assembleRelease",
     "an:staging": "yarn gradle:clean && cd android && ./gradlew app:assembleReleaseStaging",
