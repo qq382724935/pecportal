@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 12:01:29
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-13 16:23:17
+ * @LastEditTime: 2020-07-16 10:24:43
  * @Description:
  */
 
@@ -13,4 +13,3 @@ declare module 'react-native-sqlite-storage';
 declare module 'react-native-static-server';
 declare module 'react-native-config-reader';
 declare const Platform: any;
-

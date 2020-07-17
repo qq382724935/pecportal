@@ -11,12 +11,12 @@ interface CodePushDeploymentKeyProps {
 }
 const CodePushDeploymentKey: CodePushDeploymentKeyProps = {
   ios: {
-    debug: '',
+    debug: 'YHS_Xl_95qrAf2JzUv9ZTPfMMfBrjtJ3DosYR',
     staging: 'YHS_Xl_95qrAf2JzUv9ZTPfMMfBrjtJ3DosYR',
     release: 'W0v3Wkjg6mhRCYYdn5ryydvuIrRVg-D11t23A',
   },
   android: {
-    debug: '',
+    debug: 'ytOg6NBDbr2RVrgvArolrb_fR6-1Y1CR_kXDR',
     releasestaging: 'ytOg6NBDbr2RVrgvArolrb_fR6-1Y1CR_kXDR',
     release: '4XHFgV5n2snRSrRfApAaOsvosUWrDNleYZezMO',
   },
@@ -30,6 +30,7 @@ const getDeploymentKey = () => {
 };
 
 const codePushStatusDidChange = async (syncStatus: any) => {
+  // dispatch({type: 'app', payload: {show: true}});
   switch (syncStatus) {
     case codePush.SyncStatus.CHECKING_FOR_UPDATE:
       // 0 - 正在查询CodePush服务器以进行更新。
@@ -69,6 +70,7 @@ const codePushStatusDidChange = async (syncStatus: any) => {
       break;
   }
 };
+let myDispatch: Function;
 
 const codePushDownloadDidProgress = (progress: any) => {
   const curPercent = (
@@ -77,9 +79,13 @@ const codePushDownloadDidProgress = (progress: any) => {
   ).toFixed(0);
   console.log('[CodePushUtils] Downloading Progress', `${curPercent}%`);
   // console.log(`${progress.receivedBytes} of ${progress.totalBytes} received.`);
+  myDispatch({
+    type: 'app/updateState',
+    payload: {progress: {show: true, speed: curPercent}},
+  });
 };
-
-const syncImmediate = async () => {
+const syncImmediate = async (dispatch: Function) => {
+  myDispatch = dispatch;
   const deploymentKey = getDeploymentKey();
   codePush.sync(
     {
@@ -109,18 +115,18 @@ const syncImmediate = async () => {
   );
 };
 
-export const checkForUpdate = async () => {
+export const checkForUpdate = async (dispatch: Function) => {
   const deploymentKey = getDeploymentKey();
   const update = await codePush.checkForUpdate(deploymentKey);
   if (!update) {
     Alert.alert('提示', '已是最新版本');
   } else {
-    syncImmediate();
+    syncImmediate(dispatch);
   }
 };
 
-export const codePushSync = () => {
+export const codePushSync = (dispatch: Function) => {
   AppState.addEventListener('change', (newState) => {
-    newState === 'active' && syncImmediate();
+    newState === 'active' && syncImmediate(dispatch);
   });
 };

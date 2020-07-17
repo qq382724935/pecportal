@@ -40,15 +40,18 @@ class Router extends PureComponent<any> {
   render() {
     const {dispatch, router} = this.props;
     const {checkLogin, initialRouteName} = this.state;
+    console.log(this.props);
     if (!initialRouteName || !checkLogin) {
       return null;
     }
     return (
-      <AppNavigator
-        dispatch={dispatch}
-        state={router}
-        initialRouteName={initialRouteName}
-      />
+      <>
+        <AppNavigator
+          dispatch={dispatch}
+          state={router}
+          initialRouteName={initialRouteName}
+        />
+      </>
     );
   }
 }

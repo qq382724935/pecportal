@@ -17,6 +17,7 @@
     "release-react-android": "appcenter codepush release-react --app liulijun0810-gmail.com/android_cpdemo"
   },
   "dependencies": {
+    "@react-native-community/art": "^1.2.0",
     "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/cameraroll": "^4.0.0",
     "@react-native-community/masked-view": "^0.1.10",
@@ -42,6 +43,7 @@
     "react-native-gesture-handler": "^1.6.1",
     "react-native-image-crop-picker": "^0.32.2",
     "react-native-image-marker": "^0.6.1",
+    "react-native-progress": "^4.1.2",
     "react-native-qrcode-svg": "^6.0.6",
     "react-native-reanimated": "^1.9.0",
     "react-native-safe-area-context": "^3.0.7",

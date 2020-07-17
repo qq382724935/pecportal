@@ -13,7 +13,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 
 import Marker, {Position} from 'react-native-image-marker';
 
-import {openPicker} from '../utils/cameraroll';
+import {openPicker, savePicture} from '../utils/cameraroll';
 class PickerFooter extends PureComponent<any> {
   render() {
     const {fileData, fileDataChange} = this.props;
@@ -38,10 +38,10 @@ class PickerFooter extends PureComponent<any> {
               })
               .catch((err) => console.log(err));
           }}>
-          图片裁剪
+          裁剪
         </Text>
         <Text
-          style={{color: '#ffffff'}}
+          style={{color: '#ffffff', marginRight: 8}}
           onPress={() => {
             Marker.markText({
               src: fileData,
@@ -68,7 +68,16 @@ class PickerFooter extends PureComponent<any> {
               fileDataChange(`file:///${image}`);
             });
           }}>
-          图片水印
+          水印
+        </Text>
+        <Text
+          style={{color: '#ffffff'}}
+          onPress={() =>
+            savePicture(fileData).then(() => {
+              this.props.fileDataChange(null);
+            })
+          }>
+          保存
         </Text>
       </View>
     );

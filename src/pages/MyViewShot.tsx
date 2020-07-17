@@ -19,7 +19,6 @@ const MyViewShot = () => {
   const [refreshing, setRefreshing] = useState(false);
   const onCapture = useCallback(() => {
     full.current.capture().then((uri: any) => {
-      console.log(uri);
       setPreview({uri});
     });
   }, []);

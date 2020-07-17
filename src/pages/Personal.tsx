@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-13 16:26:20
+ * @LastEditTime: 2020-07-17 08:31:36
  */
 import React, {Component} from 'react';
 import {Button, View, Text, Alert} from 'react-native';
@@ -13,6 +13,8 @@ import {qtData, dtData, QueryTableDataProps} from '../utils/sqlite';
 import {loadToken, removeToken} from '../utils/storage';
 import {STORAGE_KEY} from '../utils/keys';
 import {resetHome, resetLogin} from '../utils/navigation';
+import {connect} from 'react-redux';
+
 import {
   getCacheSize,
   clearCache,
@@ -37,7 +39,7 @@ class Personal extends Component<any> {
 
   render() {
     const {userName, cType} = this.state;
-    const {navigation} = this.props;
+    const {navigation, dispatch} = this.props;
     const describeList = [
       {
         label: '用户名',
@@ -48,7 +50,12 @@ class Personal extends Component<any> {
     const list = [
       {label: '用户管理', press: () => this.setState({cType: '1'})},
       {label: '缓存管理', press: () => this.setState({cType: '2'})},
-      {label: '版本升级', press: () => checkForUpdate()},
+      {
+        label: '版本升级',
+        press: () => {
+          checkForUpdate(dispatch);
+        },
+      },
     ];
 
     return (
@@ -110,6 +117,7 @@ class CacheManage extends Component<any, any> {
     this.initCache();
     this.navListener = this.props.navigation.addListener('tabPress', () => {
       this.initCache();
+      console.log('personal', this.props);
     });
   }
 
@@ -236,4 +244,5 @@ class UserManage extends Component<any, any> {
   }
 }
 
-export default Personal;
+const mapStateToProps = ({app, router}: any) => ({app, router});
+export default connect(mapStateToProps)(Personal);

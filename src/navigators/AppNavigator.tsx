@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-15 11:36:06
+ * @LastEditTime: 2020-07-17 08:58:30
  */
 
 import React, {PureComponent} from 'react';
@@ -53,8 +53,10 @@ const routeList: RouteData[] = [
   {name: 'amap', component: AMap, options: {title: '地图'}},
   {name: 'journalism', component: Journalism, options: {title: '新闻页'}},
 ];
+import {Mask} from '../components/index';
+import {connect} from 'react-redux';
 
-export default class AppNavigator extends PureComponent<PropsEntry> {
+class AppNavigator extends PureComponent<PropsEntry> {
   constructor(props: any) {
     super(props);
   }
@@ -70,19 +72,25 @@ export default class AppNavigator extends PureComponent<PropsEntry> {
   };
 
   render() {
-    const {initialRouteName} = this.props;
+    const {initialRouteName, app} = this.props;
     return (
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName={initialRouteName}>
-          {this.routeRender(routeList)}
-        </Stack.Navigator>
-      </NavigationContainer>
+      <>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName={initialRouteName}>
+            {this.routeRender(routeList)}
+          </Stack.Navigator>
+        </NavigationContainer>
+        {app.progress.show ? <Mask /> : null}
+      </>
     );
   }
 }
+const mapStateToProps = ({app, router}: any) => ({app, router});
+export default connect(mapStateToProps)(AppNavigator);
 
 interface PropsEntry {
-  // app: any;
+  app: any;
+  router: any;
   state: any;
   dispatch: any;
   initialRouteName: string;
