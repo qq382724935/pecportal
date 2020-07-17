@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-17 08:31:36
+ * @LastEditTime: 2020-07-17 17:31:53
  */
 import React, {Component} from 'react';
 import {Button, View, Text, Alert} from 'react-native';
@@ -117,7 +117,6 @@ class CacheManage extends Component<any, any> {
     this.initCache();
     this.navListener = this.props.navigation.addListener('tabPress', () => {
       this.initCache();
-      console.log('personal', this.props);
     });
   }
 
