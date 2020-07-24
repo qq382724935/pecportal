@@ -2,11 +2,12 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-15 15:57:26
+ * @LastEditTime: 2020-07-23 22:54:04
  */
 import React from 'react';
 import {
   StyleSheet,
+  ScrollView,
   TouchableOpacity,
   View,
   Image,
@@ -24,7 +25,9 @@ const FrequentlyApp = ({navigation}: any) => {
         }}>
         <View style={styles.faLink}>
           <Image source={item.uri} style={{marginBottom: 2}} />
-          <Text>{item.text}</Text>
+          <Text ellipsizeMode={'tail'} numberOfLines={1}>
+            {item.text}
+          </Text>
         </View>
       </TouchableOpacity>
     ));
@@ -73,7 +76,7 @@ const FrequentlyApp = ({navigation}: any) => {
     {
       text: '相机',
       uri: require('../assets/font13.png'),
-      press: () => resetPage({name: 'camera', navigation}),
+      press: () => resetPage({name: 'cameraPhoto', navigation}),
     },
     {
       text: '目录机构',
@@ -85,6 +88,11 @@ const FrequentlyApp = ({navigation}: any) => {
       text: '二维码',
       uri: require('../assets/font7.png'),
       press: () => resetPage({name: 'qrcode', navigation}),
+    },
+    {
+      text: '文本生成图片文本生成图片文本生成图片',
+      uri: require('../assets/font1.png'),
+      press: () => resetPage({name: 'viewshot', navigation}),
     },
   ];
   const list2 = [
@@ -183,18 +191,20 @@ const FrequentlyApp = ({navigation}: any) => {
   ];
   return (
     <>
-      <View>
-        <Text style={{marginTop: 8, marginLeft: 8}}>常用应用</Text>
-        <View style={styles.faView}>{appRednder(list)}</View>
-      </View>
-      <View>
-        <Text style={{marginTop: 8, marginLeft: 8}}>子公司应用</Text>
-        <View style={styles.faView}>{appRednder(list3)}</View>
-      </View>
-      <View>
-        <Text style={{marginTop: 8, marginLeft: 8}}>其它应用</Text>
-        <View style={styles.faView}>{appRednder(list2)}</View>
-      </View>
+      <ScrollView>
+        <View>
+          <Text style={{marginTop: 8, marginLeft: 8}}>常用应用</Text>
+          <View style={styles.faView}>{appRednder(list)}</View>
+        </View>
+        <View>
+          <Text style={{marginTop: 8, marginLeft: 8}}>子公司应用</Text>
+          <View style={styles.faView}>{appRednder(list3)}</View>
+        </View>
+        <View>
+          <Text style={{marginTop: 8, marginLeft: 8}}>其它应用</Text>
+          <View style={styles.faView}>{appRednder(list2)}</View>
+        </View>
+      </ScrollView>
     </>
   );
 };
@@ -215,8 +225,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   faLink: {
-    minWidth: 66,
-    maxWidth: 74,
+    width: 74,
     marginBottom: 8,
     alignItems: 'center',
   },

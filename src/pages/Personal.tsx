@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-17 17:31:53
+ * @LastEditTime: 2020-07-20 16:01:17
  */
 import React, {Component} from 'react';
 import {Button, View, Text, Alert} from 'react-native';
@@ -25,7 +25,16 @@ import {
 } from '@yz1311/react-native-http-cache';
 
 import {checkForUpdate} from '../utils/CodePushUtils';
-class Personal extends Component<any> {
+export interface PersonalProps {
+  navigation: any;
+  dispatch: any;
+}
+export interface PersonalState {
+  userName: string;
+  cType: string | null;
+  userData: any[];
+}
+class Personal extends Component<PersonalProps, PersonalState> {
   state = {userName: '', cType: null, userData: []};
   componentDidMount() {
     loadToken({key: STORAGE_KEY.LOGIN})

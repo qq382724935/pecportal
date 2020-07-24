@@ -18,9 +18,7 @@ class Router extends PureComponent<any> {
   }
 
   componentDidMount() {
-    this.zipProgress = subscribe(() => {
-      // console.log(`progress: ${progress}\nprocessed at: ${filePath}`);
-    });
+    this.zipProgress = subscribe(() => {});
   }
   componentWillUnmount() {
     this.zipProgress && this.zipProgress.remove();
@@ -40,7 +38,6 @@ class Router extends PureComponent<any> {
   render() {
     const {dispatch, router} = this.props;
     const {checkLogin, initialRouteName} = this.state;
-    console.log(this.props);
     if (!initialRouteName || !checkLogin) {
       return null;
     }

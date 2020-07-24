@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 18:04:44
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-24 20:25:35
+ * @LastEditTime: 2020-07-22 09:21:41
  * @Description: 全局导航跳转工具类 by CrazyCodeBoy
  */
 
@@ -25,18 +25,15 @@ interface NavigationOptions {
 export const resetPage = (
   {navigation, name}: Navigation,
   options?: NavigationOptions | {},
-) => {
-  navigation.navigate(name, options);
-};
+) => navigation.navigate(name, options);
 
 /**
  * 跳转到登录页
  * @param navigation
  */
 
-export const resetLogin = ({navigation, name = 'login'}: Navigation) => {
+export const resetLogin = ({navigation, name = 'login'}: Navigation) =>
   navigation.navigate(name);
-};
 
 /**
  * 跳转到注册页

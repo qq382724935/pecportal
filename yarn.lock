@@ -6470,6 +6470,13 @@ react-native-baidu-map@^1.0.37:
   resolved "https://registry.yarnpkg.com/react-native-baidu-map/-/react-native-baidu-map-1.0.37.tgz#04a8aeed07b228995cbbe7f9d7805432f4b31c7f"
   integrity sha512-sRTqCHanbQYpcfMn6lhAQDs+mpCShFeiH2yO/wkWHLG7qWG3v54ld0MTPMvCh/fISLmMVED2z9LJfMa0NnGlbA==
 
+react-native-barcode-mask@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/react-native-barcode-mask/-/react-native-barcode-mask-1.2.4.tgz#271b868d1d9040e04b9f8f32ec4ee6f6a2639b3b"
+  integrity sha512-Jh3mEs/xUBs/z9mKkj2mM07MMQ2SdtW9mU4FOo5DQyA2kDte6lW87vIYFkWw1nxpzc7sy28ahMsgId8LTtKZsg==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-camera@^3.31.0:
   version "3.31.0"
   resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-3.31.0.tgz#7b9b4dd30b6d1363bdffed4ce0a0bef93c3ebf87"

@@ -1,7 +1,8 @@
 import {PermissionsAndroid, Platform} from 'react-native';
 import CameraRoll from '@react-native-community/cameraroll';
 import ImagePicker, {Options} from 'react-native-image-crop-picker';
-
+const flashType = ['auto', 'open', 'close'];
+const switchType = ['photo', 'record', 'stopRecord'];
 async function hasAndroidPermission() {
   const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
 
@@ -30,3 +31,4 @@ const openPicker = (options?: Options) =>
   });
 
 export {savePicture, openPicker};
+export {flashType, switchType};

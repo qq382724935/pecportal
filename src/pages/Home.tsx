@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-13 16:11:31
+ * @LastEditTime: 2020-07-22 17:18:36
  * @Description:
  */
 import React, {Component} from 'react';
@@ -26,15 +26,26 @@ interface HomeProps {
   navigation: any;
 }
 const {width} = Dimensions.get('window');
-
+const listData = [
+  {
+    title: '统一用心 武汉加油',
+    text:
+      '目前，新型冠状病毒感染的肺炎疫情依然持续，牵动着所有人的心。为助力在防控疫情一线的医务工作者和在各条战线上拼搏奉献的人们，截至2月26日，我们已向包括湖北省在内的全国各地累计捐赠了价值超过2000万元的产品，并向湖北省捐赠了100万元善款用于抗击疫情。    众志成城，共克时艰！统一企业将时刻关注着抗疫一线的需求，根据实际情况，结合企业资源，为疫情发生地区持续提供力所能及的帮助。 武汉加油！让我们一起打赢这场“战疫”！',
+  },
+  {
+    title: '统一与你在一起！',
+    text:
+      '2019年6月17日22时55分，四川省宜宾市长宁县发生6.0级强烈地震。地震发生后，统一企业第一时间调配1600箱方便面和1300箱饮料，积极配合当地政府的抗震救灾安排，帮助灾区人民度过最艰难的时刻。',
+  },
+];
 interface FAListProps {
   text: string;
   uri: any;
   press: () => void;
 }
 class FrequentlyApp extends Component<any> {
-  appRednder = (list: FAListProps[]) => {
-    return list.map((item, index: number) => (
+  appRednder = (faList: FAListProps[]) => {
+    return faList.map((item, index: number) => (
       <TouchableOpacity
         key={index}
         onPress={() => {
@@ -50,7 +61,7 @@ class FrequentlyApp extends Component<any> {
 
   render() {
     const {navigation} = this.props;
-    let list: FAListProps[] = [
+    let faList: FAListProps[] = [
       {
         text: 'ECRC',
         uri: require('../assets/font14.png'),
@@ -93,7 +104,7 @@ class FrequentlyApp extends Component<any> {
       {
         text: '相机',
         uri: require('../assets/font13.png'),
-        press: () => resetPage({name: 'camera', navigation}),
+        press: () => resetPage({name: 'cameraPhoto', navigation}),
       },
       {
         text: '地图',
@@ -148,7 +159,7 @@ class FrequentlyApp extends Component<any> {
         press: () => navigation.navigate('application'),
       },
     ];
-    return <View style={styles.faView}>{this.appRednder(list)}</View>;
+    return <View style={styles.faView}>{this.appRednder(faList)}</View>;
   }
 }
 
@@ -213,43 +224,29 @@ class Notice extends Component<NoticeProps> {
     );
   }
 }
-class Home extends Component<any> {
-  constructor(props: any) {
+class Home extends Component<HomeProps> {
+  constructor(props: Readonly<HomeProps>) {
     super(props);
     // Platform.OS === 'ios' && JShareModule.setup();
   }
-  list = [require('../assets/轮播1.jpg'), require('../assets/轮播2.png')];
-
-  swiperRender = (list: any = []) =>
-    list.map((item: any, index: number) => (
+  Sceenlist = [require('../assets/轮播1.jpg'), require('../assets/轮播2.png')];
+  swiperRender = (swiper: any = []) =>
+    swiper.map((item: any, index: number) => (
       <View key={index} style={styles.slide}>
         <Image style={styles.image} source={item} resizeMode="stretch" />
       </View>
     ));
   render() {
-    const list = [
-      {
-        title: '统一用心 武汉加油',
-        text:
-          '目前，新型冠状病毒感染的肺炎疫情依然持续，牵动着所有人的心。为助力在防控疫情一线的医务工作者和在各条战线上拼搏奉献的人们，截至2月26日，我们已向包括湖北省在内的全国各地累计捐赠了价值超过2000万元的产品，并向湖北省捐赠了100万元善款用于抗击疫情。    众志成城，共克时艰！统一企业将时刻关注着抗疫一线的需求，根据实际情况，结合企业资源，为疫情发生地区持续提供力所能及的帮助。 武汉加油！让我们一起打赢这场“战疫”！',
-      },
-      {
-        title: '统一与你在一起！',
-        text:
-          '2019年6月17日22时55分，四川省宜宾市长宁县发生6.0级强烈地震。地震发生后，统一企业第一时间调配1600箱方便面和1300箱饮料，积极配合当地政府的抗震救灾安排，帮助灾区人民度过最艰难的时刻。',
-      },
-    ];
-
     return (
       <SafeAreaView>
         <ScrollView>
           <View style={styles.container}>
             <View style={{height: 150}}>
-              <Swiper autoplay>{this.swiperRender(this.list)}</Swiper>
+              <Swiper autoplay>{this.swiperRender(this.Sceenlist)}</Swiper>
             </View>
             <View style={{margin: 10}}>
               <FrequentlyApp {...this.props} />
-              <Notice list={list} title="新闻专区" {...this.props} />
+              <Notice list={listData} title="新闻专区" {...this.props} />
               <Notice list={[]} title="公告专区" {...this.props} />
             </View>
           </View>

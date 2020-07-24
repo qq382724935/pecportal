@@ -1,35 +1,18 @@
-import * as Progress from 'react-native-progress';
-import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import {connect} from 'react-redux';
+/*
+ * @Author: 刘利军
+ * @Date: 2020-06-16 21:05:27
+ * @LastEditors: 刘利军
+ * @LastEditTime: 2020-07-22 15:14:51
+ * @Description:
+ */
 
-const Mask = ({app}: any) => {
-  const speed = Number(app.progress.speed);
-  const progressRender = (progress: number) => progress / 100;
-  return (
-    <View style={styles.container}>
-      <Progress.Circle
-        showsText
-        size={100}
-        progress={progressRender(speed)}
-        indeterminate={speed === 0}
-      />
-    </View>
-  );
-};
+import UpdateVersionProgress from './UpdateVersionProgress';
+import Additional from './Additional';
 
-const mapStateToProps = ({app, router}: any) => ({app, router});
-export default connect(mapStateToProps)(Mask);
-const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.2)',
-  },
-  label: {
-    paddingTop: 8,
-    fontSize: 18,
-  },
-});
+interface MaskProps {
+  UpdateVersionProgress: typeof UpdateVersionProgress;
+  Additional: typeof Additional;
+}
+
+let Mask: MaskProps = {UpdateVersionProgress, Additional};
+export default Mask;

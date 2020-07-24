@@ -2,11 +2,11 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-17 16:39:59
+ * @LastEditTime: 2020-07-23 14:14:26
  */
 
 import React, {PureComponent} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -19,12 +19,15 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import Files from '../pages/Files';
 import Qrcode from '../pages/Qrcode';
-import Camera from '../pages/Camera';
 import MyViewShot from '../pages/MyViewShot';
 import AMap from '../pages/AMap';
 import Journalism from '../pages/Journalism';
-import {WView, Mask} from '../components/index';
+import CameraPhoto from '../pages/camera/CameraPhoto';
+import CameraScan from '../pages/camera/CameraScan';
+import CameraScanPreview from '../pages/camera/CameraScanPreview';
 
+import {WView, Mask} from '../components/index';
+import {navigationRef, navigate} from './RootNavigation.js';
 interface RouteOptions {
   title?: string;
   headerLeft?: any;
@@ -37,11 +40,35 @@ interface RouteData {
   options: RouteOptions;
 }
 
-const HeaderRightRender = ({navigation: {goBack}}: any) => {
+const WViewHeaderRightRender = ({navigation: {goBack}}: any) => {
   return (
     <View style={{paddingRight: 16}}>
       <Text onPress={() => goBack()}>取消</Text>
     </View>
+  );
+};
+
+const MainHeaderRightRender = ({app: {additional}, dispatch}: any) => {
+  return (
+    <TouchableOpacity
+      onPress={() => {
+        dispatch({
+          type: 'app/updateState',
+          payload: {additional: !additional},
+        });
+      }}>
+      <View
+        style={{
+          marginRight: 16,
+          width: 40,
+          alignItems: 'flex-end',
+        }}>
+        <Image
+          style={{width: 16, height: 16}}
+          source={require('../assets/icon/add.png')}
+        />
+      </View>
+    </TouchableOpacity>
   );
 };
 
@@ -67,7 +94,7 @@ const routeList: RouteData[] = [
     options: {
       title: '统一企业移动终端',
       headerLeft: undefined,
-      headerRight: () => null,
+      headerRight: (props: any) => <MainHeaderRightRender {...props} />,
     },
   },
   {
@@ -86,13 +113,23 @@ const routeList: RouteData[] = [
     options: {
       title: 'WView',
       headerLeft: () => null,
-      headerRight: (props: any) => <HeaderRightRender {...props} />,
+      headerRight: (props: any) => <WViewHeaderRightRender {...props} />,
     },
   },
   {
-    name: 'camera',
-    component: Camera,
-    options: {title: '相机', headerRight: () => null},
+    name: 'cameraPhoto',
+    component: CameraPhoto,
+    options: {title: '相机', headerRight: () => null, headerShown: false},
+  },
+  {
+    name: 'cameraScan',
+    component: CameraScan,
+    options: {title: '扫一扫', headerRight: () => null, headerShown: false},
+  },
+  {
+    name: 'cameraScanPreview',
+    component: CameraScanPreview,
+    options: {title: '预览', headerRight: () => null, headerShown: false},
   },
   {
     name: 'qrcode',
@@ -129,34 +166,64 @@ class AppNavigator extends PureComponent<PropsEntry> {
         options={(props) => ({
           headerBackTitleVisible: false,
           ...item.options,
-          headerRight: () => item.options.headerRight(props),
+          headerRight: () =>
+            item.options.headerRight({...props, ...this.props}),
         })}
       />
     ));
   };
 
   render() {
-    const {initialRouteName, app} = this.props;
+    const {
+      initialRouteName,
+      app: {additional, progress},
+      dispatch,
+    } = this.props;
+    const list2 = [
+      {
+        label: '扫一扫',
+        icon: require('../assets/icon/scan.png'),
+        press: () => {
+          dispatch({
+            type: 'app/updateState',
+            payload: {additional: !additional},
+          });
+          navigate('cameraScan');
+        },
+      },
+      {
+        label: '相机',
+        icon: require('../assets/icon/photo.png'),
+        press: () => {
+          dispatch({
+            type: 'app/updateState',
+            payload: {additional: !additional},
+          });
+          navigate('cameraPhoto');
+        },
+      },
+    ];
     return (
       <>
-        <NavigationContainer>
+        <NavigationContainer ref={navigationRef}>
           <Stack.Navigator initialRouteName={initialRouteName}>
             {this.routeRender(routeList)}
           </Stack.Navigator>
         </NavigationContainer>
-        {/* <Stack.Screen
-              name="WView"
-              component={WView.Custom}
-              options={({navigation: {goBack}}) => {
-                return {
-                  title: 'WView',
-                  headerBackTitleVisible: false,
-                  headerLeft: () => null,
-                  headerRight: (props) => <HeaderRightRender goBack={goBack} />,
-                };
-              }}
-            /> */}
-        {app.progress.show ? <Mask /> : null}
+        <Mask.UpdateVersionProgress
+          display={progress.show}
+          progress={progress.speed}
+        />
+        <Mask.Additional
+          list={list2}
+          display={additional}
+          onPress={() => {
+            dispatch({
+              type: 'app/updateState',
+              payload: {additional: !additional},
+            });
+          }}
+        />
       </>
     );
   }
