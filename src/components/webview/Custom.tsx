@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-15 11:11:41
+ * @LastEditTime: 2020-07-24 10:05:43
  */
 
 import React, {Component} from 'react';
@@ -55,7 +55,7 @@ export default class Custom extends Component<CustomProps, CustomState> {
         if (OS === 'ios') {
           this.setState({path: this.getFilePtah(path)});
         } else {
-          let server = new StaticServer(8080, CachesDirectoryPath, {
+          let server = new StaticServer(9999, CachesDirectoryPath, {
             localOnly: true,
           });
           server.start().then((value: string) => {
