@@ -9,7 +9,12 @@ import {
 // 使用自己申请的高德 App Key 进行初始化
 import {MapView} from 'react-native-amap3d';
 const {alert} = Alert;
-export class AMap extends Component {
+interface AMapProps {}
+export class AMap extends Component<AMapProps> {
+  constructor(props: Readonly<AMapProps>) {
+    super(props);
+    this.initMap();
+  }
   state = {
     latitude: 31.21847113715278,
     longitude: 121.36036838107638,
@@ -59,16 +64,17 @@ export class AMap extends Component {
         alert(`${location.locationDetail}`);
       }
     });
-    this.initMap();
   }
 
   getCurrentPosition = () => {
     Geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
       this.setState({latitude, longitude});
-      this.mapView.setStatus(
-        {tilt: 0, rotation: 0, zoomLevel: 16, center: {latitude, longitude}},
-        1000,
-      );
+      if (this.mapView) {
+        this.mapView.setStatus(
+          {tilt: 0, rotation: 0, zoomLevel: 16, center: {latitude, longitude}},
+          1000,
+        );
+      }
     });
   };
   _onMarkerPress = () => alert('onPress');
@@ -78,7 +84,11 @@ export class AMap extends Component {
   render() {
     return (
       <View style={StyleSheet.absoluteFill}>
-        <MapView ref={(ref) => (this.mapView = ref)} style={{flex: 1}}>
+        <MapView
+          ref={(ref) => {
+            this.mapView = ref;
+          }}
+          style={{flex: 1}}>
           <MapView.Marker coordinate={this.state} />
           <MapView.Circle
             strokeWidth={1}

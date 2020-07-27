@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-16 21:39:00
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-23 10:01:38
+ * @LastEditTime: 2020-07-27 09:44:27
  * @Description:
  */
 
@@ -14,3 +14,4 @@ export {default as WView} from './webview';
 export {default as Mask} from './mask';
 export {default as Descriptions} from './descriptions';
 export {default as Back} from './back';
+export {default as CarouselCustom} from './carousel';

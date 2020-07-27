@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-24 10:05:43
+ * @LastEditTime: 2020-07-24 10:18:30
  */
 
 import React, {Component} from 'react';
@@ -73,7 +73,13 @@ export default class Custom extends Component<CustomProps, CustomState> {
     const {uri, path} = this.state;
 
     if (uri) {
-      return <WebView source={{uri}} />;
+      return (
+        <WebView
+          source={{uri}}
+          cacheEnabled={false}
+          cacheMode="LOAD_NO_CACHE"
+        />
+      );
     }
     if (path) {
       const fileUri = `${path}/index.html`;
@@ -82,6 +88,7 @@ export default class Custom extends Component<CustomProps, CustomState> {
         <WebView
           originWhitelist={['*']}
           cacheEnabled={false}
+          cacheMode="LOAD_NO_CACHE"
           allowFileAccess={true}
           javaScriptEnabled={true}
           allowFileAccessFromFileURLs={true}
