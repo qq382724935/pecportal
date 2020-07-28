@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-22 17:18:36
+ * @LastEditTime: 2020-07-28 12:59:07
  * @Description:
  */
 import React, {Component} from 'react';
@@ -97,9 +97,17 @@ class FrequentlyApp extends Component<any> {
           ),
       },
       {
-        text: '设备信息',
-        uri: require('../assets/font1.png'),
-        press: () => resetPage({name: 'deviceinfo', navigation}),
+        text: 'H5',
+        uri: require('../assets/font6.png'),
+        press: () =>
+          resetPage(
+            {name: 'WView', navigation},
+            {
+              title: 'H5',
+              uri: 'http://192.168.1.194:8080/a.html',
+              path: 'h5',
+            },
+          ),
       },
       {
         text: '相机',

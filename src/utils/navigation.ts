@@ -2,11 +2,12 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 18:04:44
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-22 09:21:41
+ * @LastEditTime: 2020-07-28 14:51:47
  * @Description: 全局导航跳转工具类 by CrazyCodeBoy
  */
 
 import {CommonActions} from '@react-navigation/native';
+import {WebView} from 'react-native-webview';
 interface Navigation {
   navigation: any;
   name?: string;
@@ -16,6 +17,7 @@ interface NavigationOptions {
   title?: string;
   uri?: string;
   path?: string;
+  webref?: WebView;
 }
 
 /**

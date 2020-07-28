@@ -33,6 +33,7 @@ interface CameraState {
 }
 interface CameraProps {
   navigation: any;
+  route: any;
 }
 class Camera extends PureComponent<CameraProps, CameraState> {
   constructor(props: Readonly<CameraProps>) {
@@ -47,7 +48,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
       elapsed: 0, // 视频计时
       photoPng: require('../../assets/photo.png'), // 相机按钮图案
       recording: false,
-      photoStatus: false, // true 连拍
+      photoStatus: true, // true 连拍
       showPreview: false, // 连拍预览
     };
   }
@@ -278,7 +279,6 @@ class Camera extends PureComponent<CameraProps, CameraState> {
     const {
       navigation: {goBack},
     } = this.props;
-    console.log(fileData);
     const elapsedTrans = (date: number) => {
       let day = Math.floor(date / (24 * 3600)); // Math.floor()向下取整
       let hour = Math.floor((date - day * 24 * 3600) / 3600);
@@ -477,7 +477,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
                         </TouchableOpacity>
                         {/* 连拍预览展示判断 */}
                         {showPreview ? (
-                          <PreviewShoot data={fileData} />
+                          <PreviewShoot data={fileData} {...this.props} />
                         ) : (
                           <>
                             <TouchableOpacity onPress={this.takePhoto}>
