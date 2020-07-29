@@ -1,13 +1,5 @@
 import React, {Component} from 'react';
-import {
-  StyleSheet,
-  Dimensions,
-  Text,
-  View,
-  SafeAreaView,
-  ScrollView,
-  Platform,
-} from 'react-native';
+import {StyleSheet, Text, View, SafeAreaView, ScrollView} from 'react-native';
 // import {
 //   BaiduMapManager,
 //   MapView,

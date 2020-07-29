@@ -29,7 +29,6 @@ class CameraScan extends PureComponent<CameraScanProps, CameraScanState> {
   }
   onBarCodeRead = (scandata: any) => {
     if (!this.state.scandata) {
-      console.log('1234');
       this.setState({scandata});
       resetPage(
         {name: 'cameraScanPreview', navigation: this.props.navigation},
