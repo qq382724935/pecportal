@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-28 16:08:55
+ * @LastEditTime: 2020-07-29 10:20:05
  */
 
 import React, {Component} from 'react';
@@ -12,6 +12,7 @@ import {OS, CachesDirectoryPath, exists} from '../../utils/fs';
 import {h5PostMessage} from '../../utils/webview';
 import {Alert} from 'react-native';
 import {connect} from 'react-redux';
+import Loading from './Loading';
 declare global {
   namespace NodeJS {
     interface Global {
@@ -35,6 +36,7 @@ interface WebViewRoutePoprs {
 interface CustomState {
   path: string;
   uri: string;
+  progress: number;
 }
 
 class Custom extends Component<CustomProps, CustomState> {
@@ -46,6 +48,7 @@ class Custom extends Component<CustomProps, CustomState> {
     this.state = {
       path: '',
       uri: '',
+      progress: 0,
     };
   }
   componentDidMount() {
@@ -94,41 +97,60 @@ class Custom extends Component<CustomProps, CustomState> {
       h5PostMessage(JSON.parse(event.nativeEvent.data), this.props.navigation);
     }
   };
-  render() {
-    const {uri, path} = this.state;
+  webviewRender = () => {
+    const {uri, path, progress} = this.state;
     if (uri) {
       return (
-        <WebView
-          ref={(r) => (global.wevref = r)}
-          source={{uri}}
-          cacheEnabled={false}
-          cacheMode="LOAD_NO_CACHE"
-          onMessage={this.messageChange}
-        />
+        <>
+          {progress !== 1 && <Loading />}
+          <WebView
+            containerStyle={{flex: progress === 1 ? 1 : 0}}
+            ref={(r) => (global.wevref = r)}
+            source={{uri}}
+            cacheEnabled={false}
+            cacheMode="LOAD_NO_CACHE"
+            onMessage={this.messageChange}
+            startInLoadingState={true}
+            onLoadProgress={({nativeEvent}) =>
+              this.setState({progress: nativeEvent.progress})
+            }
+          />
+        </>
       );
     }
     if (path) {
       const fileUri = `${path}/index.html`;
       const filePath = `${path}`;
       return (
-        <WebView
-          originWhitelist={['*']}
-          cacheEnabled={false}
-          cacheMode="LOAD_NO_CACHE"
-          allowFileAccess={true}
-          javaScriptEnabled={true}
-          allowFileAccessFromFileURLs={true}
-          mixedContentMode="always"
-          allowUniversalAccessFromFileURLs={true}
-          allowingReadAccessToURL={filePath}
-          source={{
-            uri: fileUri,
-            baseUrl: filePath,
-          }}
-        />
+        <>
+          {progress !== 1 && <Loading />}
+          <WebView
+            containerStyle={{flex: progress === 1 ? 1 : 0}}
+            ref={(r) => (global.wevref = r)}
+            source={{
+              uri: fileUri,
+              baseUrl: filePath,
+            }}
+            originWhitelist={['*']}
+            cacheEnabled={false}
+            cacheMode="LOAD_NO_CACHE"
+            allowFileAccess={true}
+            javaScriptEnabled={true}
+            allowFileAccessFromFileURLs={true}
+            mixedContentMode="always"
+            allowUniversalAccessFromFileURLs={true}
+            allowingReadAccessToURL={filePath}
+            onLoadProgress={({nativeEvent}) => {
+              this.setState({progress: nativeEvent.progress});
+            }}
+          />
+        </>
       );
     }
     return null;
+  };
+  render() {
+    return this.webviewRender();
   }
 }
 

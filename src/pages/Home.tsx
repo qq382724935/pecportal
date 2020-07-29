@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-28 12:59:07
+ * @LastEditTime: 2020-07-28 16:19:30
  * @Description:
  */
 import React, {Component} from 'react';
@@ -104,7 +104,7 @@ class FrequentlyApp extends Component<any> {
             {name: 'WView', navigation},
             {
               title: 'H5',
-              uri: 'http://192.168.1.194:8080/a.html',
+              uri: 'http://shwt.pec.com.cn:8086/liulijun/a.html',
               path: 'h5',
             },
           ),
