@@ -9,7 +9,13 @@ export interface Options {
   onAction?: any[];
   extraReducers?: any;
 }
-
+declare global {
+  namespace NodeJS {
+    interface Global {
+      registered: boolean;
+    }
+  }
+}
 export default function (options: Options) {
   const app = create(options);
   // HMR workaround
