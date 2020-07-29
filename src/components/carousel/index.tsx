@@ -40,7 +40,11 @@ class CarouselCustom extends PureComponent<CarouselCustomProps> {
   ) => {
     return (
       <>
-        <View style={styles.item}>
+        <View
+          style={{
+            ...styles.item,
+            marginTop: Platform.OS === 'android' ? 12 : 0,
+          }}>
           <ParallaxImage
             source={{uri: item.illustration}}
             containerStyle={[styles.imageContainer]}
@@ -72,7 +76,6 @@ class CarouselCustom extends PureComponent<CarouselCustomProps> {
       </>
     );
   };
-
   render() {
     const {data} = this.props;
     // 传过来的是['file://'] 转换格式
