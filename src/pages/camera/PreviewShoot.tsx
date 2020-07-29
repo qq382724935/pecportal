@@ -2,7 +2,6 @@ import React, {PureComponent} from 'react';
 import {View, Text} from 'react-native';
 import {connect} from 'react-redux';
 import {postMessageH5} from '../../utils/webview';
-import {readFile} from '../../utils/fs';
 export interface PreviewShootProps {
   data: string[];
   navigation: any;
