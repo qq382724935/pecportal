@@ -90,6 +90,22 @@ export const readFile = (
 ): Promise<string> => RNFSreadFile(filepath, encoding);
 
 /**
+ * @description: 根据路径读取文件(不适合大文件)，多条数据获取
+ * @param {filepath} 文件路径
+ * @param {encoding} 可以是utf8(默认)，ascii, base64。使用base64读取二进制文件。
+ * @return: 转换后的数据数组
+ */
+export const listReadFile = async (data: string[], encoding = 'utf8') => {
+  let _data: string[] = [];
+  for (let index = 0; index < data.length; index++) {
+    await readFile(data[index], encoding).then((base) => {
+      _data.push(`data:image/jpeg;base64,${base}`);
+    });
+  }
+  return _data;
+};
+
+/**
  * @description: 从文件路径的给定位置读取长度字节并返回内容。适合大文件
  * @param {filepath} 文件路径
  * @param {length} 读取长度
@@ -176,8 +192,10 @@ export const exists = (filepath: string): Promise<boolean> =>
  * @param {options} 可以在IOS平台上提供NSURLIsExcludedFromBackupKey属性来设置该属性。如果应用程序存储的离线缓存数据没有这个属性，苹果将会拒绝。
  * @return:
  */
-export const mkdir = (filepath: string, options?: MkdirOptions): Promise<void> =>
-  RNFSmkdir(filepath, options);
+export const mkdir = (
+  filepath: string,
+  options?: MkdirOptions,
+): Promise<void> => RNFSmkdir(filepath, options);
 
 // 文件上传
 export const uploadFiles = (

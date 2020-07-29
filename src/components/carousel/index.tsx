@@ -6,6 +6,7 @@ import {
   Dimensions,
   Platform,
   Image,
+  Text,
 } from 'react-native';
 const {width: screenWidth, height: screenHeight} = Dimensions.get('window');
 import Carousel, {
@@ -21,6 +22,7 @@ export interface CarouselCustomDataProps {
   title: string;
   subtitle: string;
   illustration: string;
+  key?: string;
 }
 
 interface RenderItem {
@@ -29,6 +31,9 @@ interface RenderItem {
 }
 
 class CarouselCustom extends PureComponent<CarouselCustomProps> {
+  state = {
+    index: 0,
+  };
   renderItem = (
     {item, index}: RenderItem,
     parallaxProps: AdditionalParallaxProps,
@@ -43,22 +48,26 @@ class CarouselCustom extends PureComponent<CarouselCustomProps> {
             parallaxFactor={0}
             {...parallaxProps}
           />
-          <TouchableOpacity
-            onPress={() => {
-              this.props.onChange(index);
-            }}>
-            <View
-              style={{
-                alignItems: 'center',
-                marginTop: 8,
-              }}>
-              <Image
-                style={{width: 32, height: 32}}
-                source={require('../../assets/icon/delete.png')}
-              />
-            </View>
-          </TouchableOpacity>
-          {/* <Text>{item.title}</Text> */}
+          {index === this.state.index && (
+            <>
+              <View style={{alignItems: 'flex-start', marginTop: 8}}>
+                <Text style={{fontSize: 16, color: '#fff', letterSpacing: 5}}>
+                  第{index + 1}/{this.props.data.length}张
+                </Text>
+              </View>
+              <View style={{alignItems: 'center'}}>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.props.onChange(index);
+                  }}>
+                  <Image
+                    style={{width: 32, height: 32}}
+                    source={require('../../assets/icon/delete.png')}
+                  />
+                </TouchableOpacity>
+              </View>
+            </>
+          )}
         </View>
       </>
     );
@@ -76,6 +85,7 @@ class CarouselCustom extends PureComponent<CarouselCustomProps> {
     };
     return (
       <Carousel
+        onSnapToItem={(index) => this.setState({index})}
         sliderWidth={screenWidth}
         sliderHeight={screenHeight}
         itemWidth={screenWidth - 60}

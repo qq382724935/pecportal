@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import {
+  SafeAreaView,
   StyleSheet,
   TouchableOpacity,
   Image,
@@ -13,9 +14,7 @@ import {openPicker, flashType, switchType} from '../../utils/cameraroll';
 const {alert} = Alert;
 import PreviewPicture from './PreviewPicture';
 import PreviewShoot from './PreviewShoot';
-
 import {Back, CarouselCustom} from '../../components';
-import {SafeAreaView} from 'react-native-safe-area-context';
 // true 照片，false 视频
 const getSwitchType = (switchState: string) => switchType[0] === switchState;
 interface CameraState {
@@ -294,8 +293,8 @@ class Camera extends PureComponent<CameraProps, CameraState> {
     };
     return (
       <>
+        {/* // 拍照（单拍）后预览 */}
         {fileData.length > 0 && !photoStatus ? (
-          // 拍照（单拍）后预览
           <PreviewPicture
             fileData={fileData[0]}
             onChange={this.fileDataChange}
@@ -325,16 +324,17 @@ class Camera extends PureComponent<CameraProps, CameraState> {
                 buttonNegative: '取消',
               }}
               notAuthorizedView={<View>{cameraNotAuthorized}</View>}>
-              {/* 自定义摄像机操作组件 */}
               <SafeAreaView style={styles.container}>
+                {/* 自定义摄像机操作组件 */}
                 {showPreview ? (
+                  // 连拍预览显示
                   <CarouselCustom
                     data={fileData}
                     onChange={this.carouselChange}
                   />
                 ) : (
+                  // 摄像机头部组件
                   <View>
-                    {/* 摄像机头部组件 */}
                     <Back
                       icon={require('../../assets/icon/cameraback.png')}
                       onPress={goBack}
@@ -416,8 +416,8 @@ class Camera extends PureComponent<CameraProps, CameraState> {
                     </View>
                   ) : (
                     <>
+                      {/* 停止录制视频或者拍照模式组件 */}
                       {showPreview ? null : (
-                        // 停止录制视频或者拍照模式组件
                         <View
                           style={{
                             ...styles.switch,

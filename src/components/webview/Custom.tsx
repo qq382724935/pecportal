@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-29 10:20:05
+ * @LastEditTime: 2020-07-29 15:02:12
  */
 
 import React, {Component} from 'react';
@@ -93,9 +93,7 @@ class Custom extends Component<CustomProps, CustomState> {
   };
   messageChange = (event: WebViewMessageEvent) => {
     const data = this.isJson(event.nativeEvent.data);
-    if (data) {
-      h5PostMessage(JSON.parse(event.nativeEvent.data), this.props.navigation);
-    }
+    data && h5PostMessage(data, this.props.navigation);
   };
   webviewRender = () => {
     const {uri, path, progress} = this.state;
@@ -107,6 +105,7 @@ class Custom extends Component<CustomProps, CustomState> {
             containerStyle={{flex: progress === 1 ? 1 : 0}}
             ref={(r) => (global.wevref = r)}
             source={{uri}}
+            javaScriptEnabled={true}
             cacheEnabled={false}
             cacheMode="LOAD_NO_CACHE"
             onMessage={this.messageChange}

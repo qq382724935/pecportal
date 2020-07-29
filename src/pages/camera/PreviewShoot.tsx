@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import {View, Text} from 'react-native';
 import {connect} from 'react-redux';
 import {postMessageH5} from '../../utils/webview';
-
+import {readFile} from '../../utils/fs';
 export interface PreviewShootProps {
   data: string[];
   navigation: any;
@@ -18,7 +18,10 @@ export class PreviewShoot extends PureComponent<PreviewShootProps> {
         <Text
           style={{color: '#fff', paddingRight: 16, fontSize: 18}}
           onPress={() => {
-            postMessageH5({type: 'photo', data});
+            postMessageH5({
+              type: 'cameraPhoto',
+              arrayData: data,
+            });
             goBack();
           }}>
           保存

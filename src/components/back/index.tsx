@@ -27,12 +27,15 @@ const Back = ({
 }: BackProps) => {
   return (
     <>
-      <StatusBar
-        backgroundColor="#ff0000"
-        translucent={true}
-        hidden={true}
-        animated={true}
-      />
+      {/* 安卓隐藏状态栏，调用摄像机会导致闪屏 */}
+      {Platform.OS === 'ios' && (
+        <StatusBar
+          backgroundColor="#ff0000"
+          translucent={true}
+          hidden={true}
+          animated={true}
+        />
+      )}
       <View
         style={[
           styles.container,
