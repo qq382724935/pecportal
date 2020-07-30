@@ -17,6 +17,7 @@ import Carousel, {
 export interface CarouselCustomProps {
   data: string[];
   onChange: Function;
+  carouselKey: number;
 }
 export interface CarouselCustomDataProps {
   title: string;
@@ -34,6 +35,15 @@ class CarouselCustom extends PureComponent<CarouselCustomProps> {
   state = {
     index: 0,
   };
+
+  UNSAFE_componentWillReceiveProps(nextProps: any) {
+    if (nextProps.data.length === nextProps.carouselKey) {
+      this.setState({index: nextProps.carouselKey - 1});
+    } else {
+      this.setState({index: nextProps.carouselKey});
+    }
+  }
+
   renderItem = (
     {item, index}: RenderItem,
     parallaxProps: AdditionalParallaxProps,
@@ -60,10 +70,7 @@ class CarouselCustom extends PureComponent<CarouselCustomProps> {
                 </Text>
               </View>
               <View style={{alignItems: 'center'}}>
-                <TouchableOpacity
-                  onPress={() => {
-                    this.props.onChange(index);
-                  }}>
+                <TouchableOpacity onPress={() => this.props.onChange(index)}>
                   <Image
                     style={{width: 32, height: 32}}
                     source={require('../../assets/icon/delete.png')}
@@ -76,6 +83,7 @@ class CarouselCustom extends PureComponent<CarouselCustomProps> {
       </>
     );
   };
+
   render() {
     const {data} = this.props;
     // 传过来的是['file://'] 转换格式
@@ -88,7 +96,9 @@ class CarouselCustom extends PureComponent<CarouselCustomProps> {
     };
     return (
       <Carousel
-        onSnapToItem={(index) => this.setState({index})}
+        onSnapToItem={(index) => {
+          this.setState({index});
+        }}
         sliderWidth={screenWidth}
         sliderHeight={screenHeight}
         itemWidth={screenWidth - 60}

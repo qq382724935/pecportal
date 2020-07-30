@@ -29,6 +29,7 @@ interface CameraState {
   photoPng: ImageSourcePropType;
   photoStatus: boolean;
   showPreview: boolean;
+  carouselKey: number;
 }
 interface CameraProps {
   navigation: any;
@@ -49,6 +50,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
       recording: false,
       photoStatus: true, // true 连拍
       showPreview: false, // 连拍预览
+      carouselKey: 0,
     };
   }
   camera: any;
@@ -249,11 +251,18 @@ class Camera extends PureComponent<CameraProps, CameraState> {
       {
         text: '确认',
         onPress: () => {
-          this.setState({
-            fileData: this.state.fileData.filter(
-              (item, fileIndex) => fileIndex !== index,
-            ),
-          });
+          this.setState(
+            {
+              fileData: this.state.fileData.filter(
+                (item, fileIndex) => fileIndex !== index,
+              ),
+              carouselKey: index,
+            },
+            () => {
+              this.state.fileData.length === 0 &&
+                this.setState({showPreview: false});
+            },
+          );
         },
       },
     ]);
@@ -274,6 +283,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
       flashPng,
       photoStatus,
       showPreview,
+      carouselKey,
     } = this.state;
     const {
       navigation: {goBack},
@@ -331,6 +341,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
                   <CarouselCustom
                     data={fileData}
                     onChange={this.carouselChange}
+                    carouselKey={carouselKey}
                   />
                 ) : (
                   // 摄像机头部组件
@@ -455,26 +466,30 @@ class Camera extends PureComponent<CameraProps, CameraState> {
 
                       {/* 打开相册，拍照，录制视频按钮，摄像头切换 */}
                       <View style={{...styles.switch, ...styles.operation}}>
-                        <TouchableOpacity
-                          onPress={() => {
-                            // 相册icon点击事件，true:单拍显示相册，false：连拍设置showPreview显示PreviewShoot组件
-                            if (photoStatus) {
-                              this.setState({showPreview: !showPreview});
-                            } else {
-                              openPicker()
-                                .then((image: any) => {
-                                  this.fileDataChange(image.path);
-                                })
-                                .catch((error) => {
-                                  console.log(error);
-                                });
-                            }
-                          }}>
-                          <Image
-                            source={getImage()}
-                            style={styles.imageStyle}
-                          />
-                        </TouchableOpacity>
+                        {fileData.length > 0 ? (
+                          <TouchableOpacity
+                            onPress={() => {
+                              // 相册icon点击事件，true:单拍显示相册，false：连拍设置showPreview显示PreviewShoot组件
+                              if (photoStatus) {
+                                this.setState({showPreview: !showPreview});
+                              } else {
+                                openPicker()
+                                  .then((image: any) => {
+                                    this.fileDataChange(image.path);
+                                  })
+                                  .catch((error) => {
+                                    console.log(error);
+                                  });
+                              }
+                            }}>
+                            <Image
+                              source={getImage()}
+                              style={styles.imageStyle}
+                            />
+                          </TouchableOpacity>
+                        ) : (
+                          <View style={styles.imageStyle} />
+                        )}
                         {/* 连拍预览展示判断 */}
                         {showPreview ? (
                           <PreviewShoot data={fileData} {...this.props} />
