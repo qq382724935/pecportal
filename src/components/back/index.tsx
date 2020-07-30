@@ -36,23 +36,23 @@ const Back = ({
           animated={true}
         />
       )}
+
       <View
         style={[
           styles.container,
           position === 'absolute' ? styles.absolute : null,
         ]}>
-        <View
-          style={{
-            width: 64,
-            height:
-              position === 'absolute' || Platform.OS === 'android' ? 48 : 0,
-            paddingLeft: 32,
-            justifyContent: 'center',
-          }}>
-          <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={onPress}>
+          <View
+            style={{
+              width: 64,
+              height: 48,
+              paddingLeft: 32,
+              justifyContent: 'center',
+            }}>
             <Image style={iconsize} source={icon} />
-          </TouchableOpacity>
-        </View>
+          </View>
+        </TouchableOpacity>
       </View>
     </>
   );

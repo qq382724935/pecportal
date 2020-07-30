@@ -8,6 +8,7 @@ import {
   Text,
   Alert,
   ImageSourcePropType,
+  Platform,
 } from 'react-native';
 import {RNCamera, CameraType, FlashMode} from 'react-native-camera';
 import {openPicker, flashType, switchType} from '../../utils/cameraroll';
@@ -15,6 +16,7 @@ const {alert} = Alert;
 import PreviewPicture from './PreviewPicture';
 import PreviewShoot from './PreviewShoot';
 import {Back, CarouselCustom} from '../../components';
+
 // true 照片，false 视频
 const getSwitchType = (switchState: string) => switchType[0] === switchState;
 interface CameraState {
@@ -29,7 +31,7 @@ interface CameraState {
   photoPng: ImageSourcePropType;
   photoStatus: boolean;
   showPreview: boolean;
-  carouselKey: number;
+  type: string;
 }
 interface CameraProps {
   navigation: any;
@@ -50,7 +52,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
       recording: false,
       photoStatus: true, // true 连拍
       showPreview: false, // 连拍预览
-      carouselKey: 0,
+      type: 'photo', // 预览类型
     };
   }
   camera: any;
@@ -58,6 +60,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
   recordingTimeOut: any; // 恢复相机状态
   // 拍照结束设置图片路径
   fileDataChange = (fileData: string) => {
+    console.log('fileDataChange', fileData);
     // 连拍模式
     if (this.state.photoStatus) {
       this.setState({fileData: [...this.state.fileData, fileData]});
@@ -114,6 +117,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
       this.setState({
         switchState,
         photoPng,
+        type: switchState === switchType[0] ? 'photo' : 'video',
       });
     };
     this.resetFileData(swicthTemp);
@@ -161,16 +165,17 @@ class Camera extends PureComponent<CameraProps, CameraState> {
         maxFileSize: 100 * 1024 * 1024,
       };
       this.setState({recording: true}, async () => {
-        let result = null;
         try {
-          result = await this.camera.recordAsync(options);
+          const result = await this.camera.recordAsync(options);
           if (result) {
-            alert('Video recorded!', JSON.stringify(result));
+            this.setState({
+              recording: false,
+              fileData: [JSON.parse(JSON.stringify(result))],
+            });
           }
           // give time for the camera to recover
           // 会导致内存泄漏
           // setTimeout(() => {
-          //   console.log('setTimeout');
           //   this.setState({recording: false});
           // }, 500);
 
@@ -209,7 +214,6 @@ class Camera extends PureComponent<CameraProps, CameraState> {
     if (this.recordingTimer) {
       clearInterval(this.recordingTimer);
       this.recordingTimer = null;
-      this.setState({recording: false});
     }
   };
 
@@ -224,7 +228,6 @@ class Camera extends PureComponent<CameraProps, CameraState> {
         [
           {
             text: '取消',
-            onPress: () => console.log('Cancel Pressed'),
             style: 'cancel',
           },
           {
@@ -245,18 +248,19 @@ class Camera extends PureComponent<CameraProps, CameraState> {
     alert('确认提醒', '此照片删除后无法恢复，请确认！', [
       {
         text: '取消',
-        onPress: () => console.log('Cancel Pressed'),
         style: 'cancel',
       },
       {
         text: '确认',
         onPress: () => {
+          Platform.OS === 'android' &&
+            index !== 0 &&
+            global.carouselRef.snapToPrev();
           this.setState(
             {
               fileData: this.state.fileData.filter(
                 (item, fileIndex) => fileIndex !== index,
               ),
-              carouselKey: index,
             },
             () => {
               this.state.fileData.length === 0 &&
@@ -283,7 +287,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
       flashPng,
       photoStatus,
       showPreview,
-      carouselKey,
+      type,
     } = this.state;
     const {
       navigation: {goBack},
@@ -304,10 +308,11 @@ class Camera extends PureComponent<CameraProps, CameraState> {
     return (
       <>
         {/* // 拍照（单拍）后预览 */}
-        {fileData.length > 0 && !photoStatus ? (
+        {fileData.length > 0 && (!photoStatus || type === 'video') ? (
           <PreviewPicture
             fileData={fileData[0]}
             onChange={this.fileDataChange}
+            type={type}
           />
         ) : (
           <>
@@ -319,6 +324,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
               style={styles.preview}
               type={cameraType} // 摄像头 前置后置
               flashMode={flashMode} // 闪光灯
+              keepAudioSession={true}
               onRecordingStart={this.onRecordingStart}
               onRecordingEnd={this.onRecordingEnd}
               androidCameraPermissionOptions={{
@@ -341,7 +347,6 @@ class Camera extends PureComponent<CameraProps, CameraState> {
                   <CarouselCustom
                     data={fileData}
                     onChange={this.carouselChange}
-                    carouselKey={carouselKey}
                   />
                 ) : (
                   // 摄像机头部组件
@@ -356,7 +361,14 @@ class Camera extends PureComponent<CameraProps, CameraState> {
                           onPress={() => {
                             this.setState({flashChoice: !flashChoice});
                           }}>
-                          <Image source={flashPng} style={styles.imageStyle} />
+                          <Image
+                            source={flashPng}
+                            style={{
+                              ...styles.imageStyle,
+                              width: 22,
+                              height: 22,
+                            }}
+                          />
                         </TouchableOpacity>
                         {flashChoice ? (
                           <View style={styles.choice}>
@@ -466,10 +478,10 @@ class Camera extends PureComponent<CameraProps, CameraState> {
 
                       {/* 打开相册，拍照，录制视频按钮，摄像头切换 */}
                       <View style={{...styles.switch, ...styles.operation}}>
-                        {fileData.length > 0 ? (
+                        {fileData.length > 0 || !photoStatus ? (
                           <TouchableOpacity
                             onPress={() => {
-                              // 相册icon点击事件，true:单拍显示相册，false：连拍设置showPreview显示PreviewShoot组件
+                              // 相册icon点击事件，false:单拍显示相册，true：连拍设置showPreview显示PreviewShoot组件
                               if (photoStatus) {
                                 this.setState({showPreview: !showPreview});
                               } else {
@@ -477,9 +489,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
                                   .then((image: any) => {
                                     this.fileDataChange(image.path);
                                   })
-                                  .catch((error) => {
-                                    console.log(error);
-                                  });
+                                  .catch(() => {});
                               }
                             }}>
                             <Image
@@ -538,8 +548,8 @@ const styles = StyleSheet.create({
     flex: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 26,
     height: 30,
+    marginLeft: 26,
     marginRight: 10,
     marginTop: 8,
   },

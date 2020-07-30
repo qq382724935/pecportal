@@ -4,8 +4,9 @@ import ImagePicker from 'react-native-image-crop-picker';
 import Marker, {Position} from 'react-native-image-marker';
 import {savePicture} from '../../utils/cameraroll';
 import {Back} from '../../components';
+import PreviewVideo from './PreviewVideo';
 
-class PickerHeader extends PureComponent<any> {
+class PreviewHeader extends PureComponent<any> {
   render() {
     const {onChange} = this.props;
     return (
@@ -88,18 +89,29 @@ class PickerFooter extends PureComponent<any> {
   }
 }
 
-interface PreviewPicture {
+interface PreviewPicturePoprs {
   onChange: any;
-  fileData: string;
+  fileData: any;
+  type: string;
 }
-class PreviewPicture extends PureComponent<any> {
+class PreviewPicture extends PureComponent<PreviewPicturePoprs> {
   render() {
-    const {fileData} = this.props;
+    const {fileData, type} = this.props;
+    console.log('type：', type);
+    // let result = null;
+    // if (type === 'video') {
+    //   result = JSON.parse(fileData);
+    // }
     return (
       <SafeAreaView style={styles.container}>
-        <PickerHeader {...this.props} />
-        <Image style={{flex: 1}} source={{uri: fileData}} />
-        <PickerFooter {...this.props} />
+        <PreviewHeader {...this.props} />
+        {type === 'photo' && (
+          <>
+            <Image style={{flex: 1}} source={{uri: fileData}} />
+            <PickerFooter {...this.props} />
+          </>
+        )}
+        {type === 'video' && <PreviewVideo result={fileData} />}
       </SafeAreaView>
     );
   }

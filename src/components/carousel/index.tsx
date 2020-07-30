@@ -13,11 +13,16 @@ import Carousel, {
   ParallaxImage,
   AdditionalParallaxProps,
 } from 'react-native-snap-carousel';
-
+declare global {
+  namespace NodeJS {
+    interface Global {
+      carouselRef: any;
+    }
+  }
+}
 export interface CarouselCustomProps {
   data: string[];
   onChange: Function;
-  carouselKey: number;
 }
 export interface CarouselCustomDataProps {
   title: string;
@@ -30,19 +35,18 @@ interface RenderItem {
   item: CarouselCustomDataProps;
   index: number;
 }
-
 class CarouselCustom extends PureComponent<CarouselCustomProps> {
   state = {
     index: 0,
   };
 
-  UNSAFE_componentWillReceiveProps(nextProps: any) {
-    if (nextProps.data.length === nextProps.carouselKey) {
-      this.setState({index: nextProps.carouselKey - 1});
-    } else {
-      this.setState({index: nextProps.carouselKey});
-    }
-  }
+  // UNSAFE_componentWillReceiveProps(nextProps: any) {
+  //   if (nextProps.data.length === nextProps.carouselKey) {
+  //     this.setState({index: nextProps.carouselKey - 1});
+  //   } else {
+  //     this.setState({index: nextProps.carouselKey});
+  //   }
+  // }
 
   renderItem = (
     {item, index}: RenderItem,
@@ -62,23 +66,21 @@ class CarouselCustom extends PureComponent<CarouselCustomProps> {
             parallaxFactor={0}
             {...parallaxProps}
           />
-          {index === this.state.index && (
-            <>
-              <View style={{alignItems: 'flex-start', marginTop: 8}}>
-                <Text style={{fontSize: 16, color: '#fff', letterSpacing: 5}}>
-                  第{index + 1}/{this.props.data.length}张
-                </Text>
-              </View>
-              <View style={{alignItems: 'center'}}>
-                <TouchableOpacity onPress={() => this.props.onChange(index)}>
-                  <Image
-                    style={{width: 32, height: 32}}
-                    source={require('../../assets/icon/delete.png')}
-                  />
-                </TouchableOpacity>
-              </View>
-            </>
-          )}
+          <>
+            <View style={styles.delete}>
+              <Text style={{fontSize: 16, color: '#fff', letterSpacing: 2}}>
+                第{index + 1}/{this.props.data.length}张
+              </Text>
+            </View>
+            <View style={styles.delete}>
+              <TouchableOpacity onPress={() => this.props.onChange(index)}>
+                <Image
+                  style={{width: 32, height: 32}}
+                  source={require('../../assets/icon/delete.png')}
+                />
+              </TouchableOpacity>
+            </View>
+          </>
         </View>
       </>
     );
@@ -96,9 +98,8 @@ class CarouselCustom extends PureComponent<CarouselCustomProps> {
     };
     return (
       <Carousel
-        onSnapToItem={(index) => {
-          this.setState({index});
-        }}
+        ref={(r) => (global.carouselRef = r)}
+        onSnapToItem={(index) => this.setState({index})}
         sliderWidth={screenWidth}
         sliderHeight={screenHeight}
         itemWidth={screenWidth - 60}
@@ -110,7 +111,6 @@ class CarouselCustom extends PureComponent<CarouselCustomProps> {
   }
 }
 export default CarouselCustom;
-
 const styles = StyleSheet.create({
   item: {
     width: screenWidth - 60,
@@ -120,10 +120,14 @@ const styles = StyleSheet.create({
     flex: 1,
     marginBottom: Platform.select({ios: 0, android: 1}), // Prevent a random Android rendering issue
     backgroundColor: 'white',
-    borderRadius: 8,
+    borderRadius: 10,
   },
   image: {
     ...StyleSheet.absoluteFillObject,
     resizeMode: 'cover',
+  },
+  delete: {
+    alignItems: 'center',
+    marginTop: 8,
   },
 });
