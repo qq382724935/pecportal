@@ -19,13 +19,12 @@ export class PreviewVideo extends Component<PreviewVideoProps> {
   videoError = () => {};
   render() {
     const {uri} = this.props.result;
-    console.log(uri);
     return (
       <View style={{flex: 1}}>
         <Video
+          controls={true}
           source={{
-            uri:
-              'file:///var/mobile/Containers/Data/Application/1C39C8FD-810B-4677-BB69-C1E6F2C2F8CC/Library/Caches/Camera/A7DFC4BB-6640-445C-8AE3-B1E256EE4432.mov',
+            uri,
           }} // Can be a URL or a local file.
           ref={(ref) => {
             this.player = ref;

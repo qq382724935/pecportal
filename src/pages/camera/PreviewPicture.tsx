@@ -97,11 +97,6 @@ interface PreviewPicturePoprs {
 class PreviewPicture extends PureComponent<PreviewPicturePoprs> {
   render() {
     const {fileData, type} = this.props;
-    console.log('type：', type);
-    // let result = null;
-    // if (type === 'video') {
-    //   result = JSON.parse(fileData);
-    // }
     return (
       <SafeAreaView style={styles.container}>
         <PreviewHeader {...this.props} />

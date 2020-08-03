@@ -9,6 +9,7 @@ import {
   Alert,
   ImageSourcePropType,
   Platform,
+  Animated,
 } from 'react-native';
 import {RNCamera, CameraType, FlashMode} from 'react-native-camera';
 import {openPicker, flashType, switchType} from '../../utils/cameraroll';
@@ -23,7 +24,7 @@ interface CameraState {
   flashMode: keyof FlashMode;
   cameraType: keyof CameraType;
   switchState: string;
-  fileData: string[];
+  fileData: any[];
   elapsed: number;
   recording: boolean;
   flashChoice: boolean;
@@ -32,6 +33,7 @@ interface CameraState {
   photoStatus: boolean;
   showPreview: boolean;
   type: string;
+  timeRed: any;
 }
 interface CameraProps {
   navigation: any;
@@ -44,15 +46,21 @@ class Camera extends PureComponent<CameraProps, CameraState> {
       flashMode: RNCamera.Constants.FlashMode.off, // 闪光灯模式
       cameraType: RNCamera.Constants.Type.back, // 相机模式 前置后置
       switchState: switchType[0], // 相机状态 ，照片，录制中，未录制
-      fileData: [],
+      fileData: [
+        // {
+        //   uri:
+        //     'file:///var/mobile/Containers/Data/Application/6AF50FA9-8A98-4466-BB77-2260A81A1251/Library/Caches/Camera/71FCC381-2C5B-4427-81CB-57E5916F1A71.mov',
+        // },
+      ],
       flashChoice: false, // 是否打开闪光灯
       flashPng: require('../../assets/flash_lamp_close.png'), // 闪光灯图片
       elapsed: 0, // 视频计时
       photoPng: require('../../assets/photo.png'), // 相机按钮图案
-      recording: false,
-      photoStatus: true, // true 连拍
-      showPreview: false, // 连拍预览
-      type: 'photo', // 预览类型
+      recording: false, // 是否开启录制 默认false 否
+      photoStatus: true, // 拍照模式 默认:true 连拍
+      showPreview: false, // 连拍预览：默认 false 不显示
+      type: 'photo', // 预览类型 photo：拍照，video：视频
+      timeRed: new Animated.Value(1),
     };
   }
   camera: any;
@@ -60,9 +68,9 @@ class Camera extends PureComponent<CameraProps, CameraState> {
   recordingTimeOut: any; // 恢复相机状态
   // 拍照结束设置图片路径
   fileDataChange = (fileData: string) => {
-    console.log('fileDataChange', fileData);
+    const {photoStatus, type} = this.state;
     // 连拍模式
-    if (this.state.photoStatus) {
+    if (photoStatus && type === 'photo') {
       this.setState({fileData: [...this.state.fileData, fileData]});
     } else {
       if (fileData) {
@@ -154,7 +162,6 @@ class Camera extends PureComponent<CameraProps, CameraState> {
       this.fileDataChange(data.uri);
     }
   };
-
   // 开始录像
   takeRecord = async () => {
     if (this.camera && !this.state.recording) {
@@ -170,7 +177,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
           if (result) {
             this.setState({
               recording: false,
-              fileData: [JSON.parse(JSON.stringify(result))],
+              fileData: [result],
             });
           }
           // give time for the camera to recover
@@ -197,15 +204,26 @@ class Camera extends PureComponent<CameraProps, CameraState> {
       this.setState({elapsed: 0});
     }
   };
-
   // 开始录像响应事件
   onRecordingStart = () => {
     this.onRecordingEnd();
     if (this.state.recording) {
       this.setState({elapsed: 0});
+      const time = 1000;
+      const Ani = () => {
+        Animated.timing(this.state.timeRed, {
+          toValue: 0,
+          duration: time / 2,
+          useNativeDriver: false,
+        }).start(() => {
+          this.setState({timeRed: new Animated.Value(1)});
+        });
+      };
+      Ani();
       this.recordingTimer = setInterval(() => {
+        Ani();
         this.setState({elapsed: this.state.elapsed + 1});
-      }, 1000);
+      }, time);
     }
   };
 
@@ -219,6 +237,11 @@ class Camera extends PureComponent<CameraProps, CameraState> {
 
   // 重置摄像头数据确认
   resetFileData = (func: Function) => {
+    const resetData = () => {
+      this.setState({fileData: []}, () => {
+        func();
+      });
+    };
     const {fileData, photoStatus} = this.state;
     // 连拍未保存时提示用户
     if (photoStatus && fileData.length > 0) {
@@ -232,18 +255,15 @@ class Camera extends PureComponent<CameraProps, CameraState> {
           },
           {
             text: '确认',
-            onPress: () => {
-              func();
-              this.setState({fileData: []});
-            },
+            onPress: () => resetData(),
           },
         ],
       );
       return;
     }
-    func();
-    this.setState({fileData: []});
+    resetData();
   };
+
   carouselChange = (index: number) => {
     alert('确认提醒', '此照片删除后无法恢复，请确认！', [
       {
@@ -288,6 +308,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
       photoStatus,
       showPreview,
       type,
+      timeRed,
     } = this.state;
     const {
       navigation: {goBack},
@@ -305,6 +326,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
         ? {uri: fileData[fileData.length - 1]}
         : require('../../assets/album.png');
     };
+    console.log('fileData：', fileData);
     return (
       <>
         {/* // 拍照（单拍）后预览 */}
@@ -397,7 +419,21 @@ class Camera extends PureComponent<CameraProps, CameraState> {
                         ) : null}
                       </View>
                       {flashChoice ? null : !getSwitchType(switchState) ? (
-                        <View>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                          }}>
+                          <Animated.View
+                            style={{
+                              borderRadius: 50,
+                              width: 5,
+                              height: 5,
+                              backgroundColor: 'red',
+                              marginRight: 8,
+                              opacity: timeRed,
+                            }}
+                          />
                           <Text style={{color: '#ffffff'}}>
                             {elapsedTrans(elapsed)}
                           </Text>
