@@ -8,14 +8,24 @@ import PreviewVideo from './PreviewVideo';
 
 class PreviewHeader extends PureComponent<any> {
   render() {
-    const {onChange} = this.props;
+    const {onChange, children} = this.props;
     return (
-      <Back
-        icon={require('../../assets/icon/cameraback.png')}
-        onPress={() => {
-          onChange('');
-        }}
-      />
+      <>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          <Back
+            icon={require('../../assets/icon/cameraback.png')}
+            onPress={() => {
+              onChange('');
+            }}
+          />
+          {children}
+        </View>
+      </>
     );
   }
 }
@@ -93,20 +103,38 @@ interface PreviewPicturePoprs {
   onChange: any;
   fileData: any;
   type: string;
+  navigation: any;
 }
 class PreviewPicture extends PureComponent<PreviewPicturePoprs> {
+  VideoCustom = () => {
+    return (
+      <View>
+        <Text
+          style={{color: '#fff', fontSize: 16, paddingRight: 16}}
+          onPress={() => {
+            console.log('保存');
+          }}>
+          保存
+        </Text>
+      </View>
+    );
+  };
   render() {
-    const {fileData, type} = this.props;
+    const {fileData, type, navigation} = this.props;
     return (
       <SafeAreaView style={styles.container}>
-        <PreviewHeader {...this.props} />
+        <PreviewHeader {...this.props}>
+          {type === 'video' && <this.VideoCustom />}
+        </PreviewHeader>
         {type === 'photo' && (
           <>
             <Image style={{flex: 1}} source={{uri: fileData}} />
             <PickerFooter {...this.props} />
           </>
         )}
-        {type === 'video' && <PreviewVideo result={fileData} />}
+        {type === 'video' && (
+          <PreviewVideo result={fileData} navigation={navigation} />
+        )}
       </SafeAreaView>
     );
   }

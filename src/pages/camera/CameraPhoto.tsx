@@ -158,8 +158,12 @@ class Camera extends PureComponent<CameraProps, CameraState> {
   takePicture = async () => {
     if (this.camera) {
       const options = {quality: 0.5, base64: true};
-      const data = await this.camera.takePictureAsync(options);
-      this.fileDataChange(data.uri);
+      try {
+        const data = await this.camera.takePictureAsync(options);
+        this.fileDataChange(data.uri);
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
   // 开始录像
@@ -326,7 +330,6 @@ class Camera extends PureComponent<CameraProps, CameraState> {
         ? {uri: fileData[fileData.length - 1]}
         : require('../../assets/album.png');
     };
-    console.log('fileData：', fileData);
     return (
       <>
         {/* // 拍照（单拍）后预览 */}
@@ -335,6 +338,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
             fileData={fileData[0]}
             onChange={this.fileDataChange}
             type={type}
+            navigation={this.props.navigation}
           />
         ) : (
           <>

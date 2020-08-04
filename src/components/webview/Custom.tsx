@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-29 15:02:12
+ * @LastEditTime: 2020-08-04 11:41:54
  */
 
 import React, {Component} from 'react';
@@ -93,6 +93,7 @@ class Custom extends Component<CustomProps, CustomState> {
   };
   messageChange = (event: WebViewMessageEvent) => {
     const data = this.isJson(event.nativeEvent.data);
+    console.log('wbview messageChange: ', data);
     data && h5PostMessage(data, this.props.navigation);
   };
   webviewRender = () => {
