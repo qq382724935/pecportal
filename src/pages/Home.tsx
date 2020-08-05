@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-05 14:09:29
+ * @LastEditTime: 2020-08-05 16:59:48
  * @Description:
  */
 import React, {Component} from 'react';
@@ -13,7 +13,6 @@ import {
   Image,
   Text,
   TouchableOpacity,
-  Alert,
   SafeAreaView,
   ScrollView,
 } from 'react-native';
@@ -110,31 +109,25 @@ class FrequentlyApp extends Component<any> {
             },
           ),
       },
-      // {
-      //   text: '相机',
-      //   uri: require('../assets/font13.png'),
-      //   press: () => resetPage({name: 'cameraPhoto', navigation}),
-      // },
       {
         text: '地图',
         uri: require('../assets/font15.png'),
         // press: () => Alert.alert('敬请期待！'),
         press: () => resetPage({name: 'amap', navigation}),
       },
-
-      // {
-      //   text: '相册',
-      //   uri: require('../assets/font9.png'),
-      //   press: () => {
-      //     openPicker()
-      //       .then((image: any) => {
-      //         this.props.fileDataChange(image.path);
-      //       })
-      //       .catch((error) => {
-      //         console.log(error);
-      //       });
-      //   },
-      // },
+      {
+        text: '相册',
+        uri: require('../assets/font9.png'),
+        press: () => {
+          openPicker()
+            .then((image: any) => {
+              this.props.fileDataChange(image.path);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        },
+      },
       {
         text: '二维码生成',
         uri: require('../assets/font7.png'),
@@ -278,7 +271,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   faLink: {
-    width: width / 5,
+    width: width / 4,
     marginBottom: 8,
     alignItems: 'center',
   },
