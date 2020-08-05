@@ -15,7 +15,8 @@
     "an:staging": "yarn gradle:clean && cd android && ./gradlew app:assembleReleaseStaging",
     "release-react": "yarn release-react-ios && yarn release-react-android",
     "release-react-ios": "appcenter codepush release-react --app liulijun0810-gmail.com/ios_cpdemo",
-    "release-react-android": "appcenter codepush release-react --app liulijun0810-gmail.com/android_cpdemo"
+    "release-react-android": "appcenter codepush release-react --app liulijun0810-gmail.com/android_cpdemo",
+    "cp:an:release": "yarn release-react-android -d Production -t 1.0.0 --m false --development false --description '1.相机优化\n\n2.去除多余应用入口'"
   },
   "dependencies": {
     "@react-native-community/art": "^1.2.0",
@@ -60,7 +61,6 @@
     "react-native-svg": "^12.1.0",
     "react-native-swiper": "^1.6.0",
     "react-native-video": "^4.4.5",
-    "react-native-video-controls": "^2.6.0",
     "react-native-view-shot": "^3.1.2",
     "react-native-webview": "^10.3.2",
     "react-native-zip-archive": "^5.0.4",

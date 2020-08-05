@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-29 16:29:39
+ * @LastEditTime: 2020-08-05 14:09:29
  * @Description:
  */
 import React, {Component} from 'react';
@@ -110,11 +110,11 @@ class FrequentlyApp extends Component<any> {
             },
           ),
       },
-      {
-        text: '相机',
-        uri: require('../assets/font13.png'),
-        press: () => resetPage({name: 'cameraPhoto', navigation}),
-      },
+      // {
+      //   text: '相机',
+      //   uri: require('../assets/font13.png'),
+      //   press: () => resetPage({name: 'cameraPhoto', navigation}),
+      // },
       {
         text: '地图',
         uri: require('../assets/font15.png'),
@@ -122,46 +122,46 @@ class FrequentlyApp extends Component<any> {
         press: () => resetPage({name: 'amap', navigation}),
       },
 
+      // {
+      //   text: '相册',
+      //   uri: require('../assets/font9.png'),
+      //   press: () => {
+      //     openPicker()
+      //       .then((image: any) => {
+      //         this.props.fileDataChange(image.path);
+      //       })
+      //       .catch((error) => {
+      //         console.log(error);
+      //       });
+      //   },
+      // },
       {
-        text: '相册',
-        uri: require('../assets/font9.png'),
-        press: () => {
-          openPicker()
-            .then((image: any) => {
-              this.props.fileDataChange(image.path);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        },
-      },
-      {
-        text: '二维码',
+        text: '二维码生成',
         uri: require('../assets/font7.png'),
         press: () => resetPage({name: 'qrcode', navigation}),
       },
-      {
-        text: '极光分享',
-        uri: require('../assets/font2.png'),
-        // press: () => {
-        //   const message = {
-        //     platform: 'wechat_session',
-        //     type: 'text',
-        //     text: 'JShare test text',
-        //     imagePath: '',
-        //   };
-        //   JShareModule.share(
-        //     message,
-        //     (map: any) => {
-        //       console.log('share succeed, map: ' + map);
-        //     },
-        //     (map: any) => {
-        //       console.log('share failed, map: ' + JSON.stringify(map));
-        //     },
-        //   );
-        // },
-        press: () => Alert.alert('此功能已关闭'),
-      },
+      // {
+      //   text: '极光分享',
+      //   uri: require('../assets/font2.png'),
+      //   // press: () => {
+      //   //   const message = {
+      //   //     platform: 'wechat_session',
+      //   //     type: 'text',
+      //   //     text: 'JShare test text',
+      //   //     imagePath: '',
+      //   //   };
+      //   //   JShareModule.share(
+      //   //     message,
+      //   //     (map: any) => {
+      //   //       console.log('share succeed, map: ' + map);
+      //   //     },
+      //   //     (map: any) => {
+      //   //       console.log('share failed, map: ' + JSON.stringify(map));
+      //   //     },
+      //   //   );
+      //   // },
+      //   press: () => Alert.alert('敬请期待!'),
+      // },
       {
         text: '全部',
         uri: require('../assets/font6.png'),
@@ -253,8 +253,8 @@ class Home extends Component<HomeProps> {
             <View style={{height: 150}}>
               <Swiper autoplay>{this.swiperRender(this.Sceenlist)}</Swiper>
             </View>
+            <FrequentlyApp {...this.props} />
             <View style={{margin: 10}}>
-              <FrequentlyApp {...this.props} />
               <Notice list={listData} title="新闻专区" {...this.props} />
               <Notice list={[]} title="公告专区" {...this.props} />
             </View>
@@ -273,34 +273,13 @@ const styles = StyleSheet.create({
   faView: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    // justifyContent: 'space-between',
     alignItems: 'center',
-    justifyContent: 'space-between',
     marginBottom: 8,
   },
   faLink: {
-    minWidth: 66,
-    maxWidth: 74,
+    width: width / 5,
     marginBottom: 8,
     alignItems: 'center',
   },
 });
-
-// const list = [
-//   {
-//     label: '极光推送registerID',
-//     press: () => {
-//       JPush.getRegistrationID((result) =>
-//         Alert.alert('registerID:' + JSON.stringify(result)),
-//       );
-//     },
-//   },
-//   {
-//     label: '文本转图片',
-//     press: () => resetPage({name: 'viewshot', navigation}),
-//   },
-
-//   {
-//     label: '百度地图',
-//     press: () => resetPage({name: 'bdmap', navigation}),
-//   },
-// ];
