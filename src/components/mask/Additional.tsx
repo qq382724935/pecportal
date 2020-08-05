@@ -3,6 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
+  Platform,
   Image,
   TouchableOpacity,
   ImageSourcePropType,
@@ -57,8 +58,8 @@ const styles = StyleSheet.create({
   add: {
     position: 'absolute',
     backgroundColor: '#fff',
-    top: 86,
-    right: 20,
+    top: Platform.OS === 'ios' ? 88 : 56,
+    right: 8,
     minHeight: 50,
     minWidth: 120,
     borderRadius: 5,
