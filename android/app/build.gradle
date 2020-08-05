@@ -136,7 +136,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.pecportal"
+        applicationId "com.pec.portal"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

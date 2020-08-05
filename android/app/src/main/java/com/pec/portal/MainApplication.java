@@ -2,10 +2,11 @@
  * @Author: 刘利军
  * @Date: 2020-06-22 11:12:02
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-09 13:16:08
+ * @LastEditTime: 2020-08-05 13:22:19
  * @Description: 
  */ 
-package com.pecportal;
+// package com.pecportal;
+package com.pec.portal;
 
 import android.app.Application;
 import android.content.Context;
@@ -80,7 +81,7 @@ public class MainApplication extends Application implements ReactApplication {
          We use reflection here to pick up the class that initializes Flipper,
         since Flipper library is not available in release mode
         */
-        Class<?> aClass = Class.forName("com.pecportal.ReactNativeFlipper");
+        Class<?> aClass = Class.forName("com.pec.portal.ReactNativeFlipper");
         aClass
             .getMethod("initializeFlipper", Context.class, ReactInstanceManager.class)
             .invoke(null, context, reactInstanceManager);

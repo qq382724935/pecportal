@@ -2,10 +2,11 @@
  * @Author: 刘利军
  * @Date: 2020-06-22 11:12:02
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-22 11:17:12
+ * @LastEditTime: 2020-08-05 13:21:22
  * @Description: 
  */ 
-package com.pecportal;
+// package com.pecportal;
+package com.pec.portal;
 
 import com.facebook.react.ReactActivity;
 import org.devio.rn.splashscreen.SplashScreen;
