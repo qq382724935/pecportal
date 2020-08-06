@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
-import {Button, Alert, StyleSheet, Text, View} from 'react-native';
+import {
+  Button,
+  Alert,
+  StyleSheet,
+  Text,
+  PermissionsAndroid,
+  View,
+} from 'react-native';
 import {
   init,
   Geolocation,
@@ -10,6 +17,10 @@ import {
 import {MapView} from 'react-native-amap3d';
 const {alert} = Alert;
 interface AMapProps {}
+PermissionsAndroid.requestMultiple([
+  PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+  PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+]);
 export class AMap extends Component<AMapProps> {
   constructor(props: Readonly<AMapProps>) {
     super(props);

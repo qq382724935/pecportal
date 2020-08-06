@@ -1,6 +1,6 @@
 import {loadToken, saveToken} from './storage/index';
 import {STORAGE_KEY} from './keys';
-import {CachesDirectoryPath, downloadFile, unlink, exists} from '../utils/fs';
+import {DocumentDirectoryPath, downloadFile, unlink, exists} from '../utils/fs';
 
 import {unzip} from './zip';
 export const pecJson = require('../assets/pec.json');
@@ -32,10 +32,10 @@ export const auth = async () => {
  * @return:
  */
 export const webApp = async (FPATH: string) => {
-  const toFile = `${CachesDirectoryPath}/${FPATH}`;
+  const toFile = `${DocumentDirectoryPath}/${FPATH}`;
 
   const isExists = await exists(
-    `${CachesDirectoryPath}/${FPATH.split('.zip')[0]}`,
+    `${DocumentDirectoryPath}/${FPATH.split('.zip')[0]}`,
   );
   if (isExists) {
     return;
@@ -50,5 +50,5 @@ export const webApp = async (FPATH: string) => {
     .catch((error) => {
       console.log(`${FPATH}下载失败：`, error);
     });
-  await unzip(toFile, CachesDirectoryPath).then(() => unlink(toFile));
+  await unzip(toFile, DocumentDirectoryPath).then(() => unlink(toFile));
 };

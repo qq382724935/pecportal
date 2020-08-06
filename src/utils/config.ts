@@ -2,10 +2,9 @@
  * @Author: 刘利军
  * @Date: 2020-08-05 16:48:57
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-05 17:28:12
+ * @LastEditTime: 2020-08-05 18:00:15
  * @Description:
  */
-import {resetPage} from '../utils/navigation';
 import {navigate} from '../navigators/RootNavigation';
 
 interface FAListProps {
@@ -56,19 +55,19 @@ export const faList: FAListProps[] = [
     // press: () => Alert.alert('敬请期待！'),
     press: () => navigate('amap'),
   },
-//   {
-//     text: '相册',
-//     uri: require('../assets/font9.png'),
-//     press: () => {
-//       openPicker()
-//         .then((image: any) => {
-//           this.props.fileDataChange(image.path);
-//         })
-//         .catch((error) => {
-//           console.log(error);
-//         });
-//     },
-//   },
+  //   {
+  //     text: '相册',
+  //     uri: require('../assets/font9.png'),
+  //     press: () => {
+  //       openPicker()
+  //         .then((image: any) => {
+  //           this.props.fileDataChange(image.path);
+  //         })
+  //         .catch((error) => {
+  //           console.log(error);
+  //         });
+  //     },
+  //   },
   {
     text: '二维码生成',
     uri: require('../assets/font7.png'),

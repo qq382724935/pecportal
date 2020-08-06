@@ -2,17 +2,19 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-04 11:41:54
+ * @LastEditTime: 2020-08-05 18:02:27
  */
 
 import React, {Component} from 'react';
 import {WebView, WebViewMessageEvent} from 'react-native-webview';
 import StaticServer from 'react-native-static-server';
-import {OS, CachesDirectoryPath, exists} from '../../utils/fs';
+import {OS, DocumentDirectoryPath, exists} from '../../utils/fs';
 import {h5PostMessage} from '../../utils/webview';
 import {Alert} from 'react-native';
 import {connect} from 'react-redux';
 import Loading from './Loading';
+
+const FILE_PATH = DocumentDirectoryPath;
 declare global {
   namespace NodeJS {
     interface Global {
@@ -54,7 +56,7 @@ class Custom extends Component<CustomProps, CustomState> {
   componentDidMount() {
     this.initUri();
   }
-  getFilePtah = (path: string) => `${CachesDirectoryPath}/${path}`;
+  getFilePtah = (path: string) => `${FILE_PATH}/${path}`;
   initUri = async () => {
     const {uri = '', path = ''} = this.props.route.params;
     // path存在
@@ -67,7 +69,7 @@ class Custom extends Component<CustomProps, CustomState> {
         if (OS === 'ios') {
           this.setState({path: this.getFilePtah(path)});
         } else {
-          let server = new StaticServer(9999, CachesDirectoryPath, {
+          let server = new StaticServer(9999, FILE_PATH, {
             localOnly: true,
           });
           server.start().then((value: string) => {
