@@ -1,9 +1,11 @@
 import {loadToken, saveToken} from './storage/index';
 import {STORAGE_KEY} from './keys';
-import {DocumentDirectoryPath, downloadFile, unlink, exists} from '../utils/fs';
+import {downloadFile, unlink, exists} from '../utils/fs';
 
 import {unzip} from './zip';
 export const pecJson = require('../assets/pec.json');
+
+import {FILES_PATH} from '../utils/common';
 // 初始化路由
 export const auth = async () => {
   const advertising = await loadToken({key: 'config'})
@@ -32,11 +34,8 @@ export const auth = async () => {
  * @return:
  */
 export const webApp = async (FPATH: string) => {
-  const toFile = `${DocumentDirectoryPath}/${FPATH}`;
-
-  const isExists = await exists(
-    `${DocumentDirectoryPath}/${FPATH.split('.zip')[0]}`,
-  );
+  const toFile = `${FILES_PATH}/${FPATH}`;
+  const isExists = await exists(`${FILES_PATH}/${FPATH.split('.zip')[0]}`);
   if (isExists) {
     return;
   }
@@ -50,5 +49,5 @@ export const webApp = async (FPATH: string) => {
     .catch((error) => {
       console.log(`${FPATH}下载失败：`, error);
     });
-  await unzip(toFile, DocumentDirectoryPath).then(() => unlink(toFile));
+  await unzip(toFile, FILES_PATH).then(() => unlink(toFile));
 };

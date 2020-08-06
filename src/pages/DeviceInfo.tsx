@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-05-20 17:03:46
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-23 08:45:06
+ * @LastEditTime: 2020-08-06 15:13:38
  */
 
 import React, {Component} from 'react';
@@ -20,6 +20,8 @@ import {
 import NetInfo from '@react-native-community/netinfo';
 
 import {ItemData} from '../types/common';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {ScrollView} from 'react-native-gesture-handler';
 
 const renderItem = (item: ItemData, index: string) => {
   return (
@@ -105,10 +107,14 @@ class DeviceInfo extends Component {
       },
     ];
     return (
-      <View>
-        {list.map((item, index) => renderItem(item, `list1${index}`))}
-        {list2.map((item, index) => renderItem(item, `list2${index}`))}
-      </View>
+      <SafeAreaView>
+        <ScrollView>
+          <View>
+            {list.map((item, index) => renderItem(item, `list1${index}`))}
+            {list2.map((item, index) => renderItem(item, `list2${index}`))}
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     );
   }
 }
