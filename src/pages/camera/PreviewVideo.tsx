@@ -1,14 +1,11 @@
-import React, {Component, PureComponent} from 'react';
-import {StyleSheet, Platform, View, Text} from 'react-native';
-
+import React, {Component} from 'react';
+import {StyleSheet, Platform, View} from 'react-native';
 import Video from 'react-native-video';
 import VideoPlayer from 'react-native-video-controls';
-
 export interface PreviewVideoProps {
   result: ResultProps;
   navigation: any;
 }
-
 export interface ResultProps {
   codec: string;
   uri: string;

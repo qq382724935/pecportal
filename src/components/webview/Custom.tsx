@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-05 18:02:27
+ * @LastEditTime: 2020-08-07 11:16:05
  */
 
 import React, {Component} from 'react';
@@ -83,20 +83,8 @@ class Custom extends Component<CustomProps, CustomState> {
       this.setState({uri});
     }
   };
-  isJson = (data: any) => {
-    try {
-      if (typeof JSON.parse(data) === 'object') {
-        return JSON.parse(data);
-      }
-    } catch (e) {
-      Alert.alert('API调用失败，必须是正确的格式!');
-      return '';
-    }
-  };
   messageChange = (event: WebViewMessageEvent) => {
-    const data = this.isJson(event.nativeEvent.data);
-    console.log('wbview messageChange: ', data);
-    data && h5PostMessage(data, this.props.navigation);
+    h5PostMessage(event.nativeEvent.data, this.props.navigation);
   };
   webviewRender = () => {
     const {uri, path, progress} = this.state;

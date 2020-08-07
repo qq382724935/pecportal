@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-08-05 16:48:57
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-06 16:03:19
+ * @LastEditTime: 2020-08-07 10:01:31
  * @Description:
  */
 import React from 'react';
@@ -74,8 +74,8 @@ export const faList: FAListProps[] = [
     sort: 99,
     params: {
       title: 'H5',
-      // uri: 'http://192.168.1.194:8080/a.html',
-      uri: 'http://shwt.pec.com.cn:8086/liulijun/a.html',
+      uri: 'http://192.168.1.194/h5/index.html',
+      // uri: 'http://shwt.pec.com.cn:8086/liulijun/a.html',
       path: 'h5',
     },
   },
@@ -226,8 +226,9 @@ export const noticeList = [];
 
 // 公共路径
 import {DocumentDirectoryPath, CachesDirectoryPath} from '../utils/fs';
-export const FILES_PATH = DocumentDirectoryPath;
-export const CACHES_PATH = CachesDirectoryPath;
+export const FILES_PATH = `file://${DocumentDirectoryPath}`;
+export const CACHES_PATH = `file://${CachesDirectoryPath}`;
+export const IMAGE_PORTAL = `${FILES_PATH}/image/portal`;
 
 const styles = StyleSheet.create({
   faLink: {
@@ -236,3 +237,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
+//  项目唯一key定义，避免重复
+export const STORAGE_KEY = {
+  LOGIN: 'USER',
+};

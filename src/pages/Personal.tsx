@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-20 16:01:17
+ * @LastEditTime: 2020-08-06 16:13:57
  */
 import React, {Component} from 'react';
 import {Button, View, Text, Alert} from 'react-native';
@@ -11,7 +11,7 @@ import {List, Button as myButton} from '../components/index';
 
 import {qtData, dtData, QueryTableDataProps} from '../utils/sqlite';
 import {loadToken, removeToken} from '../utils/storage';
-import {STORAGE_KEY} from '../utils/keys';
+import {STORAGE_KEY} from '../utils/common';
 import {resetHome, resetLogin} from '../utils/navigation';
 import {connect} from 'react-redux';
 

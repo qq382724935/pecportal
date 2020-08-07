@@ -2,14 +2,14 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-10 10:50:29
+ * @LastEditTime: 2020-08-06 16:13:50
  * @Description:
  */
 import React, {useEffect, Component} from 'react';
 import {SafeAreaView, View, Text, Switch} from 'react-native';
 import {resetHome} from '../utils/navigation';
 import {loadToken, saveToken} from '../utils/storage/index';
-import {STORAGE_KEY} from '../utils/keys';
+import {STORAGE_KEY} from '../utils/common';
 import {Form} from '../components/index';
 
 const Advert = ({navigation}: any) => {

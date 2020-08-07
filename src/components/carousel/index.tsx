@@ -36,53 +36,40 @@ interface RenderItem {
   index: number;
 }
 class CarouselCustom extends PureComponent<CarouselCustomProps> {
-  state = {
-    index: 0,
-  };
-
-  // UNSAFE_componentWillReceiveProps(nextProps: any) {
-  //   if (nextProps.data.length === nextProps.carouselKey) {
-  //     this.setState({index: nextProps.carouselKey - 1});
-  //   } else {
-  //     this.setState({index: nextProps.carouselKey});
-  //   }
-  // }
-
+  state = {index: 0};
   renderItem = (
     {item, index}: RenderItem,
     parallaxProps: AdditionalParallaxProps,
   ) => {
     return (
-      <>
-        <View
-          style={{
-            ...styles.item,
-            marginTop: Platform.OS === 'android' ? 12 : 0,
-          }}>
-          <ParallaxImage
-            source={{uri: item.illustration}}
-            containerStyle={[styles.imageContainer]}
-            style={styles.image}
-            parallaxFactor={0}
-            {...parallaxProps}
-          />
-          <>
-            <View style={styles.delete}>
-              <Text style={{fontSize: 16, color: '#fff', letterSpacing: 2}}>
-                第{index + 1}/{this.props.data.length}张
-              </Text>
-            </View>
-            <View style={styles.delete}>
-              <TouchableOpacity onPress={() => this.props.onChange(index)}>
-                <Image
-                  style={{width: 32, height: 32}}
-                  source={require('../../assets/icon/delete.png')}
-                />
-              </TouchableOpacity>
-            </View>
-          </>
-        </View>
-      </>
+      <View
+        style={{
+          ...styles.item,
+          marginTop: Platform.OS === 'android' ? 12 : 0,
+        }}>
+        <ParallaxImage
+          source={{uri: item.illustration}}
+          containerStyle={[styles.imageContainer]}
+          style={styles.image}
+          parallaxFactor={0}
+          {...parallaxProps}
+        />
+        <>
+          <View style={styles.delete}>
+            <Text style={{fontSize: 16, color: '#fff', letterSpacing: 2}}>
+              第{index + 1}/{this.props.data.length}张
+            </Text>
+          </View>
+          <View style={styles.delete}>
+            <TouchableOpacity onPress={() => this.props.onChange(index)}>
+              <Image
+                style={{width: 32, height: 32}}
+                source={require('../../assets/icon/delete.png')}
+              />
+            </TouchableOpacity>
+          </View>
+        </>
+      </View>
     );
   };
 

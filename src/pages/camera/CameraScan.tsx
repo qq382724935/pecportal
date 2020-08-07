@@ -1,12 +1,13 @@
 import React, {PureComponent} from 'react';
 import {StyleSheet} from 'react-native';
 import {RNCamera} from 'react-native-camera';
-// import {switchType} from '../../utils/cameraroll';
 import BarcodeMask from 'react-native-barcode-mask';
 import {resetPage} from '../../utils/navigation';
 import {Back} from '../../components';
+import {postMessageH5, PEC_MODULE} from '../../utils/webview';
 export interface CameraScanProps {
   navigation: any;
+  route: any;
 }
 export interface CameraScanState {
   scandata: any;
@@ -15,9 +16,7 @@ export interface CameraScanState {
 class CameraScan extends PureComponent<CameraScanProps, CameraScanState> {
   constructor(props: Readonly<CameraScanProps>) {
     super(props);
-    this.state = {
-      scandata: null,
-    };
+    this.state = {scandata: null};
   }
   unsubscribe: any;
   componentDidMount() {
@@ -30,10 +29,21 @@ class CameraScan extends PureComponent<CameraScanProps, CameraScanState> {
   onBarCodeRead = (scandata: any) => {
     if (!this.state.scandata) {
       this.setState({scandata});
-      resetPage(
-        {name: 'cameraScanPreview', navigation: this.props.navigation},
-        {scandata},
-      );
+      const {
+        navigation: {goBack},
+        route,
+      } = this.props;
+      const pageType = route.params && route.params.pageType;
+      // H5调用 直接返回结果给H5
+      if (pageType === 2) {
+        postMessageH5({moduleName: PEC_MODULE.PEC_SCAN.value, data: scandata});
+        goBack();
+      } else {
+        resetPage(
+          {name: 'cameraScanPreview', navigation: this.props.navigation},
+          {scandata},
+        );
+      }
     }
   };
   componentWillUnmount() {
@@ -45,6 +55,7 @@ class CameraScan extends PureComponent<CameraScanProps, CameraScanState> {
       navigation: {goBack},
     } = this.props;
     const {scandata} = this.state;
+
     return (
       <>
         <RNCamera onBarCodeRead={this.onBarCodeRead} style={styles.preview}>

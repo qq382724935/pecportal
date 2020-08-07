@@ -10,7 +10,7 @@ import {StyleSheet, View, Alert} from 'react-native';
 import {saveToken} from '../utils/storage';
 import {resetHome, resetRegister} from '../utils/navigation';
 import {qtData} from '../utils/sqlite';
-import {STORAGE_KEY} from '../utils/keys';
+import {STORAGE_KEY} from '../utils/common';
 
 import {Form} from '../components/index';
 import {APLSButton, TextButton} from '../components/button/index';

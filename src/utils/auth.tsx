@@ -1,5 +1,5 @@
 import {loadToken, saveToken} from './storage/index';
-import {STORAGE_KEY} from './keys';
+import {STORAGE_KEY} from './common';
 import {downloadFile, unlink, exists} from '../utils/fs';
 
 import {unzip} from './zip';

@@ -98,9 +98,11 @@ export const readFile = (
 export const listReadFile = async (data: string[], encoding = 'utf8') => {
   let _data: string[] = [];
   for (let index = 0; index < data.length; index++) {
-    await readFile(data[index], encoding).then((base) => {
-      _data.push(`data:image/jpeg;base64,${base}`);
-    });
+    await readFile(data[index], encoding)
+      .then((base) => {
+        _data.push(`data:image/jpeg;base64,${base}`);
+      })
+      .catch(() => {}); // 这边是防止传入文件不存在
   }
   return _data;
 };
