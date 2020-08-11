@@ -11,8 +11,6 @@ class Qrcode extends Component<QrcodeProps> {
   }
   render() {
     const {content, info} = this.props.route.params;
-    console.log(content);
-    // console.log(qrCodeDataValue());
     return (
       <View
         style={{
