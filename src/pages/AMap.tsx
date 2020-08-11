@@ -3,9 +3,9 @@ import {
   Button,
   Alert,
   StyleSheet,
-  Text,
   PermissionsAndroid,
   View,
+  Platform,
 } from 'react-native';
 import {
   init,
@@ -14,62 +14,46 @@ import {
   addLocationListener,
 } from 'react-native-amap-geolocation';
 // 使用自己申请的高德 App Key 进行初始化
-import {MapView} from 'react-native-amap3d';
+import {MapView, LatLng} from 'react-native-amap3d';
+import {getDistance} from 'geolib';
+import {postMessageH5, PEC_MODULE} from '../utils/webview';
 const {alert} = Alert;
-interface AMapProps {}
-PermissionsAndroid.requestMultiple([
-  PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-  PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
-]);
+interface AMapProps {
+  route: any;
+}
+Platform.OS === 'android' &&
+  PermissionsAndroid.requestMultiple([
+    PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+    PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+  ]);
+const ZOMM_LEVEL = 16;
+const RADIUS = 100;
 export class AMap extends Component<AMapProps> {
   constructor(props: Readonly<AMapProps>) {
     super(props);
-    this.initMap();
   }
   state = {
-    latitude: 31.21847113715278,
-    longitude: 121.36036838107638,
-    time: new Date(),
-  };
-  mapView: any;
-  _coordinates = [
-    {
-      latitude: 40.05709979076149,
-      longitude: 116.3879666289858,
-    },
-    {
-      latitude: 39.806901,
-      longitude: 116.297972,
-    },
-    {
+    circle: {
       latitude: 39.906901,
       longitude: 116.397972,
     },
-    {
-      latitude: 39.706901,
+    marker: {
+      latitude: 39.906901,
       longitude: 116.397972,
     },
-    {
-      latitude: 40.06688438705133,
-      longitude: 116.18563522088219,
-    },
-    {
-      latitude: 40.027311378843564,
-      longitude: 116.17952081121598,
-    },
-    {
-      latitude: 39.99793594682176,
-      longitude: 116.17062708823417,
-    },
-  ];
+  };
+  mapView: any;
   initMap = async () => {
     await init({
       ios: '1500d840227f49e3fcbfb7f8463a3382',
       android: '53866f0e985f22e495b4a8f1a26bc1d3',
     });
   };
-  componentDidMount() {
+
+  async componentDidMount() {
+    await this.initMap();
     setLocatingWithReGeocode(true);
+    this.isGeo() && this.getCurrentPosition();
     addLocationListener((location) => {
       if (location.errorCode !== 0) {
         alert(`${location.locationDetail}`);
@@ -79,103 +63,141 @@ export class AMap extends Component<AMapProps> {
 
   getCurrentPosition = () => {
     Geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
-      this.setState({latitude, longitude});
+      this.setState({
+        marker: {latitude, longitude},
+        circle: {latitude, longitude},
+      });
       if (this.mapView) {
         this.mapView.setStatus(
-          {tilt: 0, rotation: 0, zoomLevel: 16, center: {latitude, longitude}},
-          1000,
+          {
+            tilt: 0,
+            rotation: 0,
+            center: {latitude, longitude},
+            zoomLevel: this.props.route.params.zoomLevel || 16,
+          },
+          10, // 地图显示的时间
         );
       }
     });
   };
   _onMarkerPress = () => alert('onPress');
   _onInfoWindowPress = () => alert('onInfoWindowPress');
-  drag = ({latitude, longitude}: any) =>
-    console.log(`${latitude},${longitude}`);
+  drag = (data: LatLng) => {
+    const {marker, circle} = this.state;
+    const markerT = marker;
+    this.setState({marker: data}, () => {
+      if (this.isRice(getDistance(circle, data))) {
+        this.setState({marker: markerT});
+        this.mapView.setStatus({center: circle}, 10);
+      }
+    });
+  };
+
+  // 是否是H5打开
+  isH5 = () => this.props.route.params.pageType === '2';
+  // 是否是定位
+  isGeo = () => this.props.route.params.moduleName === 'PEC_MAP_GEOLOCATION';
+  // 是否超过Circle radius半径
+  radius = () => {
+    if (this.isH5()) {
+      return this.props.route.params.radius / 2;
+    }
+    return RADIUS;
+  };
+  isRice = (distance: number) => distance > this.radius();
+  // 定位显示按钮判断
+  geoFooter = () => {
+    return (
+      <View style={{marginBottom: 16}}>
+        {this.isH5() ? (
+          <Button
+            title="确认"
+            onPress={() => {
+              postMessageH5({
+                moduleName: PEC_MODULE.PEC_MAP_GEOLOCATION.value,
+                data: {...this.state},
+              });
+            }}
+          />
+        ) : (
+          <Button title="定位" onPress={this.getCurrentPosition} />
+        )}
+      </View>
+    );
+  };
+  // 定位mapview相关渲染
+  GeoRender = () => {
+    const {marker, circle} = this.state;
+    if (this.isGeo() || !this.isH5()) {
+      return (
+        <>
+          <MapView.Circle
+            strokeWidth={1}
+            strokeColor="rgba(0, 0, 255, 0.5)"
+            fillColor="rgba(255, 0, 0, 0.5)"
+            radius={this.radius() || RADIUS}
+            coordinate={circle}
+          />
+          <MapView.Marker
+            active
+            draggable
+            title="长按调整位置"
+            onDragEnd={this.drag}
+            // onInfoWindowPress={this._onInfoWindowPress}
+            coordinate={marker}
+          />
+        </>
+      );
+    }
+    return null;
+  };
+  AMap3D = () => {
+    if (!this.isGeo()) {
+      const {markerList = []} = this.props.route.params;
+      interface MarkerListProps {
+        color: string;
+        coordinate: LatLng;
+      }
+      const markerPress = (data: MarkerListProps) => {
+        postMessageH5({
+          moduleName: PEC_MODULE.PEC_MAP_AMAP3D.value,
+          data: data,
+        });
+      };
+      return (
+        <>
+          {markerList.map((item: MarkerListProps, index: number) => (
+            <MapView.Marker
+              infoWindowDisabled={true}
+              key={`${index}`}
+              color={item.color ? item.color : 'red'}
+              coordinate={item.coordinate}
+              onPress={() => markerPress({...item})}
+            />
+          ))}
+        </>
+      );
+    }
+    return null;
+  };
   render() {
+    const {zoomLevel} = this.props.route.params;
     return (
       <View style={StyleSheet.absoluteFill}>
         <MapView
           ref={(ref) => {
             this.mapView = ref;
           }}
+          zoomLevel={zoomLevel || ZOMM_LEVEL}
           style={{flex: 1}}>
-          <MapView.Marker coordinate={this.state} />
-          <MapView.Circle
-            strokeWidth={1}
-            strokeColor="rgba(0, 0, 255, 0.5)"
-            fillColor="rgba(255, 0, 0, 0.5)"
-            radius={50}
-            coordinate={this.state}
-          />
-
-          <MapView.Marker
-            active
-            draggable
-            title="一个可拖拽的标记"
-            onDragEnd={this.drag}
-            onInfoWindowPress={this._onInfoWindowPress}
-            coordinate={this._coordinates[0]}
-          />
-          <MapView.Marker coordinate={this._coordinates[1]} />
-          <MapView.Marker
-            image="flag"
-            title="自定义图片"
-            onPress={this._onMarkerPress}
-            coordinate={this._coordinates[2]}
-          />
-          <MapView.Marker
-            title="自定义 View"
-            icon={() => (
-              <View style={styles.customMarker}>
-                <Text style={styles.markerText}>
-                  {this.state.time.toLocaleTimeString()}
-                </Text>
-              </View>
-            )}
-            coordinate={this._coordinates[3]}
-          />
-
-          <MapView.Marker color="red" coordinate={this._coordinates[4]} />
-          <MapView.Marker coordinate={this._coordinates[6]} />
-          <MapView.Marker color="green" coordinate={this._coordinates[5]} />
+          <this.GeoRender />
+          <this.AMap3D />
         </MapView>
-        <View style={{marginBottom: 16}}>
-          <Button
-            title="定位"
-            onPress={() => {
-              this.getCurrentPosition();
-            }}
-          />
-        </View>
+        {/* 定位或者壳子定入显示 */}
+        {(this.isGeo() || !this.isH5()) && this.geoFooter()}
       </View>
     );
   }
 }
 
 export default AMap;
-
-const styles = StyleSheet.create({
-  customIcon: {
-    width: 40,
-    height: 40,
-  },
-  customInfoWindow: {
-    backgroundColor: '#8bc34a',
-    padding: 10,
-    borderRadius: 10,
-    elevation: 4,
-    borderWidth: 2,
-    borderColor: '#689F38',
-    marginBottom: 5,
-  },
-  customMarker: {
-    backgroundColor: '#009688',
-    alignItems: 'center',
-    borderRadius: 5,
-    padding: 5,
-  },
-  markerText: {
-    color: '#fff',
-  },
-});

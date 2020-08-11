@@ -1,31 +1,29 @@
 import React, {Component} from 'react';
-import {View, Button} from 'react-native';
+import {View, Text} from 'react-native';
 import QRCode from 'react-native-qrcode-svg';
 
-class Qrcode extends Component {
-  state = {qrValue: new Date().toString()};
+export interface QrcodeProps {
+  route: any;
+}
+class Qrcode extends Component<QrcodeProps> {
+  constructor(props: Readonly<QrcodeProps>) {
+    super(props);
+  }
   render() {
+    const {content, info} = this.props.route.params;
+    console.log(content);
+    // console.log(qrCodeDataValue());
     return (
       <View
         style={{
           flex: 1,
           alignItems: 'center',
-          justifyContent: 'center',
+          padding: 16,
         }}>
-        <View style={{marginBottom: 16}}>
-          <Button
-            title="刷新"
-            onPress={() => {
-              this.setState({qrValue: new Date().toString()});
-            }}
-          />
+        <QRCode size={200} value={content} logoSize={50} />
+        <View style={{marginTop: 16}}>
+          <Text>二维码概要信息：{info}</Text>
         </View>
-        <QRCode
-          size={200}
-          value={this.state.qrValue}
-          logo={require('../assets/logo.png')}
-          logoSize={50}
-        />
       </View>
     );
   }

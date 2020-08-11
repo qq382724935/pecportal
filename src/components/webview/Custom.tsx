@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-07 11:16:05
+ * @LastEditTime: 2020-08-10 13:07:29
  */
 
 import React, {Component} from 'react';
@@ -10,7 +10,6 @@ import {WebView, WebViewMessageEvent} from 'react-native-webview';
 import StaticServer from 'react-native-static-server';
 import {OS, DocumentDirectoryPath, exists} from '../../utils/fs';
 import {h5PostMessage} from '../../utils/webview';
-import {Alert} from 'react-native';
 import {connect} from 'react-redux';
 import Loading from './Loading';
 
@@ -95,7 +94,7 @@ class Custom extends Component<CustomProps, CustomState> {
           <WebView
             containerStyle={{flex: progress === 1 ? 1 : 0}}
             ref={(r) => (global.wevref = r)}
-            source={{uri}}
+            source={{uri, headers: {'cache-control': 'no-cache'}}}
             javaScriptEnabled={true}
             cacheEnabled={false}
             cacheMode="LOAD_NO_CACHE"

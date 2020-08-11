@@ -10,10 +10,7 @@ export interface PreviewShootProps {
 }
 export class PreviewShoot extends PureComponent<PreviewShootProps> {
   render() {
-    const {
-      data,
-      navigation: {goBack},
-    } = this.props;
+    const {data} = this.props;
     return (
       <View>
         <Text
@@ -33,10 +30,9 @@ export class PreviewShoot extends PureComponent<PreviewShootProps> {
               });
             };
             postMessageH5({
-              moduleName: PEC_MODULE.PEC_CAMERA_PHOTO,
+              moduleName: PEC_MODULE.PEC_CAMERA_PHOTO.value,
               data: await imageSave(),
             });
-            goBack();
           }}>
           保存
         </Text>

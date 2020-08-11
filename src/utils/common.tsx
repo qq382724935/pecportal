@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-08-05 16:48:57
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-07 10:01:31
+ * @LastEditTime: 2020-08-11 11:22:25
  * @Description:
  */
 import React from 'react';
@@ -22,7 +22,7 @@ export interface FAListProps {
   type: string;
   icon: any;
   applicationType: string;
-  params?: any;
+  params: any;
   sort: number;
 }
 // applicationType 应用所属类别
@@ -39,6 +39,7 @@ export const faList: FAListProps[] = [
     params: {
       uri: 'https://ecrc.pec.com.cn/#/main/510011040421/5100/ios',
       title: 'ECRC',
+      pageType: '1',
     },
     // press: () => navigate('WView'),
   },
@@ -49,7 +50,11 @@ export const faList: FAListProps[] = [
     type: 'webview',
     applicationType: '子公司应用',
     sort: 99,
-    params: {uri: 'https://csmudh.upbuy.com.cn/', title: 'U订货'},
+    params: {
+      uri: 'https://csmudh.upbuy.com.cn/',
+      title: 'U订货',
+      pageType: '1',
+    },
     // press: () => navigate('WView', {uri: 'https://csmudh.upbuy.com.cn/', title: 'U订货'}),
   },
   {
@@ -63,6 +68,7 @@ export const faList: FAListProps[] = [
       title: '运营中台',
       uri: 'http://shwt.pec.com.cn:8086/frontend/dianwei/index.html',
       path: 'dianwei',
+      pageType: '1',
     },
   },
   {
@@ -77,6 +83,7 @@ export const faList: FAListProps[] = [
       uri: 'http://192.168.1.194/h5/index.html',
       // uri: 'http://shwt.pec.com.cn:8086/liulijun/a.html',
       path: 'h5',
+      pageType: '1',
     },
   },
   {
@@ -86,6 +93,7 @@ export const faList: FAListProps[] = [
     applicationType: '子公司应用',
     icon: require('../assets/font15.png'),
     sort: 99,
+    params: {pageType: '1'},
   },
 
   {
@@ -95,6 +103,7 @@ export const faList: FAListProps[] = [
     applicationType: '原生服务',
     icon: require('../assets/font7.png'),
     sort: 99,
+    params: {pageType: '1'},
     // press: () => navigate('qrcode'),
   },
   {
@@ -104,6 +113,7 @@ export const faList: FAListProps[] = [
     uri: 'deviceinfo',
     applicationType: '原生服务',
     sort: 1,
+    params: {pageType: '1'},
   },
   {
     type: 'page',
@@ -112,6 +122,7 @@ export const faList: FAListProps[] = [
     uri: 'files',
     applicationType: '原生服务',
     sort: 1,
+    params: {pageType: '1'},
   },
   {
     type: 'page',
@@ -120,6 +131,7 @@ export const faList: FAListProps[] = [
     uri: 'viewshot',
     applicationType: '原生服务',
     sort: 99,
+    params: {pageType: '1'},
   },
   {
     type: 'page',
@@ -128,6 +140,7 @@ export const faList: FAListProps[] = [
     uri: 'application',
     applicationType: '全部',
     sort: 1,
+    params: {pageType: '1'},
   },
   {
     text: '极光分享',
@@ -136,6 +149,7 @@ export const faList: FAListProps[] = [
     type: 'plugin',
     applicationType: '原生服务',
     sort: 0,
+    params: {pageType: '1'},
     // press: () => {
     //   const message = {
     //     platform: 'wechat_session',
@@ -161,6 +175,7 @@ export const faList: FAListProps[] = [
     type: 'plugin',
     applicationType: '原生服务',
     sort: 0,
+    params: {pageType: '1'},
     // press: () => {
     //   openPicker()
     //     .then((image: any) => {
@@ -195,7 +210,7 @@ export const appRednder = (list: FAListProps[], navigation: any) => {
             resetPage({name: item.uri, navigation}, item.params);
             break;
           case 'page':
-            resetPage({name: item.uri, navigation});
+            resetPage({name: item.uri, navigation}, item.params);
             break;
         }
       }}>
@@ -242,3 +257,28 @@ const styles = StyleSheet.create({
 export const STORAGE_KEY = {
   LOGIN: 'USER',
 };
+
+/** 设备信息获取相关开始 */
+
+import {
+  getDeviceId,
+  getSystemVersion,
+  getSystemName,
+  getModel,
+} from 'react-native-device-info';
+import NetInfo from '@react-native-community/netinfo';
+export const getDeviceInfo = () => ({
+  deviceId: getDeviceId(),
+  model: getModel(),
+  systemName: getSystemName(),
+  systemVersion: getSystemVersion(),
+});
+
+export const getNetInfo = async () => {
+  const netData = await NetInfo.fetch()
+    .then((state) => state)
+    .catch(() => '网络状态获取失败');
+  return netData;
+};
+
+/** 设备信息获取相关结束 */
