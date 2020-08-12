@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-07-28 13:42:43
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-11 11:09:17
+ * @LastEditTime: 2020-08-12 14:19:26
  * @Description:
  */
 import {resetPage} from './navigation';
@@ -91,7 +91,7 @@ const myExecute = async (
     default:
       resetPage(
         {name: PEC_MODULE[moduleName].route, navigation},
-        {...data, pageType: '2', moduleName}, // 1: 原生，2：H5 ，其它页面一开始没做处理，无值就默认为原生
+        {initData: {...data, pageType: '2', moduleName}}, // 1: 原生，2：H5 ，其它页面一开始没做处理，无值就默认为原生
       );
       break;
   }

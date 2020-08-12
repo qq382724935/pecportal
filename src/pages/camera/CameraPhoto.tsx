@@ -17,6 +17,7 @@ const {alert} = Alert;
 import PreviewPicture from './PreviewPicture';
 import PreviewShoot from './PreviewShoot';
 import {Back, CarouselCustom} from '../../components';
+import Marker, {Position} from 'react-native-image-marker';
 
 // true 照片，false 视频
 const getSwitchType = (switchState: string) => switchType[0] === switchState;
@@ -37,14 +38,26 @@ interface CameraState {
 }
 interface CameraProps {
   navigation: any;
-  route: any;
+  route: {
+    params: {
+      initData: {
+        pageType: string;
+        type: string;
+        continuous: boolean;
+        watermark: string;
+      };
+    };
+  };
 }
 class Camera extends PureComponent<CameraProps, CameraState> {
   constructor(props: Readonly<CameraProps>) {
     super(props);
     this.state = {
       flashMode: RNCamera.Constants.FlashMode.off, // 闪光灯模式
-      cameraType: RNCamera.Constants.Type.back, // 相机模式 前置后置
+      cameraType:
+        this.getInitData().type === 'front'
+          ? RNCamera.Constants.Type.front
+          : RNCamera.Constants.Type.back, // 相机模式 前置后置
       switchState: switchType[0], // 相机状态 ，照片，录制中，未录制
       fileData: [
         // {
@@ -57,7 +70,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
       elapsed: 0, // 视频计时
       photoPng: require('../../assets/photo.png'), // 相机按钮图案
       recording: false, // 是否开启录制 默认false 否
-      photoStatus: true, // 拍照模式 默认:true 连拍
+      photoStatus: this.getInitData().continuous, // 拍照模式 默认:true 连拍
       showPreview: false, // 连拍预览：默认 false 不显示
       type: 'photo', // 预览类型 photo：拍照，video：视频
       timeRed: new Animated.Value(1),
@@ -66,6 +79,10 @@ class Camera extends PureComponent<CameraProps, CameraState> {
   camera: any;
   recordingTimer: any; // 录制时间Timeout返回值，卸载组件需要清除
   recordingTimeOut: any; // 恢复相机状态
+
+  isH5 = () => this.getInitData().pageType === '2';
+  getInitData = () => this.props.route.params.initData;
+
   // 拍照结束设置图片路径
   fileDataChange = (fileData: string) => {
     const {photoStatus, type} = this.state;
@@ -154,13 +171,41 @@ class Camera extends PureComponent<CameraProps, CameraState> {
     }
   };
 
-  // 开始拍照
+  // 拍照
   takePicture = async () => {
     if (this.camera) {
       const options = {quality: 0.5, base64: true};
       try {
         const data = await this.camera.takePictureAsync(options);
-        this.fileDataChange(data.uri);
+        const {watermark} = this.getInitData();
+        if (watermark) {
+          Marker.markText({
+            src: data.uri,
+            text: watermark,
+            position: Position.center,
+            color: '#FF0000',
+            fontName: 'Arial-BoldItalicMT',
+            fontSize: 88,
+            scale: 1,
+            quality: 100,
+            shadowStyle: {
+              dx: 0,
+              dy: 0,
+              radius: 0,
+              color: '#0000FF',
+            },
+            textBackgroundStyle: {
+              type: 'stretchX',
+              paddingX: 0,
+              paddingY: 0,
+              color: '',
+            },
+          }).then((image) => {
+            this.fileDataChange(`file:///${image}`);
+          });
+        } else {
+          this.fileDataChange(data.uri);
+        }
       } catch (e) {
         console.log(e);
       }
@@ -339,6 +384,7 @@ class Camera extends PureComponent<CameraProps, CameraState> {
             onChange={this.fileDataChange}
             type={type}
             navigation={this.props.navigation}
+            H5={this.isH5()}
           />
         ) : (
           <>
@@ -447,13 +493,17 @@ class Camera extends PureComponent<CameraProps, CameraState> {
                           <Text
                             style={{color: '#ffffff'}}
                             onPress={() => {
+                              if (this.isH5()) {
+                                return;
+                              }
                               this.resetFileData(() => {
                                 this.setState({
                                   photoStatus: !photoStatus,
                                 });
                               });
                             }}>
-                            切换模式({photoStatus ? '连拍' : '单拍'})
+                            {!this.isH5() && '切换模式'}(
+                            {photoStatus ? '连拍' : '单拍'})
                           </Text>
                         </View>
                       )}
@@ -480,45 +530,51 @@ class Camera extends PureComponent<CameraProps, CameraState> {
                   ) : (
                     <>
                       {/* 停止录制视频或者拍照模式组件 */}
-                      {showPreview ? null : (
-                        <View
-                          style={{
-                            ...styles.switch,
-                            marginLeft: !getSwitchType(switchState) ? 60 : 0,
-                            marginRight: getSwitchType(switchState) ? 30 : 0,
-                          }}>
-                          <Text
-                            style={{
-                              ...styles.choiceText,
-                              fontSize: 16,
-                              color: !getSwitchType(switchState)
-                                ? '#f4ea2a'
-                                : '#ffffff',
-                            }}
-                            onPress={() => {
-                              this.switchChange(switchType[1]);
-                            }}>
-                            视频
-                          </Text>
-                          <Text
-                            style={{
-                              ...styles.choiceText,
-                              fontSize: 16,
-                              color: getSwitchType(switchState)
-                                ? '#f4ea2a'
-                                : '#ffffff',
-                            }}
-                            onPress={() => {
-                              this.switchChange(switchType[0]);
-                            }}>
-                            照片
-                          </Text>
-                        </View>
-                      )}
+                      {showPreview
+                        ? null
+                        : !this.isH5() && (
+                            <View
+                              style={{
+                                ...styles.switch,
+                                marginLeft: !getSwitchType(switchState)
+                                  ? 60
+                                  : 0,
+                                marginRight: getSwitchType(switchState)
+                                  ? 30
+                                  : 0,
+                              }}>
+                              <Text
+                                style={{
+                                  ...styles.choiceText,
+                                  fontSize: 16,
+                                  color: !getSwitchType(switchState)
+                                    ? '#f4ea2a'
+                                    : '#ffffff',
+                                }}
+                                onPress={() => {
+                                  this.switchChange(switchType[1]);
+                                }}>
+                                视频
+                              </Text>
+                              <Text
+                                style={{
+                                  ...styles.choiceText,
+                                  fontSize: 16,
+                                  color: getSwitchType(switchState)
+                                    ? '#f4ea2a'
+                                    : '#ffffff',
+                                }}
+                                onPress={() => {
+                                  this.switchChange(switchType[0]);
+                                }}>
+                                照片
+                              </Text>
+                            </View>
+                          )}
 
                       {/* 打开相册，拍照，录制视频按钮，摄像头切换 */}
                       <View style={{...styles.switch, ...styles.operation}}>
-                        {fileData.length > 0 || !photoStatus ? (
+                        {fileData.length > 0 && photoStatus ? (
                           <TouchableOpacity
                             onPress={() => {
                               // 相册icon点击事件，false:单拍显示相册，true：连拍设置showPreview显示PreviewShoot组件

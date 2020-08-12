@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-23 14:14:26
+ * @LastEditTime: 2020-08-12 16:26:50
  */
 
 import React, {PureComponent} from 'react';
@@ -28,6 +28,7 @@ import CameraScanPreview from '../pages/camera/CameraScanPreview';
 
 import {WView, Mask} from '../components/index';
 import {navigationRef, navigate} from './RootNavigation.js';
+
 interface RouteOptions {
   title?: string;
   headerLeft?: any;
@@ -188,7 +189,7 @@ class AppNavigator extends PureComponent<PropsEntry> {
             type: 'app/updateState',
             payload: {additional: !additional},
           });
-          navigate('cameraScan');
+          navigate('cameraScan', {});
         },
       },
       {
@@ -228,7 +229,7 @@ class AppNavigator extends PureComponent<PropsEntry> {
     );
   }
 }
-const mapStateToProps = ({app, router}: any) => ({app, router});
+const mapStateToProps = ({app, router}: PropsEntry) => ({app, router});
 export default connect(mapStateToProps)(AppNavigator);
 
 interface PropsEntry {

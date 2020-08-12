@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-08-05 16:48:57
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-11 11:22:25
+ * @LastEditTime: 2020-08-12 14:44:42
  * @Description:
  */
 import React from 'react';
@@ -25,6 +25,9 @@ export interface FAListProps {
   params: any;
   sort: number;
 }
+
+// 原生调用插件默认值
+export const INIT_DATA = {initData: {pageType: '1'}};
 // applicationType 应用所属类别
 // type 1. webview 2.page 3. plugin
 // sort 0: 不显示 1：应用显示 99：全显示
@@ -39,7 +42,7 @@ export const faList: FAListProps[] = [
     params: {
       uri: 'https://ecrc.pec.com.cn/#/main/510011040421/5100/ios',
       title: 'ECRC',
-      pageType: '1',
+      ...INIT_DATA,
     },
     // press: () => navigate('WView'),
   },
@@ -53,7 +56,7 @@ export const faList: FAListProps[] = [
     params: {
       uri: 'https://csmudh.upbuy.com.cn/',
       title: 'U订货',
-      pageType: '1',
+      ...INIT_DATA,
     },
     // press: () => navigate('WView', {uri: 'https://csmudh.upbuy.com.cn/', title: 'U订货'}),
   },
@@ -68,7 +71,7 @@ export const faList: FAListProps[] = [
       title: '运营中台',
       uri: 'http://shwt.pec.com.cn:8086/frontend/dianwei/index.html',
       path: 'dianwei',
-      pageType: '1',
+      ...INIT_DATA,
     },
   },
   {
@@ -83,7 +86,7 @@ export const faList: FAListProps[] = [
       uri: 'http://192.168.1.194/h5/index.html',
       // uri: 'http://shwt.pec.com.cn:8086/liulijun/a.html',
       path: 'h5',
-      pageType: '1',
+      ...INIT_DATA,
     },
   },
   {
@@ -93,7 +96,7 @@ export const faList: FAListProps[] = [
     applicationType: '子公司应用',
     icon: require('../assets/font15.png'),
     sort: 99,
-    params: {pageType: '1'},
+    params: {...INIT_DATA},
   },
 
   {
@@ -103,7 +106,8 @@ export const faList: FAListProps[] = [
     applicationType: '原生服务',
     icon: require('../assets/font7.png'),
     sort: 99,
-    params: {pageType: '1'},
+    params: {...INIT_DATA},
+
     // press: () => navigate('qrcode'),
   },
   {
@@ -113,7 +117,7 @@ export const faList: FAListProps[] = [
     uri: 'deviceinfo',
     applicationType: '原生服务',
     sort: 1,
-    params: {pageType: '1'},
+    params: {...INIT_DATA},
   },
   {
     type: 'page',
@@ -122,7 +126,7 @@ export const faList: FAListProps[] = [
     uri: 'files',
     applicationType: '原生服务',
     sort: 1,
-    params: {pageType: '1'},
+    params: {...INIT_DATA},
   },
   {
     type: 'page',
@@ -131,7 +135,7 @@ export const faList: FAListProps[] = [
     uri: 'viewshot',
     applicationType: '原生服务',
     sort: 99,
-    params: {pageType: '1'},
+    params: {...INIT_DATA},
   },
   {
     type: 'page',
@@ -140,7 +144,7 @@ export const faList: FAListProps[] = [
     uri: 'application',
     applicationType: '全部',
     sort: 1,
-    params: {pageType: '1'},
+    params: {...INIT_DATA},
   },
   {
     text: '极光分享',
@@ -149,7 +153,8 @@ export const faList: FAListProps[] = [
     type: 'plugin',
     applicationType: '原生服务',
     sort: 0,
-    params: {pageType: '1'},
+    params: {...INIT_DATA},
+
     // press: () => {
     //   const message = {
     //     platform: 'wechat_session',
@@ -175,7 +180,7 @@ export const faList: FAListProps[] = [
     type: 'plugin',
     applicationType: '原生服务',
     sort: 0,
-    params: {pageType: '1'},
+    params: {...INIT_DATA},
     // press: () => {
     //   openPicker()
     //     .then((image: any) => {

@@ -18,6 +18,7 @@ import {MapView, LatLng} from 'react-native-amap3d';
 import {getDistance} from 'geolib';
 import {postMessageH5, PEC_MODULE} from '../utils/webview';
 const {alert} = Alert;
+const mapStatusTime = 100;
 interface AMapProps {
   route: any;
 }
@@ -73,9 +74,9 @@ export class AMap extends Component<AMapProps> {
             tilt: 0,
             rotation: 0,
             center: {latitude, longitude},
-            zoomLevel: this.props.route.params.zoomLevel || 16,
+            zoomLevel: this.getInitData().zoomLevel || ZOMM_LEVEL,
           },
-          10, // 地图显示的时间
+          mapStatusTime, // 地图显示的时间
         );
       }
     });
@@ -88,19 +89,19 @@ export class AMap extends Component<AMapProps> {
     this.setState({marker: data}, () => {
       if (this.isRice(getDistance(circle, data))) {
         this.setState({marker: markerT});
-        this.mapView.setStatus({center: circle}, 10);
+        this.mapView.setStatus({center: circle}, mapStatusTime);
       }
     });
   };
 
   // 是否是H5打开
-  isH5 = () => this.props.route.params.pageType === '2';
+  isH5 = () => this.getInitData().pageType === '2';
   // 是否是定位
-  isGeo = () => this.props.route.params.moduleName === 'PEC_MAP_GEOLOCATION';
+  isGeo = () => this.getInitData().moduleName === 'PEC_MAP_GEOLOCATION';
   // 是否超过Circle radius半径
   radius = () => {
     if (this.isH5()) {
-      return this.props.route.params.radius / 2;
+      return this.getInitData().radius / 2;
     }
     return RADIUS;
   };
@@ -153,38 +154,73 @@ export class AMap extends Component<AMapProps> {
   };
   AMap3D = () => {
     if (!this.isGeo()) {
-      const {markerList = []} = this.props.route.params;
-      interface MarkerListProps {
+      const {list = [], amapType = 'marker', zoomLevel} = this.getInitData();
+      interface ListItemProps {
         color: string;
         coordinate: LatLng;
       }
-      const markerPress = (data: MarkerListProps) => {
+      const markerPress = (markerItem: ListItemProps) => {
         postMessageH5({
           moduleName: PEC_MODULE.PEC_MAP_AMAP3D.value,
-          data: data,
+          data: markerItem,
         });
       };
-      return (
-        <>
-          {markerList.map((item: MarkerListProps, index: number) => (
-            <MapView.Marker
-              infoWindowDisabled={true}
-              key={`${index}`}
-              color={item.color ? item.color : 'red'}
-              coordinate={item.coordinate}
-              onPress={() => markerPress({...item})}
-            />
-          ))}
-        </>
-      );
+      const MapViewRender = () => {
+        if (list.length > 0) {
+          setTimeout(() => {
+            this.mapView.setStatus(
+              {
+                tilt: 0,
+                rotation: 0,
+                center: list[0].coordinate,
+                zoomLevel: zoomLevel || ZOMM_LEVEL,
+              },
+              mapStatusTime, // 地图显示的时间
+            );
+          }, 0);
+        }
+
+        let render = null;
+        switch (amapType) {
+          case 'polyline':
+            const polylineList = list.map(
+              (item: ListItemProps) => item.coordinate,
+            );
+            render = (
+              <MapView.Polyline
+                width={8}
+                colors={['red', 'yellow']}
+                coordinates={polylineList}
+              />
+            );
+            break;
+          default:
+            render = list.map((item: ListItemProps, index: number) => {
+              return (
+                <MapView.Marker
+                  infoWindowDisabled={true}
+                  key={`${index}`}
+                  color={item.color ? item.color : 'red'}
+                  coordinate={item.coordinate}
+                  onPress={() => markerPress({...item})}
+                />
+              );
+            });
+            break;
+        }
+        return render;
+      };
+      return <MapViewRender />;
     }
     return null;
   };
+  getInitData = () => this.props.route.params.initData;
   render() {
-    const {zoomLevel} = this.props.route.params;
+    const {zoomLevel} = this.getInitData();
     return (
       <View style={StyleSheet.absoluteFill}>
         <MapView
+          onClick={(data) => console.log(data)}
           ref={(ref) => {
             this.mapView = ref;
           }}

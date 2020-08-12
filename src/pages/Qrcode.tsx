@@ -9,8 +9,9 @@ class Qrcode extends Component<QrcodeProps> {
   constructor(props: Readonly<QrcodeProps>) {
     super(props);
   }
+  getInitData = () => this.props.route.params.initData;
   render() {
-    const {content, info} = this.props.route.params;
+    const {content, info} = this.getInitData();
     return (
       <View
         style={{

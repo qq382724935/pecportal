@@ -26,10 +26,11 @@ class CameraScan extends PureComponent<CameraScanProps, CameraScanState> {
       }
     });
   }
+  getInitData = () => this.props.route.params.initData;
   onBarCodeRead = (scandata: any) => {
     if (!this.state.scandata) {
       this.setState({scandata});
-      const {pageType} = this.props.route.params;
+      const {pageType} = this.getInitData();
       // H5调用 直接返回结果给H5
       if (pageType === '2') {
         postMessageH5({moduleName: PEC_MODULE.PEC_SCAN.value, data: scandata});
