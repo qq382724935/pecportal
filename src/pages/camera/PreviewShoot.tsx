@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import {View, Text} from 'react-native';
 import {connect} from 'react-redux';
 import {postMessageH5, PEC_MODULE} from '../../utils/webview';
-import {cacheCopyfiles} from '../../utils/fs';
+import {cacheCopyfiles} from '../../utils/common';
 
 export interface PreviewShootProps {
   data: string[];

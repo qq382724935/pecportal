@@ -37,7 +37,7 @@ import RNFS, {
   MkdirOptions,
   unlink as RNFSunlink,
 } from 'react-native-fs';
-
+export type {DownloadFileOptions};
 // eslint-disable-next-line no-undef
 export const OS = Platform.OS;
 
@@ -263,21 +263,3 @@ export const copyFileRes = (
 ): Promise<void> => RNFSccopyFileRes(filepath, destPath);
 
 export default RNFS;
-
-// 把cache目录下的文件copy到files。优化可直接移动
-import {IMAGE_PORTAL} from './common';
-export const cacheCopyfiles = async (
-  data: string[],
-  filesPath: string = IMAGE_PORTAL, // 默认是目录是图片下的壳子目录
-) => {
-  const isImagePath = await exists(filesPath).then();
-  if (!isImagePath) {
-    await mkdir(filesPath);
-  }
-  return data.map((item) => {
-    const itemS = item.split('/');
-    const destPath = `${filesPath}/${itemS[itemS.length - 1]}`;
-    copyFile(item, destPath);
-    return destPath;
-  });
-};

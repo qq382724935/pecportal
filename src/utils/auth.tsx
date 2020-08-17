@@ -1,11 +1,8 @@
 import {loadToken, saveToken} from './storage/index';
-import {STORAGE_KEY} from './common';
-import {downloadFile, unlink, exists} from '../utils/fs';
-
+import {STORAGE_KEY, PATH_WEBVIEW, download} from './common';
+import {unlink, exists} from './fs';
 import {unzip} from './zip';
 export const pecJson = require('../assets/pec.json');
-
-import {FILES_PATH} from '../utils/common';
 // 初始化路由
 export const auth = async () => {
   const advertising = await loadToken({key: 'config'})
@@ -34,20 +31,27 @@ export const auth = async () => {
  * @return:
  */
 export const webApp = async (FPATH: string) => {
-  const toFile = `${FILES_PATH}/${FPATH}`;
-  const isExists = await exists(`${FILES_PATH}/${FPATH.split('.zip')[0]}`);
+  const toFile = `${PATH_WEBVIEW}/${FPATH}`;
+  const isExists = await exists(`${PATH_WEBVIEW}/${FPATH.split('.zip')[0]}`);
   if (isExists) {
     return;
   }
-  await downloadFile({
-    fromUrl: `http://shwt.pec.com.cn:8086/liulijun/${FPATH}`,
-    toFile,
-  })
-    .promise.then((res) => {
+  await download(
+    {
+      fromUrl: `http://shwt.pec.com.cn:8086/liulijun/${FPATH}`,
+      toFile,
+    },
+    PATH_WEBVIEW,
+  )
+    .then((res) => {
       console.log(`${FPATH}下载成功：`, res);
     })
     .catch((error) => {
       console.log(`${FPATH}下载失败：`, error);
     });
-  await unzip(toFile, FILES_PATH).then(() => unlink(toFile));
+  await unzip(toFile, PATH_WEBVIEW)
+    .then(() => unlink(toFile))
+    .catch((err) => {
+      console.log(`unzip erroe：${err}`);
+    });
 };

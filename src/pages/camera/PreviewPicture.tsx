@@ -5,7 +5,7 @@ import {Image, View, SafeAreaView, StyleSheet, Text} from 'react-native';
 import {Back} from '../../components';
 import PreviewVideo from './PreviewVideo';
 import {postMessageH5, PEC_MODULE} from '../../utils/webview';
-import {cacheCopyfiles} from '../../utils/fs';
+import {cacheCopyfiles} from '../../utils/common';
 class PreviewHeader extends PureComponent<any> {
   render() {
     const {onChange, children} = this.props;
