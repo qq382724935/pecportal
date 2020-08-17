@@ -259,13 +259,13 @@ PODS:
   - react-native-amap3d (2.0.2):
     - AMap3DMap (~> 7.5.0)
     - React
-  - react-native-camera (3.35.0):
+  - react-native-camera (3.36.0):
     - React
-    - react-native-camera/RCT (= 3.35.0)
-    - react-native-camera/RN (= 3.35.0)
-  - react-native-camera/RCT (3.35.0):
+    - react-native-camera/RCT (= 3.36.0)
+    - react-native-camera/RN (= 3.36.0)
+  - react-native-camera/RCT (3.36.0):
     - React
-  - react-native-camera/RN (3.35.0):
+  - react-native-camera/RN (3.36.0):
     - React
   - react-native-cameraroll (4.0.0):
     - React
@@ -287,7 +287,7 @@ PODS:
     - React
   - react-native-view-shot (3.1.2):
     - React
-  - react-native-webview (10.4.0):
+  - react-native-webview (10.6.0):
     - React
   - React-RCTActionSheet (0.62.2):
     - React-Core/RCTActionSheetHeaders (= 0.62.2)
@@ -356,7 +356,7 @@ PODS:
     - React
   - RNConfigReader (1.0.0):
     - React
-  - RNDeviceInfo (5.6.3):
+  - RNDeviceInfo (5.6.5):
     - React
   - RNFS (2.16.6):
     - React
@@ -375,7 +375,7 @@ PODS:
     - TOCropViewController
   - RNImageMarker (0.6.1):
     - React
-  - RNReanimated (1.11.0):
+  - RNReanimated (1.13.0):
     - React
   - RNScreens (2.10.1):
     - React
@@ -642,7 +642,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 512e560d0e985d0e8c479a54a4e5c147a9c83493
   react-native-amap-geolocation: 5b42219a67e29b4c1ce0b75faf3b8869f97e2f7c
   react-native-amap3d: 26abcffc0fa7cd9f757cd9afe9bf7addb95105b0
-  react-native-camera: d9e7b66e40420dcef111f3265a00f01eea54c52c
+  react-native-camera: 8016138a8348b889e22c95b23f668a234f124335
   react-native-cameraroll: ae0a7c0cc8462508855707ff623b1e789b692865
   react-native-netinfo: 38a1e0b3e89b48e4b5833ed475d8df5f049f6f90
   react-native-safe-area-context: eb91fe1fb3f7b87d9c30a7f0808407d8569d539d
@@ -651,7 +651,7 @@ SPEC CHECKSUMS:
   react-native-static-server: 201b2a945a35096be3ae7f43e367c65bcbd61343
   react-native-video: eee541262ada11bc7ffe8ec5508e6a877937c462
   react-native-view-shot: 4475fde003fe8a210053d1f98fb9e06c1d834e1c
-  react-native-webview: 1ad70b21fb9e44811e33a99e43a4b68b94806a6d
+  react-native-webview: df9ff59f76e991aefa7174831a0af48ddbac5f1b
   React-RCTActionSheet: f41ea8a811aac770e0cc6e0ad6b270c644ea8b7c
   React-RCTAnimation: 49ab98b1c1ff4445148b72a3d61554138565bad0
   React-RCTBlob: a332773f0ebc413a0ce85942a55b064471587a71
@@ -666,13 +666,13 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: d059c3ee71738c39834a627476322a5a8cd5bf36
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNConfigReader: 396da6a6444182a76e8ae0930b9436c7575045cb
-  RNDeviceInfo: 5be12a5bfbb8da3528c43ee4373abd9c30d04616
+  RNDeviceInfo: c5f8f3a456adcbba405ace475254b08febc4c095
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   RNGestureHandler: b6b359bb800ae399a9c8b27032bdbf7c18f08a08
   RNHttpCache: a0678072cede68e78173e30958c1a07d32490110
   RNImageCropPicker: f0557a908758c4a3f83978894ec7227651529b45
   RNImageMarker: 3d2ad96afe3db0965ecff23ca97d65b812d06b47
-  RNReanimated: f05ea1c5ee07891aaefee662f073f4944c87ac4d
+  RNReanimated: 89f5e0a04d1dd52fbf27e7e7030d8f80a646a3fc
   RNScreens: b748efec66e095134c7166ca333b628cd7e6f3e2
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
   RNZipArchive: 94ade6cf137af264a1b50525b90a8b7d45266c87
