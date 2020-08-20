@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 18:21:46
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-10 13:50:01
+ * @LastEditTime: 2020-08-20 09:01:18
  * @Description:
  */
 
@@ -47,20 +47,30 @@ export const closeDB = () => {
  * @param {err} 回调值
  * @return:
  */
-const executeError = (type: string, {code, message}: ExecuteError) => {
-  Alert.alert(
-    `sqlite fail dev--------dev：${type}：错误编码：${code}；描述信息：${message}`,
-  );
+const executeError = (type: string, {message}: ExecuteError) => {
+  Alert.alert(`${type}失败：${message}`);
 };
 
 // 操作数据库类型定义
-const ADD_TABLE = '新增表';
-const DEL_TABLE = '删除表';
-const QUERY_TABLE = '查询表';
-const ADD_DATA = '新增数据';
-const DEL_DATA = '删除数据';
-const UPDATE_DATA = '更新数据';
-const QUERY_DATA = '查询数据';
+export const SQLITE = {
+  ADD_TABLE: {value: 'create', label: '新增表'},
+  DEL_TABLE: {value: 'delete', label: '删除表'},
+  QUERY_TABLE: {value: 'query', label: '查询表'},
+  ALTER_TABLE: {value: 'alter', label: '修改表'},
+  ADD_DATA: {value: 'insert', label: '新增表'},
+  DEL_DATA: {value: 'delete', label: '删除数据'},
+  UPDATE_DATA: {value: 'update', label: '更新数据'},
+  QUERY_DATA: {value: 'query', label: '查询数据'},
+  QUERY_ALL_TABLE: {value: 'queryAll', label: '查询所有表'},
+};
+// const ADD_TABLE = '新增表';
+// const DEL_TABLE = '删除表';
+// const QUERY_TABLE = '查询表';
+// const ALTER_TABLE = '修改表';
+// const ADD_DATA = '新增数据';
+// const DEL_DATA = '删除数据';
+// const UPDATE_DATA = '更新数据';
+// const QUERY_DATA = '查询数据';
 
 // 操作数据库
 const operationData = (type: string, {sql, data, ok, error}: dataType) => {
@@ -71,14 +81,21 @@ const operationData = (type: string, {sql, data, ok, error}: dataType) => {
       (tx: transactionExecute, res: transactionExecuteRes) => {
         let temp = [];
         switch (type) {
-          case QUERY_DATA:
+          case SQLITE.QUERY_TABLE.label:
+            for (let i = 0; i < res.rows.length; ++i) {
+              temp.push(res.rows.item(i));
+            }
+            ok && (res.rows.length > 0 ? ok(true) : ok(false));
+            break;
+          case SQLITE.QUERY_DATA.label:
             for (let i = 0; i < res.rows.length; ++i) {
               temp.push(res.rows.item(i));
             }
             ok && ok(temp);
             break;
-          case QUERY_TABLE:
-            ok && (res.rows.length > 0 ? ok(true) : ok(false));
+          case SQLITE.DEL_DATA.label:
+          case SQLITE.UPDATE_DATA.label:
+            ok && (res.rowsAffected > 0 ? ok(true) : ok(false));
             break;
           default:
             ok && ok(tx, res);
@@ -97,9 +114,9 @@ const operationData = (type: string, {sql, data, ok, error}: dataType) => {
  * @description: 创建表
  * @param {sql} 执行的sql语句
  */
-export const createTable = (sql: string, ok?: Function, error?: Function) => {
-  operationData(ADD_TABLE, {
-    sql: sql,
+export const createTable = (sql = '', ok?: Function, error?: Function) => {
+  operationData(SQLITE.ADD_TABLE.label, {
+    sql,
     data: [],
     ok,
     error,
@@ -115,7 +132,7 @@ export const delTable = (
   ok?: Function,
   error?: Function,
 ) => {
-  operationData(DEL_TABLE, {
+  operationData(SQLITE.DEL_TABLE.label, {
     sql: `DROP TABLE '${tableName}'`,
     data: [],
     ok,
@@ -125,7 +142,7 @@ export const delTable = (
 
 /**
  * @description: 查询表是否存在
- * @param {tableName} 使用``字符串拼接,在sql中会缺失引号
+ * @param {tableName}
  * @param {ok} 成功回调
  * @param {error} 失败回调
  * @return 成功 true | false；
@@ -135,8 +152,8 @@ export const queryTable = (
   ok?: Function,
   error?: Function,
 ) => {
-  operationData(QUERY_TABLE, {
-    sql: `SELECT sql FROM sqlite_master WHERE type='table' AND tbl_name='${tableName}'`,
+  operationData(SQLITE.QUERY_TABLE.label, {
+    sql: `SELECT name FROM sqlite_master WHERE name='${tableName}'`,
     data: [],
     ok,
     error,
@@ -144,28 +161,120 @@ export const queryTable = (
 };
 
 /**
+ * @description: 修改表 新增单个字段
+ * @param {tableName} 表名
+ * @param {ok} 成功回调
+ * @param {error} 失败回调
+ * @return 成功 true | false；
+ */
+export const alterTable = (
+  tableName: string,
+  sql: string,
+  ok?: Function,
+  error?: Function,
+) => {
+  operationData(SQLITE.ALTER_TABLE.label, {
+    sql: `ALTER TABLE ${tableName} ADD ${sql}`,
+    data: [],
+    ok,
+    error,
+  });
+};
+
+/**
+ * @description: 查询所有表
+ * @param {tableName} 表名
+ * @param {ok} 成功回调
+ * @param {error} 失败回调
+ * @return 成功 true | false；
+ */
+export const queryAllTable = (ok?: Function, error?: Function) => {
+  operationData(SQLITE.QUERY_ALL_TABLE.label, {
+    sql: "SELECT name FROM sqlite_master WHERE type='table' order by name",
+    data: [],
+    ok,
+    error,
+  });
+};
+
+// 字段数据处理
+const fieldProcess = (data: any[]) => {
+  // 过滤为条件的数据并返回字段的值
+  const conditionValues = data.filter((element) => !element.condition);
+  const values = conditionValues.map((element) => element.value);
+  let condition = '';
+  data
+    .filter((element) => element.condition)
+    .map((element, index) => {
+      if (index === 0) {
+        condition += `WHERE ${element.label} = '${element.value}'`;
+      } else {
+        condition += `${condition} AND ${element.label} = '${element.value}'`;
+      }
+    });
+  let updateValue = '';
+  conditionValues.forEach((element) => {
+    updateValue += `${element.label} = '${element.value}'`;
+  });
+  return {
+    field: data.map((element) => element.label).join(','),
+    values,
+    symbol: [...values].fill('?').join(','), // 有几个动态字段值
+    condition,
+    updateValue,
+  };
+};
+
+/**
  * @description: 添加数据
  * @param {params} 接收一个包含{sql, data, ok, error}对象
  */
-export const atData = (params: dataType) => operationData(ADD_DATA, params);
+export const atData = (tableName = '', {data = [], ok, error}: dataType) => {
+  let {field, symbol, values} = fieldProcess(data);
+  const SQL = `INSERT INTO ${tableName} (${field}) VALUES (${symbol})`;
+  operationData(SQLITE.ADD_DATA.label, {sql: SQL, data: values, ok, error});
+};
 
 /**
  * @description: 删除数据
  * @param {params} 接收一个包含{sql, data, ok, error}对象
  */
-export const dtData = (params: dataType) => operationData(DEL_DATA, params);
-
+export const dtData = (tableName = '', {data = [], ok, error}: dataType) => {
+  let {condition} = fieldProcess(data);
+  let SQL = `DELETE FROM ${tableName}`;
+  if (condition.length > 0) {
+    SQL = `${SQL} ${condition}`;
+    operationData(SQLITE.DEL_DATA.label, {sql: SQL, ok, error});
+  }
+};
 /**
  * @description: 更新数据
  * @param {params} 接收一个包含{sql, data, ok, error}对象
  */
-export const etData = (params: dataType) => operationData(UPDATE_DATA, params);
+export const etData = (tableName = '', {data = [], ok, error}: dataType) => {
+  let {condition, updateValue} = fieldProcess(data);
+  let SQL = `UPDATE ${tableName} SET ${updateValue}`;
+  if (condition.length > 0) {
+    SQL = `${SQL} ${condition}`;
+  }
+  operationData(SQLITE.DEL_DATA.label, {sql: SQL, ok, error});
+};
 
 /**
  * @description: 查询数据
  * @param {params} 接收一个包含{sql, data, ok, error}对象
  */
-export const qtData = (params: dataType) => operationData(QUERY_DATA, params);
+export const qtData = (
+  tableName = '',
+  {data = [], sql, ok, error}: dataType,
+) => {
+  operationData(SQLITE.QUERY_DATA.label, {
+    sql: sql ? sql : `SELECT * FROM ${tableName}`,
+    data,
+    ok,
+    error,
+  });
+};
 
 export type {QueryTableDataProps} from '../types/sqlite';
 

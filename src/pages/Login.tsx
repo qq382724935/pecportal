@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-07-13 10:51:50
+ * @LastEditTime: 2020-08-20 09:00:55
  * @Description:
  */
 import React, {useState} from 'react';
@@ -19,27 +19,8 @@ const Login = (props: any) => {
   const [form, setForm] = useState({username: 'admin', password: '123456'});
   const {username, password} = form;
   const loginClick = () => {
-    if (username === 'llj') {
-      saveToken({
-        key: STORAGE_KEY.LOGIN,
-        expires: 1000 * 3600,
-        data: {
-          token: 'token123456',
-          refreshToken: 'refreshToken123456',
-          userinfo: {username, password},
-        },
-      })
-        .then(() => {
-          resetHome(props);
-        })
-        .catch(() => {
-          console.log('saveToken fail');
-        });
-      return;
-    }
-    qtData({
-      sql: 'SELECT * FROM PEC_USER where USERNAME = ? AND PASSWORD = ?',
-      data: [username, password],
+    qtData('PEC_USER', {
+      data: [],
       ok: (data: any[]) => {
         if (data.length > 0) {
           saveToken({

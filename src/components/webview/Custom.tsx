@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-14 10:19:03
+ * @LastEditTime: 2020-08-18 17:09:46
  */
 
 import React, {Component} from 'react';
@@ -94,7 +94,13 @@ class Custom extends Component<CustomProps, CustomState> {
           <WebView
             containerStyle={{flex: progress === 1 ? 1 : 0}}
             ref={(r) => (global.wevref = r)}
-            source={{uri, headers: {'cache-control': 'no-cache'}}}
+            source={{
+              uri,
+              headers: {
+                'Cache-control': 'no-cache',
+                Cache: 'no-cache',
+              },
+            }}
             javaScriptEnabled={true}
             cacheEnabled={false}
             cacheMode="LOAD_NO_CACHE"

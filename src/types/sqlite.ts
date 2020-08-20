@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-15 20:20:39
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-06-18 15:26:06
+ * @LastEditTime: 2020-08-19 21:32:58
  * @Description:
  */
 
@@ -37,18 +37,18 @@ interface transactionExecuteDbOpenargs {
 export interface transactionExecuteRes {
   insertId: any;
   rows: transactionExecuteResRows;
+  rowsAffected: number;
 }
 
 interface transactionExecuteResRows {
-  rowsAffected: number;
   length: number;
   raw: Array<Function>;
   item: Function;
 }
 
 export interface dataType {
-  sql: string;
-  data: Array<any>;
+  sql?: string;
+  data?: Array<any>;
   ok?: Function;
   error?: Function;
 }

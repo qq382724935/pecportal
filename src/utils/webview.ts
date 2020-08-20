@@ -2,11 +2,17 @@
  * @Author: 刘利军
  * @Date: 2020-07-28 13:42:43
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-14 14:12:55
+ * @LastEditTime: 2020-08-20 11:23:02
  * @Description:
  */
+import {Alert} from 'react-native';
 import {resetPage} from './navigation';
 import {listReadFile} from './fs';
+import {
+  ExecuteError,
+  transactionExecute,
+  transactionExecuteRes,
+} from '../types/sqlite';
 import {
   getNetInfo,
   getDeviceInfo,
@@ -15,7 +21,18 @@ import {
   PATH_OTHERS,
 } from './common';
 import {navigationRef} from '../navigators/RootNavigation';
-import {Alert} from 'react-native';
+import {
+  createTable,
+  queryTable,
+  delTable,
+  SQLITE,
+  queryAllTable,
+  alterTable,
+  atData,
+  qtData,
+  dtData,
+  etData,
+} from './sqlite';
 
 export interface PecModuleProps {
   [key: string]: PecModuleItemProps;
@@ -30,6 +47,8 @@ export interface PecModuleProps {
   PEC_DATA_QUERY: PecModuleItemProps;
   PEC_DATA_SAVE_IMAGE: PecModuleItemProps;
   PEC_QRCODE: PecModuleItemProps;
+  PEC_SQLITE_TABLE: PecModuleItemProps;
+  PEC_SQLITE_DATA: PecModuleItemProps;
 }
 
 export interface PecModuleItemProps {
@@ -50,6 +69,9 @@ export interface PecModuleItemProps {
  * PEC_DATA_SAVE_FILE：文本处理：生成json/文本数据文件
  * PEC_DATA_SAVE_IMAGE：文本处理：文本数据生成图片
  * PEC_DATA_QUERY：文本处理：查看已生成的json/文本数据
+ * PEC_SQLITE_DATA：操作数据库数据
+ * PEC_SQLITE_TABLE：操作数据库表
+ *
  */
 export const PEC_MODULE: PecModuleProps = {
   PEC_SCAN: {route: 'cameraScan', value: 'PEC_SCAN'},
@@ -63,10 +85,31 @@ export const PEC_MODULE: PecModuleProps = {
   PEC_DATA_QUERY: {route: '', value: 'PEC_DATA_QUERY'},
   PEC_DATA_SAVE_FILE: {route: '', value: 'PEC_DATA_SAVE_FILE'},
   PEC_DATA_SAVE_IMAGE: {route: 'viewshot', value: 'PEC_DATA_SAVE_IMAGE'},
+  PEC_SQLITE_TABLE: {route: '', value: 'PEC_SQLITE_TABLE'},
+  PEC_SQLITE_DATA: {route: '', value: 'PEC_SQLITE_DATA'},
 };
 const MODULE = new Set(Object.keys(PEC_MODULE));
+
+// 数据库操作返回的字段
+const SQLITE_CODE: {[key: number]: string} = {
+  301: SQLITE.ADD_TABLE.label,
+  302: SQLITE.ALTER_TABLE.label,
+  303: SQLITE.DEL_TABLE.label,
+  304: SQLITE.QUERY_TABLE.label,
+  311: SQLITE.ADD_DATA.label,
+  312: SQLITE.UPDATE_DATA.label,
+  313: SQLITE.DEL_DATA.label,
+  314: SQLITE.QUERY_DATA.label,
+};
+
+// 模块code
+const MODULE_CODE: {[key: number]: string} = {
+  101: '调用的插件模块不存在',
+  102: '缺少参数',
+};
+
 /**
- * code 200：成功
+ * code 200：所有的操作只要成功了都返回200
  * code 201：需要查询的数据为空
  */
 const codeMessage: {[key: number]: string} = {
@@ -74,8 +117,9 @@ const codeMessage: {[key: number]: string} = {
   201: '需要查询的数据为空',
   210: '找不到文件或文件目录',
   211: '类型参数不正确：',
+  ...SQLITE_CODE,
+  ...MODULE_CODE,
 };
-
 let error = '';
 
 // RN接收H5的数据
@@ -83,11 +127,15 @@ const h5PostMessage = (eventData: string, navigation: any) => {
   const {moduleName, PecH5FrameData} = JSON.parse(eventData);
   const isModule = MODULE.has(moduleName);
   if (!isModule) {
-    Alert.alert(`模块${moduleName}不存在，请确认`);
+    const msg = `模块${moduleName}不存在，请确认`;
+    Alert.alert(msg);
+    postMessageH5({moduleName, code: 101, data: null}, false);
     return;
   }
   if (!isParams(moduleName, PecH5FrameData)) {
-    Alert.alert(`调用模块${moduleName}缺少参数:${error}，请确认`);
+    const msg = `缺少模块调用参数${moduleName}:${error}，请确认`;
+    Alert.alert(msg);
+    postMessageH5({moduleName, code: 102, data: null}, false);
     return;
   }
   myExecute(moduleName, PecH5FrameData, navigation);
@@ -97,9 +145,10 @@ const h5PostMessage = (eventData: string, navigation: any) => {
 const isParams = (moduleName: string, data: DataProps & Array<string>) => {
   error = '';
   let valid = true;
+  const {action, tableName, sql} = data;
   switch (moduleName) {
     case PEC_MODULE.PEC_QUERY.value:
-      if (isPostMessageData(data.imageNames) !== 200) {
+      if (isPostMessageData(data.arrayData) !== 200) {
         valid = false;
         error = '传递的是空数组';
       }
@@ -124,15 +173,47 @@ const isParams = (moduleName: string, data: DataProps & Array<string>) => {
         valid = false;
       }
       break;
+    case PEC_MODULE.PEC_SQLITE_TABLE.value:
+      if (!action) {
+        // 表操作方式不存在
+        valid = false;
+        error = '需要action参数';
+      } else if ((action === 'create' || action === 'alter') && !sql) {
+        // 创建表需要详细的sql语句
+        valid = false;
+        error = '缺少sql参数';
+      } else if (action !== 'query' && !tableName) {
+        // 查询表操作可以不需要表名,查询所有表
+        valid = false;
+        error = '缺少表名';
+      }
+      break;
+    case PEC_MODULE.PEC_SQLITE_DATA.value:
+      if (!action) {
+        // 表操作方式不存在
+        valid = false;
+        error = '需要action参数';
+      } else if (!tableName) {
+        // 表操作方式不存在
+        valid = false;
+        error = '缺少表名';
+      }
+      break;
   }
-
   return valid;
 };
 // 调用模块
 export interface DataProps {
-  imageNames: string[];
+  arrayData: never[];
   jsonData: Object & string;
   fileData: FileDataProps;
+  sql?: string;
+  tableName?: string;
+  action?: string;
+  type?: string;
+  watermark?: string;
+  continuous?: string;
+  data?: Object;
 }
 export interface FileDataProps {
   name: string;
@@ -144,15 +225,16 @@ const myExecute = async (
   data: DataProps,
   navigation: any,
 ) => {
-  const {imageNames} = data;
-  // default 是进行页面跳转的，不跳页面用case判断操作
+  const {arrayData} = data;
+  // default 页面插件，case操作型插件
   switch (moduleName) {
     case PEC_MODULE.PEC_QUERY.value:
+      const {type = 'base64'} = data;
       postMessageH5(
         {
           moduleName,
-          code: isPostMessageData(imageNames),
-          data: await listReadFile(imageNames, 'base64'),
+          code: isPostMessageData(arrayData),
+          data: await listReadFile(arrayData, type),
         },
         false,
       );
@@ -169,13 +251,135 @@ const myExecute = async (
     case PEC_MODULE.PEC_DATA_QUERY.value:
       jsonDataQuery(moduleName, data);
       break;
+    case PEC_MODULE.PEC_SQLITE_TABLE.value:
+      sqliteTableAction(moduleName, data);
+      break;
+    case PEC_MODULE.PEC_SQLITE_DATA.value:
+      sqliteTableDataAction(moduleName, data);
+      break;
     default:
+      // 当有route为页面级插件，进行页面跳转
       if (PEC_MODULE[moduleName].route) {
         resetPage(
           {name: PEC_MODULE[moduleName].route, navigation},
           {initData: {...data, pageType: '2', moduleName}}, // 1: 原生，2：H5 ，其它页面一开始没做处理，无值就默认为原生
         );
       }
+      break;
+  }
+};
+
+// 数据库表操作判断
+const sqliteTableAction = (
+  moduleName: string,
+  {action = '', tableName = '', sql = ''},
+) => {
+  switch (action) {
+    case SQLITE.ADD_TABLE.value: // 创建表
+      createTable(
+        sql,
+        (tx: transactionExecute, res: transactionExecuteRes) => {
+          postMessageH5({moduleName, data: {tx, res}}, false);
+        },
+        (err: ExecuteError) => {
+          postMessageH5({moduleName, code: 301, data: err}, false);
+        },
+      );
+      break;
+    case SQLITE.QUERY_TABLE.value: // 查询表
+      if (tableName) {
+        queryTable(
+          tableName,
+          (res: boolean) => {
+            postMessageH5({moduleName, data: res}, false);
+          },
+          (err: ExecuteError) => {
+            postMessageH5({moduleName, code: 301, data: err}, false);
+          },
+        );
+      } else {
+        queryAllTable((tx: transactionExecute, res: transactionExecuteRes) => {
+          postMessageH5({moduleName, code: 304, data: {tx, res}}, false);
+        });
+      }
+
+      break;
+    case SQLITE.DEL_TABLE.value: // 删除表
+      delTable(
+        tableName,
+        (res: boolean) => {
+          postMessageH5({moduleName, data: res}, false);
+        },
+        (err: ExecuteError) => {
+          postMessageH5({moduleName, code: 303, data: err}, false);
+        },
+      );
+      break;
+    case SQLITE.ALTER_TABLE.value: // 修改表
+      alterTable(
+        tableName,
+        sql,
+        (res: boolean) => {
+          postMessageH5({moduleName, data: res}, false);
+        },
+        (err: ExecuteError) => {
+          postMessageH5({moduleName, code: 302, data: err}, false);
+        },
+      );
+      break;
+  }
+};
+
+// 数据库表data操作判断
+const sqliteTableDataAction = (
+  moduleName: string,
+  {action = '', tableName = '', arrayData = [], sql = ''},
+) => {
+  switch (action) {
+    case SQLITE.ADD_DATA.value: // 新增数据
+      atData(tableName, {
+        data: arrayData,
+        ok: (tx: transactionExecute, res: transactionExecuteRes) => {
+          postMessageH5({moduleName, data: {tx, res}}, false);
+        },
+        error: (err: ExecuteError) => {
+          postMessageH5({moduleName, code: 311, data: err}, false);
+        },
+      });
+      break;
+    case SQLITE.QUERY_DATA.value: // 查询数据
+      qtData(tableName, {
+        data: [],
+        sql,
+        ok: (res: boolean) => {
+          postMessageH5({moduleName, data: res}, false);
+        },
+        error: (err: ExecuteError) => {
+          postMessageH5({moduleName, code: 314, data: err}, false);
+        },
+      });
+      break;
+    case SQLITE.DEL_DATA.value: // 删除数据
+      dtData(tableName, {
+        data: arrayData,
+        ok: (res: boolean) => {
+          postMessageH5({moduleName, data: res}, false);
+        },
+        error: (err: ExecuteError) => {
+          postMessageH5({moduleName, code: 313, data: err}, false);
+        },
+      });
+      break;
+    case SQLITE.UPDATE_DATA.value: // 修改数据
+      etData(tableName, {
+        data: arrayData,
+        ok: (res: boolean) => {
+          postMessageH5({moduleName, data: res}, false);
+        },
+        error: (err: ExecuteError) => {
+          postMessageH5({moduleName, code: 312, data: err}, false);
+        },
+      });
       break;
   }
 };
@@ -201,7 +405,6 @@ const jsonDataSave = async (
 // 查看数据
 const jsonDataQuery = async (moduleName: string, {fileData}: DataProps) => {
   const writeRes = await readFileE(PATH_OTHERS, fileData);
-  console.log(writeRes);
   postMessageH5(
     {moduleName, data: {content: writeRes.data}, code: writeRes.code},
     false,

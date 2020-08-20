@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-06 16:13:57
+ * @LastEditTime: 2020-08-20 08:31:43
  */
 import React, {Component} from 'react';
 import {Button, View, Text, Alert} from 'react-native';
@@ -12,7 +12,7 @@ import {List, Button as myButton} from '../components/index';
 import {qtData, dtData, QueryTableDataProps} from '../utils/sqlite';
 import {loadToken, removeToken} from '../utils/storage';
 import {STORAGE_KEY} from '../utils/common';
-import {resetHome, resetLogin} from '../utils/navigation';
+import {resetHome, resetLogin, resetRegister} from '../utils/navigation';
 import {connect} from 'react-redux';
 
 import {
@@ -185,8 +185,7 @@ class UserManage extends Component<any, any> {
   }
 
   refresh = () => {
-    qtData({
-      sql: 'SELECT * FROM PEC_USER',
+    qtData('PEC_USER', {
       data: [],
       ok: (value: QueryTableDataProps[]) =>
         this.setState({
@@ -195,12 +194,13 @@ class UserManage extends Component<any, any> {
             label: item.USERNAME,
             onPress: () => {
               if (item.USERNAME === 'admin') {
-                Alert.alert('暂时无法删除admin账号');
+                Alert.alert('admin账号无法删除');
                 return;
               }
-              dtData({
-                sql: 'DELETE FROM PEC_USER WHERE USERNAME = ?',
-                data: [item.USERNAME],
+              dtData('PEC_USER', {
+                data: [
+                  {label: 'USERNAME', value: item.USERNAME, condition: 'and'},
+                ],
                 ok: () => {
                   this.refresh();
                 },
@@ -216,7 +216,7 @@ class UserManage extends Component<any, any> {
     return (
       <>
         <View style={{flexDirection: 'row', flexWrap: 'wrap', marginBottom: 8}}>
-          {/* <View style={{marginRight: 8}}>
+          <View style={{marginRight: 8}}>
             <Button
               title="查询数据"
               onPress={() => {
@@ -232,7 +232,7 @@ class UserManage extends Component<any, any> {
                 resetRegister({navigation});
               }}
             />
-          </View> */}
+          </View>
           <View style={{marginRight: 8}}>
             <Button
               title="退出登录"

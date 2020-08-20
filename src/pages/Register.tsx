@@ -16,9 +16,11 @@ const Register = (props: any) => {
   });
   const {username, password} = form;
   const registerClick = () => {
-    atData({
-      sql: 'INSERT INTO PEC_USER (username,password) VALUES (?,?)',
-      data: [username, password],
+    atData('PEC_USER', {
+      data: [
+        {label: 'username', value: username},
+        {label: 'password', value: password},
+      ],
       ok: () => {
         Alert.alert('账号申请', '注册成功，前往登录页登录！', [
           {
