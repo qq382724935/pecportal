@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-07-28 13:42:43
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-20 11:23:02
+ * @LastEditTime: 2020-08-20 11:52:46
  * @Description:
  */
 import {Alert} from 'react-native';
@@ -129,13 +129,13 @@ const h5PostMessage = (eventData: string, navigation: any) => {
   if (!isModule) {
     const msg = `模块${moduleName}不存在，请确认`;
     Alert.alert(msg);
-    postMessageH5({moduleName, code: 101, data: null}, false);
+    postMessageH5({moduleName, code: 101, data: msg}, false);
     return;
   }
   if (!isParams(moduleName, PecH5FrameData)) {
     const msg = `缺少模块调用参数${moduleName}:${error}，请确认`;
     Alert.alert(msg);
-    postMessageH5({moduleName, code: 102, data: null}, false);
+    postMessageH5({moduleName, code: 102, data: msg}, false);
     return;
   }
   myExecute(moduleName, PecH5FrameData, navigation);

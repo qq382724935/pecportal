@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-08-05 16:48:57
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-17 09:59:14
+ * @LastEditTime: 2020-08-20 11:53:17
  * @Description:
  */
 import React from 'react';
@@ -321,8 +321,8 @@ export const faList: FAListProps[] = [
     sort: 99,
     params: {
       title: 'H5',
-      uri: 'http://192.168.1.194/h5/index.html',
-      // uri: 'http://shwt.pec.com.cn:8086/liulijun/h5/index.html',
+      // uri: 'http://192.168.1.194/h5/index.html',
+      uri: 'http://shwt.pec.com.cn:8086/liulijun/h5/index.html',
       path: 'h5',
       ...INIT_DATA,
     },
