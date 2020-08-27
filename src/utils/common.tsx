@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-08-05 16:48:57
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-20 11:53:17
+ * @LastEditTime: 2020-08-26 16:57:43
  * @Description:
  */
 import React from 'react';
@@ -236,6 +236,7 @@ const styles = StyleSheet.create({
 //  项目唯一key定义，避免重复
 export const STORAGE_KEY = {
   LOGIN: 'USER',
+  APP_UPDATE_VERSION: 'appUpdateVersion',
 };
 
 /** 设备信息获取相关开始 */

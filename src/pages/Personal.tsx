@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-20 08:31:43
+ * @LastEditTime: 2020-08-26 14:15:52
  */
 import React, {Component} from 'react';
 import {Button, View, Text, Alert} from 'react-native';

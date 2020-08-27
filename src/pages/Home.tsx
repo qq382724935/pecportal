@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-06 15:59:21
+ * @LastEditTime: 2020-08-26 17:18:55
  * @Description:
  */
 import React, {Component} from 'react';
@@ -18,15 +18,18 @@ import {
 // import JShareModule from 'jshare-react-native';
 import Swiper from 'react-native-swiper';
 import {resetPage} from '../utils/navigation';
+import {checkForUpdate} from '../utils/CodePushUtils';
 import {
   JournalismList,
   noticeList,
   getAppData,
   appRednder,
 } from '../utils/common';
+import {connect} from 'react-redux';
 
 interface HomeProps {
   navigation: any;
+  dispatch: any;
 }
 const {width} = Dimensions.get('window');
 
@@ -114,6 +117,9 @@ class Home extends Component<HomeProps> {
         <Image style={styles.image} source={item} resizeMode="stretch" />
       </View>
     ));
+  componentDidMount() {
+    checkForUpdate(this.props.dispatch, true);
+  }
   render() {
     return (
       <SafeAreaView>
@@ -134,7 +140,8 @@ class Home extends Component<HomeProps> {
   }
 }
 
-export default Home;
+const mapStateToProps = ({app, router}: any) => ({app, router});
+export default connect(mapStateToProps)(Home);
 const styles = StyleSheet.create({
   container: {flex: 1},
   slide: {flex: 1},

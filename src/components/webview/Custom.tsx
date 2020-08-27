@@ -2,18 +2,21 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-18 17:09:46
+ * @LastEditTime: 2020-08-26 09:13:09
  */
 
 import React, {Component} from 'react';
 import {WebView, WebViewMessageEvent} from 'react-native-webview';
-import StaticServer from 'react-native-static-server';
-import {OS, DocumentDirectoryPath, exists} from '../../utils/fs';
+// import StaticServer from 'react-native-static-server';
+import {OS, exists} from '../../utils/fs';
 import {h5PostMessage} from '../../utils/webview';
 import {connect} from 'react-redux';
 import Loading from './Loading';
+import Error from './Error';
+import {SafeAreaView, View, Text, StyleSheet} from 'react-native';
+import {PATH_WEBVIEW} from '../../utils/common';
+const FILE_PATH = PATH_WEBVIEW;
 
-const FILE_PATH = DocumentDirectoryPath;
 declare global {
   namespace NodeJS {
     interface Global {
@@ -38,6 +41,10 @@ interface CustomState {
   path: string;
   uri: string;
   progress: number;
+  showMore: boolean;
+  showHeder: boolean;
+  renderError: boolean;
+  errorName: string;
 }
 
 class Custom extends Component<CustomProps, CustomState> {
@@ -50,6 +57,10 @@ class Custom extends Component<CustomProps, CustomState> {
       path: '',
       uri: '',
       progress: 0,
+      showMore: false,
+      showHeder: true,
+      renderError: false,
+      errorName: '',
     };
   }
   componentDidMount() {
@@ -65,16 +76,7 @@ class Custom extends Component<CustomProps, CustomState> {
         .then((res) => res)
         .catch((error) => console.log('error', error));
       if (isExists) {
-        if (OS === 'ios') {
-          this.setState({path: this.getFilePtah(path)});
-        } else {
-          let server = new StaticServer(9999, FILE_PATH, {
-            localOnly: true,
-          });
-          server.start().then((value: string) => {
-            this.setState({uri: `${value}/${path}`});
-          });
-        }
+        this.setState({path: this.getFilePtah(path)});
       } else {
         this.setState({uri});
       }
@@ -83,71 +85,159 @@ class Custom extends Component<CustomProps, CustomState> {
     }
   };
   messageChange = (event: WebViewMessageEvent) => {
-    h5PostMessage(event.nativeEvent.data, this.props.navigation);
+    const {bScroll, dScroll} = JSON.parse(event.nativeEvent.data);
+    // 滚动监听事件存在
+    if ((bScroll === 0 || bScroll) && (dScroll === 0 || dScroll)) {
+      if (bScroll > 0 || dScroll > 0) {
+        this.state.showHeder && this.setState({showHeder: false});
+      } else {
+        this.setState({showHeder: true});
+      }
+    } else {
+      // 插件监听处理
+      h5PostMessage(event.nativeEvent.data, this.props.navigation);
+    }
   };
+
+  initMore = () => {
+    this.setState({showMore: false, renderError: false});
+  };
+  onScroll = `
+    let scrollTimer;
+    window.addEventListener('scroll',function(event){
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        window.ReactNativeWebView.postMessage(JSON.stringify({bScroll:document.body.scrollTop,dScroll:document.documentElement.scrollTop}));
+      }, 300);
+    });
+    true
+  `;
   webviewRender = () => {
-    const {uri, path, progress} = this.state;
-    if (uri) {
-      return (
-        <>
-          {progress !== 1 && <Loading />}
-          <WebView
-            containerStyle={{flex: progress === 1 ? 1 : 0}}
-            ref={(r) => (global.wevref = r)}
-            source={{
-              uri,
-              headers: {
-                'Cache-control': 'no-cache',
-                Cache: 'no-cache',
-              },
-            }}
-            javaScriptEnabled={true}
-            cacheEnabled={false}
-            cacheMode="LOAD_NO_CACHE"
-            onMessage={this.messageChange}
-            startInLoadingState={true}
-            onLoadProgress={({nativeEvent}) =>
-              this.setState({progress: nativeEvent.progress})
+    const {uri, path, progress, renderError} = this.state;
+    const fileUri = `${path}/index.html`;
+    const filePath = `${path}`;
+    return (
+      <>
+        {progress !== 1 && <Loading />}
+        <WebView
+          originWhitelist={['*']}
+          mixedContentMode="always"
+          allowFileAccess={true}
+          allowFileAccessFromFileURLs={true}
+          allowUniversalAccessFromFileURLs={true}
+          allowingReadAccessToURL={filePath}
+          containerStyle={{flex: progress === 1 && !renderError ? 1 : 0}}
+          ref={(r) => (global.wevref = r)}
+          source={{
+            uri: path ? fileUri : uri,
+            baseUrl: filePath,
+            headers: {
+              'Cache-control': 'no-cache',
+              Cache: 'no-cache',
+            },
+          }}
+          injectedJavaScript={this.onScroll}
+          javaScriptEnabled={true}
+          cacheEnabled={false}
+          cacheMode="LOAD_NO_CACHE"
+          onError={(syntheticEvent) => {
+            const {nativeEvent} = syntheticEvent;
+            if (nativeEvent.code === -2) {
+              this.setState({errorName: '当前网络不可用，点击重试'});
             }
-          />
-        </>
-      );
-    }
-    if (path) {
-      const fileUri = `${path}/index.html`;
-      const filePath = `${path}`;
-      return (
-        <>
-          {progress !== 1 && <Loading />}
-          <WebView
-            containerStyle={{flex: progress === 1 ? 1 : 0}}
-            ref={(r) => (global.wevref = r)}
-            source={{
-              uri: fileUri,
-              baseUrl: filePath,
-            }}
-            originWhitelist={['*']}
-            cacheEnabled={false}
-            cacheMode="LOAD_NO_CACHE"
-            allowFileAccess={true}
-            javaScriptEnabled={true}
-            allowFileAccessFromFileURLs={true}
-            mixedContentMode="always"
-            allowUniversalAccessFromFileURLs={true}
-            allowingReadAccessToURL={filePath}
-            onLoadProgress={({nativeEvent}) => {
-              this.setState({progress: nativeEvent.progress});
-            }}
-          />
-        </>
-      );
-    }
-    return null;
+            this.setState({renderError: true});
+          }}
+          onMessage={this.messageChange}
+          onLoadProgress={({nativeEvent}) => {
+            this.setState({progress: nativeEvent.progress});
+          }}
+        />
+      </>
+    );
   };
   render() {
-    return this.webviewRender();
+    const {goBack} = this.props.navigation;
+    const {showMore, showHeder, renderError, errorName} = this.state;
+    let back = false; // 连续点击会出现error
+    return (
+      <SafeAreaView style={styles.container}>
+        {this.webviewRender()}
+        {showHeder && (
+          <View style={styles.more}>
+            <View style={{...styles.bulr}}>
+              {!showMore && (
+                <Text
+                  style={styles.textCustom}
+                  onPress={() => {
+                    this.setState({showMore: true});
+                  }}>
+                  ···
+                </Text>
+              )}
+              {showMore && (
+                <Text
+                  style={{...styles.textCustom}}
+                  onPress={() => {
+                    this.setState({showMore: false});
+                  }}>
+                  ×
+                </Text>
+              )}
+            </View>
+            {showMore && (
+              <View style={{...styles.bulr}}>
+                <Text
+                  style={{...styles.textCustom}}
+                  onPress={() => {
+                    if (back) {
+                      return;
+                    }
+                    back = true;
+                    goBack();
+                  }}>
+                  首页
+                </Text>
+              </View>
+            )}
+          </View>
+        )}
+        {renderError && (
+          <Error
+            name={errorName}
+            press={() => {
+              this.initMore();
+              global.wevref.reload();
+            }}
+          />
+        )}
+      </SafeAreaView>
+    );
   }
 }
 
 const mapStateToProps = ({app, router}: any) => ({app, router});
 export default connect(mapStateToProps)(Custom);
+
+const styles = StyleSheet.create({
+  container: {flex: 1},
+  more: {
+    position: 'absolute',
+    top: OS === 'ios' ? 98 : 28,
+    left: 0,
+    height: 36,
+    flexDirection: 'row',
+  },
+  bulr: {
+    borderRadius: 10,
+    marginLeft: 5,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  textCustom: {
+    color: '#fdffff',
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 15,
+    paddingRight: 15,
+    fontWeight: 'bold',
+  },
+});

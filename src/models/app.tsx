@@ -3,7 +3,7 @@ export default {
   state: {
     login: false,
     loading: true,
-    progress: {show: false, speed: 0}, // 进度条
+    updateVersionData: {show: false, speed: 0}, // 进度条
     additional: false, // ➕显示
   },
   reducers: {

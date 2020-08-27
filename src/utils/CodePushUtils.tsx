@@ -1,6 +1,8 @@
 import {AppState, Platform, Alert} from 'react-native';
 import codePush from 'react-native-code-push';
 import RNConfigReader from 'react-native-config-reader';
+import {saveToken, loadToken, removeToken} from './storage/index';
+import {STORAGE_KEY} from './common';
 
 interface CodePushDeploymentKeyProps {
   ios: any;
@@ -70,8 +72,15 @@ const codePushStatusDidChange = async (syncStatus: any) => {
       break;
   }
 };
-let myDispatch: Function;
-
+let myDispatch: any;
+const dispatchChange = (data: Object) => {
+  if (myDispatch) {
+    myDispatch({
+      type: 'app/updateState',
+      payload: {updateVersionData: {show: true, speed: 0, ...data}},
+    });
+  }
+};
 const codePushDownloadDidProgress = (progress: any) => {
   const curPercent = (
     (progress.receivedBytes / progress.totalBytes) *
@@ -79,54 +88,40 @@ const codePushDownloadDidProgress = (progress: any) => {
   ).toFixed(0);
   console.log('[CodePushUtils] Downloading Progress', `${curPercent}%`);
   // console.log(`${progress.receivedBytes} of ${progress.totalBytes} received.`);
-  myDispatch({
-    type: 'app/updateState',
-    payload: {progress: {show: true, speed: curPercent}},
-  });
+  dispatchChange({speed: curPercent});
 };
-const syncImmediate = async (dispatch: Function) => {
-  myDispatch = dispatch;
+export const syncImmediate = async () => {
   const deploymentKey = getDeploymentKey();
   codePush.sync(
-    {
-      updateDialog: {
-        // 是否显示更新描述
-        appendReleaseDescription: true,
-        // 更新描述的前缀。 默认为"Description"
-        descriptionPrefix: '\n\n更新内容：\n',
-        // 强制更新按钮文字，默认为continue
-        mandatoryContinueButtonLabel: '立即更新',
-        // 强制更新时的信息. 默认为"An update is available that must be installed."
-        mandatoryUpdateMessage: '必须更新后才能使用',
-        // 非强制更新时，按钮文字,默认为"ignore"
-        optionalIgnoreButtonLabel: '稍后',
-        // 非强制更新时，确认按钮文字. 默认为"Install"
-        optionalInstallButtonLabel: '后台更新',
-        // 非强制更新时，检查到更新的消息文本
-        optionalUpdateMessage: '有新版本了，是否更新？',
-        // Alert窗口的标题
-        title: '更新',
-      },
-      deploymentKey,
-      installMode: codePush.InstallMode.IMMEDIATE,
-    },
+    {deploymentKey, installMode: codePush.InstallMode.IMMEDIATE},
     codePushStatusDidChange,
     codePushDownloadDidProgress,
   );
 };
 
-export const checkForUpdate = async (dispatch: Function) => {
+export const checkForUpdate = async (dispatch: Function, appStart = false) => {
+  console.log(appStart);
+
+  if (appStart) {
+    const data = await loadToken({key: STORAGE_KEY.APP_UPDATE_VERSION})
+      .then((res) => res)
+      .catch((err) => err);
+    if (data.number >= 3) {
+      return;
+    }
+  }
   const deploymentKey = getDeploymentKey();
   const update = await codePush.checkForUpdate(deploymentKey);
+  myDispatch = dispatch;
   if (!update) {
-    Alert.alert('提示', '已是最新版本');
+    !appStart && Alert.alert('提示', '已是最新版本');
   } else {
-    syncImmediate(dispatch);
+    dispatchChange(update);
   }
 };
 
-export const codePushSync = (dispatch: Function) => {
+export const codePushSync = () => {
   AppState.addEventListener('change', (newState) => {
-    newState === 'active' && syncImmediate(dispatch);
+    newState === 'active' && syncImmediate();
   });
 };

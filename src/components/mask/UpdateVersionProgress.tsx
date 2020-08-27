@@ -1,6 +1,6 @@
 import * as Progress from 'react-native-progress';
 import React from 'react';
-import Mask from './Mask';
+import {View, Text} from 'react-native';
 
 export interface UpdateVersionProgressProps {
   progress: any;
@@ -15,15 +15,26 @@ const UpdateVersionProgress = ({
   }
   const speed = Number(progress);
   const progressRender = (progres: number) => progres / 100;
+  const SPEED = progressRender(speed);
+  console.log(speed);
   return (
-    <Mask display={display}>
-      <Progress.Circle
-        showsText
-        size={100}
-        progress={progressRender(speed)}
+    <View
+      style={{
+        margin: 10,
+        alignItems: 'center',
+      }}>
+      <Progress.Bar
+        progress={SPEED}
+        borderWidth={0}
+        unfilledColor="#e9e9e9"
+        color="#0170fe"
         indeterminate={speed === 0}
       />
-    </Mask>
+      <Text style={{color: '#0170fe'}}>{speed}%</Text>
+      <Text style={{color: '#e9e9e9'}}>
+        {speed === 0 ? '正在连接服务器，请稍等...' : '正在下载安装包，请稍等'}
+      </Text>
+    </View>
   );
 };
 

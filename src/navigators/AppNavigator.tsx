@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-12 16:26:50
+ * @LastEditTime: 2020-08-26 17:19:05
  */
 
 import React, {PureComponent} from 'react';
@@ -113,6 +113,7 @@ const routeList: RouteData[] = [
     component: WView.Custom,
     options: {
       title: 'WView',
+      headerShown: false,
       headerLeft: () => null,
       headerRight: (props: any) => <WViewHeaderRightRender {...props} />,
     },
@@ -177,7 +178,7 @@ class AppNavigator extends PureComponent<PropsEntry> {
   render() {
     const {
       initialRouteName,
-      app: {additional, progress},
+      app: {additional, updateVersionData},
       dispatch,
     } = this.props;
     const list2 = [
@@ -211,10 +212,12 @@ class AppNavigator extends PureComponent<PropsEntry> {
             {this.routeRender(routeList)}
           </Stack.Navigator>
         </NavigationContainer>
-        <Mask.UpdateVersionProgress
-          display={progress.show}
-          progress={progress.speed}
+
+        <Mask.UpdateVersionModal
+          display={updateVersionData.show}
+          data={updateVersionData}
         />
+
         <Mask.Additional
           list={list2}
           display={additional}

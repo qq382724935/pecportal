@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-07-28 13:42:43
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-20 11:52:46
+ * @LastEditTime: 2020-08-25 08:46:37
  * @Description:
  */
 import {Alert} from 'react-native';
@@ -414,13 +414,13 @@ const jsonDataQuery = async (moduleName: string, {fileData}: DataProps) => {
 const isPostMessageData = (data: string[]) =>
   data && data.length > 0 ? 200 : 201;
 
-// RN发送数据给H5
 export interface PostMessageH5Props {
   moduleName: string;
   code?: number;
   data: any;
   pageType?: string;
 }
+// RN发送数据给H5
 const postMessageH5 = (
   {moduleName, code = 200, data, pageType = '2'}: PostMessageH5Props,
   back = true, // 回到前一页
