@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-26 09:13:09
+ * @LastEditTime: 2020-08-27 09:53:50
  */
 
 import React, {Component} from 'react';
@@ -164,6 +164,21 @@ class Custom extends Component<CustomProps, CustomState> {
         {this.webviewRender()}
         {showHeder && (
           <View style={styles.more}>
+            {showMore && (
+              <View style={{...styles.bulr}}>
+                <Text
+                  style={{...styles.textCustom}}
+                  onPress={() => {
+                    if (back) {
+                      return;
+                    }
+                    back = true;
+                    goBack();
+                  }}>
+                  首页
+                </Text>
+              </View>
+            )}
             <View style={{...styles.bulr}}>
               {!showMore && (
                 <Text
@@ -184,21 +199,6 @@ class Custom extends Component<CustomProps, CustomState> {
                 </Text>
               )}
             </View>
-            {showMore && (
-              <View style={{...styles.bulr}}>
-                <Text
-                  style={{...styles.textCustom}}
-                  onPress={() => {
-                    if (back) {
-                      return;
-                    }
-                    back = true;
-                    goBack();
-                  }}>
-                  首页
-                </Text>
-              </View>
-            )}
           </View>
         )}
         {renderError && (
@@ -222,8 +222,8 @@ const styles = StyleSheet.create({
   container: {flex: 1},
   more: {
     position: 'absolute',
-    top: OS === 'ios' ? 98 : 28,
-    left: 0,
+    top: OS === 'ios' ? 68 : 28,
+    right: 20,
     height: 36,
     flexDirection: 'row',
   },
