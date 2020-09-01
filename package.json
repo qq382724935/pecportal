@@ -16,8 +16,8 @@
     "release-react": "yarn release-react-ios && yarn release-react-android",
     "release-react-ios": "appcenter codepush release-react --app liulijun0810-gmail.com/ios_cpdemo",
     "release-react-android": "appcenter codepush release-react --app liulijun0810-gmail.com/android_cpdemo",
-    "cp:an": "yarn release-react-android -d Staging -t 1.0.1 --m false --development false --description '1. 状态栏颜色统一 \n 2. H5离线应用优化'",
-    "cp:ios": "yarn release-react-ios -d Staging -t 1.0.1 --m false --development false --description '1. 状态栏颜色统一 \n 2. H5离线应用优化'"
+    "cp:an": "yarn release-react-android -d Staging -t 1.0.1 -m false --development false --description '1. 状态栏颜色统一 \n 2. H5离线应用优化'",
+    "cp:ios": "yarn release-react-ios -d Staging -t 1.0.1 -m false --development false --description '1. 状态栏颜色统一 \n 2. H5离线应用优化'"
   },
   "dependencies": {
     "@react-native-community/art": "^1.2.0",
