@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-31 16:05:59
+ * @LastEditTime: 2020-09-01 17:28:27
  */
 
 import React, {PureComponent} from 'react';
@@ -214,7 +214,7 @@ class AppNavigator extends PureComponent<PropsEntry> {
             screenOptions={{
               headerStyle: {
                 backgroundColor: STATUS_BAR,
-                height: Platform.OS === 'ios' ? 76 : 30,
+                height: Platform.OS === 'ios' ? 76 : 34,
               },
               headerTintColor,
               headerTitleStyle: {
