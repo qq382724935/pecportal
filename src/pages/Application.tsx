@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-06 15:40:15
+ * @LastEditTime: 2020-08-31 16:19:34
  */
 import React from 'react';
 import {StyleSheet, ScrollView, View, Text} from 'react-native';

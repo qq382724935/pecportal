@@ -16,7 +16,6 @@ const UpdateVersionProgress = ({
   const speed = Number(progress);
   const progressRender = (progres: number) => progres / 100;
   const SPEED = progressRender(speed);
-  console.log(speed);
   return (
     <View
       style={{
@@ -32,7 +31,11 @@ const UpdateVersionProgress = ({
       />
       <Text style={{color: '#0170fe'}}>{speed}%</Text>
       <Text style={{color: '#e9e9e9'}}>
-        {speed === 0 ? '正在连接服务器，请稍等...' : '正在下载安装包，请稍等'}
+        {speed === 0
+          ? '正在连接服务器，请稍等...'
+          : speed === 100
+          ? '正在安装应用，请稍等...'
+          : '正在下载安装包，请稍等...'}
       </Text>
     </View>
   );

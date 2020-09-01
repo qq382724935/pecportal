@@ -1,7 +1,7 @@
 import {AppState, Platform, Alert} from 'react-native';
 import codePush from 'react-native-code-push';
 import RNConfigReader from 'react-native-config-reader';
-import {saveToken, loadToken, removeToken} from './storage/index';
+import {loadToken} from './storage/index';
 import {STORAGE_KEY} from './common';
 
 interface CodePushDeploymentKeyProps {
@@ -27,12 +27,10 @@ const CodePushDeploymentKey: CodePushDeploymentKeyProps = {
 const getDeploymentKey = () => {
   const buildType = RNConfigReader.BUILD_TYPE.toLowerCase();
   const deploymentKey = CodePushDeploymentKey[Platform.OS][buildType];
-  console.log('[CodePushUtils]', deploymentKey);
   return deploymentKey;
 };
 
 const codePushStatusDidChange = async (syncStatus: any) => {
-  // dispatch({type: 'app', payload: {show: true}});
   switch (syncStatus) {
     case codePush.SyncStatus.CHECKING_FOR_UPDATE:
       // 0 - 正在查询CodePush服务器以进行更新。
@@ -100,8 +98,6 @@ export const syncImmediate = async () => {
 };
 
 export const checkForUpdate = async (dispatch: Function, appStart = false) => {
-  console.log(appStart);
-
   if (appStart) {
     const data = await loadToken({key: STORAGE_KEY.APP_UPDATE_VERSION})
       .then((res) => res)

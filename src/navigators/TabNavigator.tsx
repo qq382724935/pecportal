@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-19 15:42:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-26 16:37:54
+ * @LastEditTime: 2020-08-31 16:01:06
  */
 
 import React, {Component} from 'react';
@@ -11,7 +11,8 @@ import Home from '../pages/Home';
 import Personal from '../pages/Personal';
 import Application from '../pages/Application';
 import MessageCenter from '../pages/MessageCenter';
-
+import {StatusBar, Platform} from 'react-native';
+import {STATUS_BAR} from '../utils/styles/common';
 const Tab = createBottomTabNavigator();
 export default class DynamicTabNavigator extends Component {
   tabScreenData = [
@@ -35,7 +36,14 @@ export default class DynamicTabNavigator extends Component {
     ));
   render() {
     return (
-      <Tab.Navigator>{this.tabScreenRender(this.tabScreenData)}</Tab.Navigator>
+      <>
+        {Platform.OS === 'android' && (
+          <StatusBar backgroundColor={STATUS_BAR} barStyle="dark-content" />
+        )}
+        <Tab.Navigator>
+          {this.tabScreenRender(this.tabScreenData)}
+        </Tab.Navigator>
+      </>
     );
   }
 }

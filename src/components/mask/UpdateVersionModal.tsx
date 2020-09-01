@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
 import Mask from './Mask';
-import {StyleSheet, View, Text, Image, Dimensions} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  Dimensions,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import {connect} from 'react-redux';
 const {width} = Dimensions.get('window');
 import {syncImmediate} from '../../utils/CodePushUtils';
 import UpdateVersionProgress from './UpdateVersionProgress';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 export interface UpdateVersionModalProps {
   display: boolean;
   dispatch: Function;
@@ -58,42 +64,38 @@ class UpdateVersionModal extends Component<
               </View>
               <View style={styles.footer}>
                 {!isMandatory && (
-                  <View
+                  <TouchableWithoutFeedback
                     style={{
+                      flex: 1,
                       borderRightColor: '#e9e9e9',
                       borderRightWidth: 1,
-                      flex: 1,
-                    }}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        dispatch({
-                          type: 'app/updateState',
-                          payload: {updateVersionData: {show: false}},
-                        });
-                      }}>
-                      <Text
-                        style={{alignSelf: 'center'}}
-                        onPress={() => {
-                          dispatch({
-                            type: 'app/updateState',
-                            payload: {updateVersionData: {show: false}},
-                          });
-                        }}>
-                        暂不更新
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                )}
-
-                <View style={{flex: 1}}>
-                  <TouchableOpacity
+                    }}
                     onPress={() => {
-                      this.setState({showProgress: true});
-                      syncImmediate();
+                      dispatch({
+                        type: 'app/updateState',
+                        payload: {updateVersionData: {show: false}},
+                      });
                     }}>
-                    <Text style={{alignSelf: 'center'}}>立即更新</Text>
-                  </TouchableOpacity>
-                </View>
+                    <View
+                      style={{
+                        flex: 1,
+                        borderRightColor: '#e9e9e9',
+                        borderRightWidth: 1,
+                      }}>
+                      <Text style={styles.fText}>暂不更新</Text>
+                    </View>
+                  </TouchableWithoutFeedback>
+                )}
+                <TouchableWithoutFeedback
+                  style={{flex: 1}}
+                  onPress={() => {
+                    this.setState({showProgress: true});
+                    syncImmediate();
+                  }}>
+                  <View style={{flex: 1}}>
+                    <Text style={styles.fText}>立即更新</Text>
+                  </View>
+                </TouchableWithoutFeedback>
               </View>
             </>
           ) : (
@@ -122,8 +124,11 @@ const styles = StyleSheet.create({
     borderBottomColor: '#e9e9e9',
   },
   footer: {
+    flexDirection: 'row',
+  },
+  fText: {
+    alignSelf: 'center',
     paddingTop: 16,
     paddingBottom: 16,
-    flexDirection: 'row',
   },
 });

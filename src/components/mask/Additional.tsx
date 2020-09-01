@@ -9,7 +9,7 @@ import {
   ImageSourcePropType,
 } from 'react-native';
 import Mask from './Mask';
-
+import {AdditionalBKColor} from '../../utils/styles/common';
 export interface Additional {
   list: any[];
   display: boolean;
@@ -46,7 +46,7 @@ const Additional = ({list = [], display = false, onPress}: Additional) => {
   }
   return (
     <>
-      <Mask display={display} onPress={onPress} />
+      <Mask display={display} onPress={onPress} opacity={0} />
       <View style={styles.add}>{listRender(list)}</View>
     </>
   );
@@ -57,8 +57,8 @@ export default Additional;
 const styles = StyleSheet.create({
   add: {
     position: 'absolute',
-    backgroundColor: '#fff',
-    top: Platform.OS === 'ios' ? 88 : 56,
+    backgroundColor: AdditionalBKColor,
+    top: Platform.OS === 'ios' ? 76 : 30,
     right: 8,
     minHeight: 50,
     minWidth: 120,

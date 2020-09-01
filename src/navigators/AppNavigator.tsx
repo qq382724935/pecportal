@@ -2,11 +2,11 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-26 17:19:05
+ * @LastEditTime: 2020-08-31 16:05:59
  */
 
 import React, {PureComponent} from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity, Platform} from 'react-native';
 import {connect} from 'react-redux';
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -28,6 +28,7 @@ import CameraScanPreview from '../pages/camera/CameraScanPreview';
 
 import {WView, Mask} from '../components/index';
 import {navigationRef, navigate} from './RootNavigation.js';
+import {STATUS_BAR, headerTintColor} from '../utils/styles/common';
 
 interface RouteOptions {
   title?: string;
@@ -65,7 +66,7 @@ const MainHeaderRightRender = ({app: {additional}, dispatch}: any) => {
           alignItems: 'flex-end',
         }}>
         <Image
-          style={{width: 16, height: 16}}
+          style={{width: 14, height: 14}}
           source={require('../assets/icon/add.png')}
         />
       </View>
@@ -208,7 +209,19 @@ class AppNavigator extends PureComponent<PropsEntry> {
     return (
       <>
         <NavigationContainer ref={navigationRef}>
-          <Stack.Navigator initialRouteName={initialRouteName}>
+          <Stack.Navigator
+            initialRouteName={initialRouteName}
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: STATUS_BAR,
+                height: Platform.OS === 'ios' ? 76 : 30,
+              },
+              headerTintColor,
+              headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 14,
+              },
+            }}>
             {this.routeRender(routeList)}
           </Stack.Navigator>
         </NavigationContainer>

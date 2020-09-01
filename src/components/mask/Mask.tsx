@@ -5,14 +5,26 @@ export interface MaskProps {
   display: boolean;
   onPress?: () => {} | void;
   children?: JSX.Element;
+  opacity?: number;
 }
-const Mask = ({children, display = true, onPress = () => {}}: MaskProps) => {
+const Mask = ({
+  children,
+  display = true,
+  opacity = 0.5,
+  onPress = () => {},
+}: MaskProps) => {
   if (!display) {
     return null;
   }
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <View style={styles.container}>{children}</View>
+      <View
+        style={{
+          ...styles.container,
+          backgroundColor: `rgba(0,0,0,${opacity})`,
+        }}>
+        {children}
+      </View>
     </TouchableWithoutFeedback>
   );
 };

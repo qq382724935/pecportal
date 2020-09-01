@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-27 09:53:50
+ * @LastEditTime: 2020-09-01 08:49:46
  */
 
 import React, {Component} from 'react';
@@ -13,7 +13,8 @@ import {h5PostMessage} from '../../utils/webview';
 import {connect} from 'react-redux';
 import Loading from './Loading';
 import Error from './Error';
-import {SafeAreaView, View, Text, StyleSheet} from 'react-native';
+import CustomHeader from './CustomHeader';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import {PATH_WEBVIEW} from '../../utils/common';
 const FILE_PATH = PATH_WEBVIEW;
 
@@ -41,7 +42,6 @@ interface CustomState {
   path: string;
   uri: string;
   progress: number;
-  showMore: boolean;
   showHeder: boolean;
   renderError: boolean;
   errorName: string;
@@ -57,7 +57,6 @@ class Custom extends Component<CustomProps, CustomState> {
       path: '',
       uri: '',
       progress: 0,
-      showMore: false,
       showHeder: true,
       renderError: false,
       errorName: '',
@@ -100,7 +99,7 @@ class Custom extends Component<CustomProps, CustomState> {
   };
 
   initMore = () => {
-    this.setState({showMore: false, renderError: false});
+    this.setState({renderError: false});
   };
   onScroll = `
     let scrollTimer;
@@ -157,50 +156,11 @@ class Custom extends Component<CustomProps, CustomState> {
   };
   render() {
     const {goBack} = this.props.navigation;
-    const {showMore, showHeder, renderError, errorName} = this.state;
-    let back = false; // 连续点击会出现error
+    const {showHeder, renderError, errorName} = this.state;
     return (
       <SafeAreaView style={styles.container}>
         {this.webviewRender()}
-        {showHeder && (
-          <View style={styles.more}>
-            {showMore && (
-              <View style={{...styles.bulr}}>
-                <Text
-                  style={{...styles.textCustom}}
-                  onPress={() => {
-                    if (back) {
-                      return;
-                    }
-                    back = true;
-                    goBack();
-                  }}>
-                  首页
-                </Text>
-              </View>
-            )}
-            <View style={{...styles.bulr}}>
-              {!showMore && (
-                <Text
-                  style={styles.textCustom}
-                  onPress={() => {
-                    this.setState({showMore: true});
-                  }}>
-                  ···
-                </Text>
-              )}
-              {showMore && (
-                <Text
-                  style={{...styles.textCustom}}
-                  onPress={() => {
-                    this.setState({showMore: false});
-                  }}>
-                  ×
-                </Text>
-              )}
-            </View>
-          </View>
-        )}
+        {showHeder && <CustomHeader goBack={goBack} />}
         {renderError && (
           <Error
             name={errorName}
