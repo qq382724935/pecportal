@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-19 15:42:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-09-01 16:37:04
+ * @LastEditTime: 2020-09-01 16:43:10
  */
 
 import React, {Component} from 'react';
@@ -19,11 +19,11 @@ const Tab = createBottomTabNavigator();
 export default class DynamicTabNavigator extends Component {
   tabScreenData = [
     {name: 'home', component: Home, options: {title: '主页'}},
-    // {
-    //   name: 'messageCenter',
-    //   component: MessageCenter,
-    //   options: {title: '消息'},
-    // },
+    {
+      name: 'messageCenter',
+      component: MessageCenter,
+      options: {title: '消息'},
+    },
     {name: 'application', component: Application, options: {title: '应用'}},
     {name: 'personal', component: Personal, options: {title: '我的'}},
   ];
