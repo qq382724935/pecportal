@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-09-01 08:49:46
+ * @LastEditTime: 2020-09-01 15:17:12
  */
 
 import React, {Component} from 'react';
@@ -14,6 +14,7 @@ import {connect} from 'react-redux';
 import Loading from './Loading';
 import Error from './Error';
 import CustomHeader from './CustomHeader';
+import CustomFixedTool from './CustomFixedTool';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import {PATH_WEBVIEW} from '../../utils/common';
 const FILE_PATH = PATH_WEBVIEW;
@@ -161,6 +162,7 @@ class Custom extends Component<CustomProps, CustomState> {
       <SafeAreaView style={styles.container}>
         {this.webviewRender()}
         {showHeder && <CustomHeader goBack={goBack} />}
+        {!showHeder && <CustomFixedTool />}
         {renderError && (
           <Error
             name={errorName}
@@ -180,24 +182,4 @@ export default connect(mapStateToProps)(Custom);
 
 const styles = StyleSheet.create({
   container: {flex: 1},
-  more: {
-    position: 'absolute',
-    top: OS === 'ios' ? 68 : 28,
-    right: 20,
-    height: 36,
-    flexDirection: 'row',
-  },
-  bulr: {
-    borderRadius: 10,
-    marginLeft: 5,
-    backgroundColor: 'rgba(0,0,0,0.5)',
-  },
-  textCustom: {
-    color: '#fdffff',
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 15,
-    paddingRight: 15,
-    fontWeight: 'bold',
-  },
 });

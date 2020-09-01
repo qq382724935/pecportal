@@ -5,11 +5,9 @@ import {
   Platform,
   Text,
   View,
-  Dimensions,
   GestureResponderEvent,
 } from 'react-native';
 
-const {height} = Dimensions.get('window');
 const isIOS = () => Platform.OS === 'ios';
 export interface CustomHeaderProps {
   goBack: Function;
@@ -19,7 +17,7 @@ export interface CustomHeaderState {
   moveTop?: number;
 }
 class CustomHeader extends PureComponent<CustomHeaderProps, CustomHeaderState> {
-  state = {showMore: false, moveTop: 20};
+  state = {showMore: false, moveTop: isIOS() ? 68 : 28};
   _panResponder: any;
   moveRange = ({nativeEvent: {pageY}}: GestureResponderEvent) => {
     if (isIOS()) {

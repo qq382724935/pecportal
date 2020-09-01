@@ -2,6 +2,7 @@ apply plugin: "com.android.application"
 apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 import com.android.build.OutputFile
 import groovy.json.JsonSlurper
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).

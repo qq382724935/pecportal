@@ -16,8 +16,8 @@
     "release-react": "yarn release-react-ios && yarn release-react-android",
     "release-react-ios": "appcenter codepush release-react --app liulijun0810-gmail.com/ios_cpdemo",
     "release-react-android": "appcenter codepush release-react --app liulijun0810-gmail.com/android_cpdemo",
-    "cp:an": "yarn release-react-android -d Staging -t 1.0.1 -m false --development false --description '1. 状态栏颜色统一 \n 2. H5离线应用优化'",
-    "cp:ios": "yarn release-react-ios -d Staging -t 1.0.1 -m false --development false --description '1. 状态栏颜色统一 \n 2. H5离线应用优化'"
+    "cp:an": "yarn release-react-android -d Production -t 1.0.1 --mandatory false --development false --description '优化'",
+    "cp:ios": "yarn release-react-ios -d Staging -t 1.0.1 --mandatory false --development false --description '优化'"
   },
   "dependencies": {
     "@react-native-community/art": "^1.2.0",
@@ -29,6 +29,7 @@
     "@react-navigation/native": "^5.7.3",
     "@react-navigation/stack": "^5.9.0",
     "@types/react-native-snap-carousel": "^3.8.2",
+    "@types/react-native-vector-icons": "^6.4.5",
     "@types/react-native-video": "^5.0.1",
     "@yz1311/react-native-http-cache": "^0.3.1",
     "apsl-react-native-button": "^3.1.1",
@@ -61,6 +62,7 @@
     "react-native-storage": "^1.0.1",
     "react-native-svg": "^12.1.0",
     "react-native-swiper": "^1.6.0",
+    "react-native-vector-icons": "^7.0.0",
     "react-native-video": "^4.4.5",
     "react-native-video-controls": "^2.6.0",
     "react-native-view-shot": "^3.1.2",
