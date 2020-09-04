@@ -77,9 +77,6 @@ PODS:
     - boost-for-react-native
     - DoubleConversion
     - glog
-  - GCDWebServer (3.5.4):
-    - GCDWebServer/Core (= 3.5.4)
-  - GCDWebServer/Core (3.5.4)
   - glog (0.3.5)
   - JCore (1.8.0):
     - React
@@ -277,9 +274,6 @@ PODS:
     - React
   - react-native-sqlite-storage (5.0.0):
     - React
-  - react-native-static-server (0.5.0):
-    - GCDWebServer (~> 3.0)
-    - React
   - react-native-video (4.4.5):
     - React
     - react-native-video/Video (= 4.4.5)
@@ -443,7 +437,6 @@ DEPENDENCIES:
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-sqlite-storage (from `../node_modules/react-native-sqlite-storage`)
-  - react-native-static-server (from `../node_modules/react-native-static-server`)
   - react-native-video (from `../node_modules/react-native-video`)
   - react-native-view-shot (from `../node_modules/react-native-view-shot`)
   - react-native-webview (from `../node_modules/react-native-webview`)
@@ -491,7 +484,6 @@ SPEC REPOS:
     - Flipper-PeerTalk
     - Flipper-RSocket
     - FlipperKit
-    - GCDWebServer
     - JWT
     - OpenSSL-Universal
     - SSZipArchive
@@ -549,8 +541,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-splash-screen"
   react-native-sqlite-storage:
     :path: "../node_modules/react-native-sqlite-storage"
-  react-native-static-server:
-    :path: "../node_modules/react-native-static-server"
   react-native-video:
     :path: "../node_modules/react-native-video"
   react-native-view-shot:
@@ -630,7 +620,6 @@ SPEC CHECKSUMS:
   Flipper-RSocket: 64e7431a55835eb953b0bf984ef3b90ae9fdddd7
   FlipperKit: 6dc9b8f4ef60d9e5ded7f0264db299c91f18832e
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
-  GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
   JCore: 1329e2407872f05e11e127123e9764ca3f9ee124
   JPush: b389c8181b1a5f8978cd06a3811c76fbd848862c
@@ -653,7 +642,6 @@ SPEC CHECKSUMS:
   react-native-safe-area-context: 4fb3cdeb4a405ec19f18aca80ef2144381ffc761
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-sqlite-storage: 418ef4afc5e6df6ce3574c4617e5f0b65cffde55
-  react-native-static-server: 201b2a945a35096be3ae7f43e367c65bcbd61343
   react-native-video: eee541262ada11bc7ffe8ec5508e6a877937c462
   react-native-view-shot: 4475fde003fe8a210053d1f98fb9e06c1d834e1c
   react-native-webview: 598605cd213f5096e695f5b33fbee210a47e60ab

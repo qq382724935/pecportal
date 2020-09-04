@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-09-01 15:17:12
+ * @LastEditTime: 2020-09-03 14:38:39
  */
 
 import React, {Component} from 'react';
@@ -13,8 +13,7 @@ import {h5PostMessage} from '../../utils/webview';
 import {connect} from 'react-redux';
 import Loading from './Loading';
 import Error from './Error';
-import CustomHeader from './CustomHeader';
-import CustomFixedTool from './CustomFixedTool';
+import CustomFixed from './CustomFixed';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import {PATH_WEBVIEW} from '../../utils/common';
 const FILE_PATH = PATH_WEBVIEW;
@@ -43,7 +42,7 @@ interface CustomState {
   path: string;
   uri: string;
   progress: number;
-  showHeder: boolean;
+  showTop: boolean;
   renderError: boolean;
   errorName: string;
 }
@@ -58,7 +57,7 @@ class Custom extends Component<CustomProps, CustomState> {
       path: '',
       uri: '',
       progress: 0,
-      showHeder: true,
+      showTop: false,
       renderError: false,
       errorName: '',
     };
@@ -89,9 +88,9 @@ class Custom extends Component<CustomProps, CustomState> {
     // 滚动监听事件存在
     if ((bScroll === 0 || bScroll) && (dScroll === 0 || dScroll)) {
       if (bScroll > 0 || dScroll > 0) {
-        this.state.showHeder && this.setState({showHeder: false});
+        !this.state.showTop && this.setState({showTop: true});
       } else {
-        this.setState({showHeder: true});
+        this.setState({showTop: false});
       }
     } else {
       // 插件监听处理
@@ -157,12 +156,11 @@ class Custom extends Component<CustomProps, CustomState> {
   };
   render() {
     const {goBack} = this.props.navigation;
-    const {showHeder, renderError, errorName} = this.state;
+    const {showTop, renderError, errorName} = this.state;
     return (
       <SafeAreaView style={styles.container}>
         {this.webviewRender()}
-        {showHeder && <CustomHeader goBack={goBack} />}
-        {!showHeder && <CustomFixedTool />}
+        <CustomFixed goBack={goBack} top={showTop} />
         {renderError && (
           <Error
             name={errorName}

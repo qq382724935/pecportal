@@ -2,13 +2,17 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-09-01 11:48:43
+ * @LastEditTime: 2020-09-01 17:18:38
  */
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-
+import {List} from '../components/index';
 const MessageCenter = () => {
-  return <></>;
+  return (
+    <>
+      <List.Item list={[]}></List.Item>
+    </>
+  );
 };
 
 export default MessageCenter;
