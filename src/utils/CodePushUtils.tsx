@@ -3,7 +3,7 @@ import codePush from 'react-native-code-push';
 import RNConfigReader from 'react-native-config-reader';
 import {loadToken} from './storage/index';
 import {STORAGE_KEY} from './common';
-
+import {NetInfo} from './deviceInfo';
 interface CodePushDeploymentKeyProps {
   ios: any;
   android: any;
@@ -99,6 +99,14 @@ export const syncImmediate = async () => {
 
 export const checkForUpdate = async (dispatch: Function, appStart = false) => {
   if (appStart) {
+    // wifi模式下启动应用检测版本
+    const {type, isInternetReachable, isConnected} = await NetInfo.fetch().then(
+      (state) => state,
+    );
+    if (type !== 'wifi' || !isInternetReachable || !isConnected) {
+      return;
+    }
+
     const data = await loadToken({key: STORAGE_KEY.APP_UPDATE_VERSION})
       .then((res) => res)
       .catch((err) => err);

@@ -1,12 +1,19 @@
 /*
  * @Author: 刘利军
+ * @Date: 2020-06-22 11:13:26
+ * @LastEditors: 刘利军
+ * @LastEditTime: 2020-09-07 15:28:20
+ * @Description:
+ */
+/*
+ * @Author: 刘利军
  * @Date: 2020-05-20 17:03:46
  * @LastEditors: 刘利军
  * @LastEditTime: 2020-09-07 15:14:31
  */
 
 import React, {Component} from 'react';
-import {Text, View, SafeAreaView} from 'react-native';
+import {Text, View, SafeAreaView, ScrollView} from 'react-native';
 import {
   getDeviceId,
   getSystemVersion,
@@ -15,12 +22,10 @@ import {
   getBuildId,
   getModel,
   getCarrier,
-} from 'react-native-device-info';
-
-import NetInfo from '@react-native-community/netinfo';
+  NetInfo,
+} from '../utils/deviceInfo';
 
 import {ListDescribeProps} from '../types/common';
-import {ScrollView} from 'react-native-gesture-handler';
 
 const renderItem = (item: ListDescribeProps, index: string) => {
   return (
