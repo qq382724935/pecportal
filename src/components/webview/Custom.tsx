@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-09-03 14:38:39
+ * @LastEditTime: 2020-09-07 14:02:37
  */
 
 import React, {Component} from 'react';
@@ -156,11 +156,13 @@ class Custom extends Component<CustomProps, CustomState> {
   };
   render() {
     const {goBack} = this.props.navigation;
+    const {name} = this.props.route;
     const {showTop, renderError, errorName} = this.state;
+    console.log(name);
     return (
       <SafeAreaView style={styles.container}>
         {this.webviewRender()}
-        <CustomFixed goBack={goBack} top={showTop} />
+        {name === 'WView' && <CustomFixed goBack={goBack} top={showTop} />}
         {renderError && (
           <Error
             name={errorName}

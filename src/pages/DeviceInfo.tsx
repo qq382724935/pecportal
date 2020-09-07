@@ -2,11 +2,11 @@
  * @Author: 刘利军
  * @Date: 2020-05-20 17:03:46
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-06 15:13:38
+ * @LastEditTime: 2020-09-07 15:14:31
  */
 
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, SafeAreaView} from 'react-native';
 import {
   getDeviceId,
   getSystemVersion,
@@ -19,11 +19,10 @@ import {
 
 import NetInfo from '@react-native-community/netinfo';
 
-import {ItemData} from '../types/common';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {ListDescribeProps} from '../types/common';
 import {ScrollView} from 'react-native-gesture-handler';
 
-const renderItem = (item: ItemData, index: string) => {
+const renderItem = (item: ListDescribeProps, index: string) => {
   return (
     <View key={index}>
       <View style={{flexDirection: 'row', marginTop: 8, marginLeft: 8}}>
@@ -66,7 +65,7 @@ class DeviceInfo extends Component {
       netInfoState: {type, isConnected, isInternetReachable, details},
     } = this.state;
 
-    const list: ItemData[] = [
+    const list: ListDescribeProps[] = [
       {label: '设备唯一ID(标识码)', value: getDeviceId()},
       {label: '设备型号', value: getModel()},
       {label: '设备操作系统名称', value: getSystemName()},
@@ -75,7 +74,7 @@ class DeviceInfo extends Component {
       {label: '设备电话号码', value: phoneNumber},
       {label: '运营商名称', value: carrier},
     ];
-    const list2: ItemData[] = [
+    const list2: ListDescribeProps[] = [
       {label: '是否存在网络连接', value: `${isConnected}`},
       {label: '网络连接可以访问Internet', value: `${isInternetReachable}`},
       {
@@ -107,12 +106,10 @@ class DeviceInfo extends Component {
       },
     ];
     return (
-      <SafeAreaView>
+      <SafeAreaView style={{flex: 1}}>
         <ScrollView>
-          <View>
-            {list.map((item, index) => renderItem(item, `list1${index}`))}
-            {list2.map((item, index) => renderItem(item, `list2${index}`))}
-          </View>
+          {list.map((item, index) => renderItem(item, `list1${index}`))}
+          {list2.map((item, index) => renderItem(item, `list2${index}`))}
         </ScrollView>
       </SafeAreaView>
     );

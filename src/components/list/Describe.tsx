@@ -10,7 +10,7 @@ export interface DescribeProps {
 }
 interface ListItemProps {
   label: string;
-  value: string;
+  value: string | number;
   onPress?(): void;
 }
 const Describe = ({

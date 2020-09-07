@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-08-05 16:48:57
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-26 16:57:43
+ * @LastEditTime: 2020-09-07 14:07:59
  * @Description:
  */
 import React from 'react';
@@ -38,6 +38,8 @@ import NetInfo from '@react-native-community/netinfo';
 
 const {width} = Dimensions.get('window');
 import {FileDataProps} from './webview';
+
+import {ListItemProps} from '../types/common';
 // 原生调用插件默认值
 export const INIT_DATA = {initData: {pageType: '1'}};
 
@@ -72,20 +74,21 @@ export const getAppData = (applicationType: string) => {
   });
 };
 
-export const appRednder = (list: FAListProps[], navigation: any) => {
+export const appRednder = (list: ListItemProps[], navigation: any) => {
   return list.map((item, index: number) => (
     <TouchableOpacity
       key={index}
       onPress={() => {
+        resetPage({name: item.uri, navigation}, item.params);
+        // switch (item.type) {
+        //   case 'webview':
+        //     resetPage({name: item.uri, navigation}, item.params);
+        //     break;
+        //   case 'page':
+        //     resetPage({name: item.uri, navigation}, item.params);
+        //     break;
+        // }
         // item.press(navigation);
-        switch (item.type) {
-          case 'webview':
-            resetPage({name: item.uri, navigation}, item.params);
-            break;
-          case 'page':
-            resetPage({name: item.uri, navigation}, item.params);
-            break;
-        }
       }}>
       <View style={styles.faLink}>
         <Image source={item.icon} style={{marginBottom: 2}} />
@@ -261,22 +264,16 @@ export const getNetInfo = async () => {
 // applicationType 应用所属类别
 // type 1. webview 2.page 3. plugin
 // sort 0: 不显示 1：应用显示 99：全显示
-export interface FAListProps {
-  text: string;
-  uri: string | undefined;
-  type: string;
-  icon: any;
-  applicationType: string;
-  params: any;
-  sort: number;
-}
-export const faList: FAListProps[] = [
+
+export const faList: ListItemProps[] = [
   {
     text: 'ECRC',
     icon: require('../assets/font14.png'),
+    time: '20/09/07',
     uri: 'WView',
     type: 'webview',
     applicationType: '子公司应用',
+    content: '坚持目标的人会发光！',
     sort: 99,
     params: {
       uri: 'https://ecrc.pec.com.cn/#/main/510011040421/5100/ios',
@@ -287,6 +284,8 @@ export const faList: FAListProps[] = [
   },
   {
     text: 'U订货',
+    content: '收到一大堆消息!!!',
+    time: '20/09/07',
     icon: require('../assets/font4.png'),
     uri: 'WView',
     type: 'webview',
@@ -301,6 +300,8 @@ export const faList: FAListProps[] = [
   },
   {
     text: '中台(离线)',
+    time: '08:10',
+    content: '收到一条消息信息!',
     icon: require('../assets/font10.png'),
     uri: 'WView',
     type: 'webview',
@@ -315,6 +316,9 @@ export const faList: FAListProps[] = [
   },
   {
     text: 'H5',
+    time: '18:10',
+    content:
+      '收到来字H5收到一条消息信息收到来字H5收到一条消息信息收到来字H5收到一条消息信息!',
     icon: require('../assets/font6.png'),
     uri: 'WView',
     type: 'webview',
@@ -330,16 +334,17 @@ export const faList: FAListProps[] = [
   },
   {
     text: '地图',
+    content: '',
     uri: 'amap',
-    type: 'webview',
+    type: 'page',
     applicationType: '子公司应用',
     icon: require('../assets/font15.png'),
     sort: 99,
     params: {...INIT_DATA},
   },
-
   {
     text: '二维码',
+    content: '',
     uri: 'qrcode',
     type: 'page',
     applicationType: '原生服务',
@@ -351,6 +356,7 @@ export const faList: FAListProps[] = [
   },
   {
     type: 'page',
+    content: '',
     text: '设备信息',
     icon: require('../assets/font1.png'),
     uri: 'deviceinfo',
@@ -361,6 +367,7 @@ export const faList: FAListProps[] = [
   {
     type: 'page',
     text: '目录结构',
+    content: '',
     icon: require('../assets/font15.png'),
     uri: 'files',
     applicationType: '原生服务',
@@ -370,6 +377,7 @@ export const faList: FAListProps[] = [
   {
     type: 'page',
     text: '文本生成图片',
+    content: '',
     icon: require('../assets/font1.png'),
     uri: 'viewshot',
     applicationType: '原生服务',
@@ -379,6 +387,7 @@ export const faList: FAListProps[] = [
   {
     type: 'page',
     text: '全部',
+    content: '',
     icon: require('../assets/font6.png'),
     uri: 'application',
     applicationType: '全部',
@@ -387,6 +396,7 @@ export const faList: FAListProps[] = [
   },
   {
     text: '极光分享',
+    content: '',
     icon: require('../assets/font2.png'),
     uri: undefined,
     type: 'plugin',
@@ -414,6 +424,7 @@ export const faList: FAListProps[] = [
   },
   {
     text: '相册',
+    content: '',
     icon: require('../assets/font9.png'),
     uri: undefined,
     type: 'plugin',

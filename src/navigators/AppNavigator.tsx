@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-09-01 17:28:27
+ * @LastEditTime: 2020-09-07 13:59:42
  */
 
 import React, {PureComponent} from 'react';
@@ -113,11 +113,15 @@ const routeList: RouteData[] = [
     name: 'WView',
     component: WView.Custom,
     options: {
-      title: 'WView',
       headerShown: false,
       headerLeft: () => null,
       headerRight: (props: any) => <WViewHeaderRightRender {...props} />,
     },
+  },
+  {
+    name: 'news',
+    component: WView.Custom,
+    options: {headerShown: true, headerRight: () => null},
   },
   {
     name: 'cameraPhoto',
@@ -182,7 +186,7 @@ class AppNavigator extends PureComponent<PropsEntry> {
       app: {additional, updateVersionData},
       dispatch,
     } = this.props;
-    const list2 = [
+    const addFeatures = [
       {
         label: '扫一扫',
         icon: require('../assets/icon/scan.png'),
@@ -232,7 +236,7 @@ class AppNavigator extends PureComponent<PropsEntry> {
         />
 
         <Mask.Additional
-          list={list2}
+          list={addFeatures}
           display={additional}
           onPress={() => {
             dispatch({

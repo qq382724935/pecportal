@@ -2,43 +2,45 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-31 16:19:34
+ * @LastEditTime: 2020-09-07 15:06:44
  */
 import React from 'react';
 import {StyleSheet, ScrollView, View, Text} from 'react-native';
-import {getAppData, appRednder} from '../utils/common';
+import {getAppData, appRednder, faList} from '../utils/common';
 const FrequentlyApp = ({navigation}: any) => {
-  const list = getAppData('原生服务');
-  const list2 = getAppData('子公司应用');
-  return (
-    <>
-      <ScrollView>
-        <View>
-          <Text style={{marginTop: 8, marginLeft: 8}}>原生服务</Text>
-          <View style={styles.faView}>{appRednder(list, navigation)}</View>
-        </View>
-        <View>
-          <Text style={{marginTop: 8, marginLeft: 8}}>子公司应用</Text>
-          <View style={styles.faView}>{appRednder(list2, navigation)}</View>
-        </View>
-      </ScrollView>
-    </>
-  );
+  let renderList: any[] = [];
+  let dataKey: string[] = [];
+  faList.map((item) => {
+    if (item.applicationType !== '全部') {
+      dataKey.push(item.applicationType);
+    }
+  });
+  const dataRender = () => {
+    new Set(dataKey).forEach((value) => {
+      renderList.push({text: value, data: getAppData(value)});
+    });
+    return renderList.map((item, index) => (
+      <View key={index}>
+        <Text style={styles.faTitle}>{item.text}</Text>
+        <View style={styles.faView}>{appRednder(item.data, navigation)}</View>
+      </View>
+    ));
+  };
+  return <ScrollView>{dataRender()}</ScrollView>;
 };
 const Application = (props: any) => {
-  return (
-    <>
-      <FrequentlyApp {...props} />
-    </>
-  );
+  return <FrequentlyApp {...props} />;
 };
-
 export default Application;
 const styles = StyleSheet.create({
+  faTitle: {
+    marginTop: 12,
+    marginLeft: 16,
+    marginBottom: 12,
+  },
   faView: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    alignItems: 'center',
     marginBottom: 8,
   },
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import {ItemData} from '../types/common';
+import {ListDescribeProps} from '../types/common';
 import {List} from '../components/index';
 
 import RNFS, {
@@ -12,29 +12,29 @@ import RNFS, {
 
 const params = '/zt/portal/llj';
 
-const catalog: ItemData[] = [
+const catalog: ListDescribeProps[] = [
   {
-    label: '缓存目录绝对路径：',
+    label: '缓存目录绝对路径',
     value: CachesDirectoryPath,
     type: 'all',
   },
   {
-    label: '文件目录绝对路径：',
+    label: '文件目录绝对路径',
     value: DocumentDirectoryPath,
     type: 'all',
   },
   {
-    label: '主包目录绝对路径(ios)',
+    label: '主包目录绝对路径',
     value: MainBundlePath,
     type: 'ios',
   },
   {
-    label: 'NSLibraryDirectory的绝对路径(ios)',
+    label: 'NSLibraryDirectory的绝对路径',
     value: LibraryDirectoryPath,
     type: 'ios',
   },
   {
-    label: '外部缓存目录绝对路径(android)：',
+    label: '外部缓存目录绝对路径(android)',
     value: RNFS.ExternalCachesDirectoryPath,
     type: 'android',
   },
@@ -67,11 +67,10 @@ const catalog: ItemData[] = [
 const Files = () => {
   return (
     <>
-      <List.Item
+      <List.Describe
         list={catalog.filter((item) =>
           item.type === 'all' ? true : item.type === OS,
         )}
-        selectable={true}
       />
     </>
   );
