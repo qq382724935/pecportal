@@ -115,7 +115,6 @@ export const checkForUpdate = async (dispatch: Function, appStart = false) => {
   }
   const deploymentKey = getDeploymentKey();
   const update = await codePush.checkForUpdate(deploymentKey);
-  console.log(update);
   myDispatch = dispatch;
   if (!update) {
     !appStart && Alert.alert('提示', '已是最新版本');

@@ -12,9 +12,7 @@ const AboutApp = ({dispatch}: AboutAppProps) => {
   const data: ListItemProps[] = [
     {
       text: '版本升级',
-      press: () => {
-        checkForUpdate(dispatch);
-      },
+      press: () => checkForUpdate(dispatch),
     },
     {
       text: '证照信息',
