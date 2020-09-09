@@ -2,106 +2,98 @@
  * @Author: 刘利军
  * @Date: 2020-06-14 11:48:45
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-08-06 16:13:50
+ * @LastEditTime: 2020-09-09 08:38:52
  * @Description:
  */
-import React, {useEffect, Component} from 'react';
-import {SafeAreaView, View, Text, Switch} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, Image, Text, StyleSheet, Platform} from 'react-native';
 import {resetHome} from '../utils/navigation';
-import {loadToken, saveToken} from '../utils/storage/index';
-import {STORAGE_KEY} from '../utils/common';
-import {Form} from '../components/index';
-
+import {loadToken} from '../utils/storage/index';
+import {STORAGE_KEY, pecJson} from '../utils/common';
+let go = false; // 判断是否点击过跳过
 const Advert = ({navigation}: any) => {
+  let {showTime, skipTime, url} = pecJson.appConfig.advertising;
+  const [skip, setskip] = useState(skipTime / 1000);
+  const goPage = () => {
+    if (!go) {
+      loadToken({key: STORAGE_KEY.LOGIN})
+        .then(() => {
+          resetHome({navigation, name: 'main'});
+        })
+        .catch(() => {
+          resetHome({navigation, name: 'login'});
+        });
+    }
+    go = true;
+  };
   useEffect(() => {
-    loadToken({key: 'config'})
-      .then((advertising) => {
-        const cleanTime = setTimeout(() => {
-          loadToken({key: STORAGE_KEY.LOGIN})
-            .then(() => {
-              resetHome({navigation, name: 'main'});
-            })
-            .catch(() => {
-              resetHome({navigation, name: 'login'});
-            });
-        }, advertising.showTime);
-        return () => {
-          cleanTime;
-        };
-      })
-      .catch(() => {
-        resetHome({navigation, name: 'login'});
-      });
-  });
-
+    const cleanSkipTime = setTimeout(() => {
+      if (skip > 0) {
+        setskip(skip - 1);
+      }
+    }, 1000);
+    const cleanTime = setTimeout(() => {
+      goPage();
+    }, showTime - skipTime);
+    return () => {
+      clearTimeout(cleanTime);
+      clearTimeout(cleanSkipTime);
+      go = false;
+    };
+  }, [skip]);
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-      <View>
-        <Text>广告页</Text>
-      </View>
-    </SafeAreaView>
+    <View style={styles.container}>
+      {skip <= 0 && (
+        <View style={styles.bulr}>
+          <Text
+            style={{color: '#fff'}}
+            onPress={() => {
+              goPage();
+            }}>
+            跳过
+          </Text>
+        </View>
+      )}
+      <Image
+        style={styles.image}
+        source={{
+          uri: url,
+        }}
+      />
+    </View>
   );
 };
-class AdvertConfig extends Component<any> {
-  state = {show: false, showTime: '1000', advertising: {}};
-  componentDidMount() {
-    const {navigation} = this.props;
-    navigation.setOptions({headerShown: true, title: '广告配置'});
-    loadToken({key: 'config'}).then((advertising) => {
-      this.setState({
-        show: advertising.show,
-        showTime: advertising.showTime.toString(),
-        advertising,
-      });
-    });
-  }
 
-  render() {
-    const {show, showTime, advertising} = this.state;
-    return (
-      <SafeAreaView
-        style={{
-          flex: 1,
-          backgroundColor: '#ffffff',
-        }}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Text>显示广告：</Text>
-          <Switch
-            value={show}
-            onValueChange={(value) => {
-              saveToken({key: 'config', data: {...advertising, show: value}});
-              this.setState({show: value});
-            }}
-          />
-          {show ? <Text>是</Text> : <Text>否</Text>}
-        </View>
-        <View>
-          <Form.Item
-            label="广告时长："
-            defaultValue={showTime}
-            placeholder="例：1000 = 1s"
-            onChange={(value: number) => {
-              saveToken({
-                key: 'config',
-                data: {...advertising, showTime: Number(value)},
-              });
-            }}
-          />
-        </View>
-      </SafeAreaView>
-    );
-  }
-}
+const Advertising = (props: any) => <Advert {...props} />;
 
-const Advertising = (props: any) => {
-  if (props.route.params && props.route.params.type) {
-    return <AdvertConfig {...props} />;
-  }
-  return <Advert {...props} />;
-};
 export default Advertising;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  bulr: {
+    flex: 1,
+    position: 'absolute',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minWidth: 68,
+    minHeight: 38,
+    top: Platform.OS === 'ios' ? 68 : 28,
+    right: 20,
+    borderRadius: 10,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  textCustom: {
+    color: '#fdffff',
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 15,
+    paddingRight: 15,
+    fontWeight: 'bold',
+  },
+  image: {
+    flex: 1,
+    zIndex: -1,
+  },
+});

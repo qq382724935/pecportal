@@ -2,11 +2,11 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-09-07 14:05:44
+ * @LastEditTime: 2020-09-09 11:40:35
  */
 import React from 'react';
 import {List} from '../components/index';
-import {faList} from '../utils/common';
+import {faList, AppIcon} from '../utils/common';
 import {resetPage} from '../utils/navigation';
 
 export interface MessageCenterProps {
@@ -18,6 +18,7 @@ const MessageCenter = ({navigation}: MessageCenterProps) => {
     .filter((item) => item.content)
     .map((item) => {
       item.uri = 'news';
+      item.icon = AppIcon;
       item.press = () => {
         resetPage({name: item.uri, navigation}, item.params);
       };

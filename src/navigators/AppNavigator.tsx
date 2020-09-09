@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 14:45:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-09-07 13:59:42
+ * @LastEditTime: 2020-09-09 15:23:50
  */
 
 import React, {PureComponent} from 'react';
@@ -25,16 +25,21 @@ import Journalism from '../pages/Journalism';
 import CameraPhoto from '../pages/camera/CameraPhoto';
 import CameraScan from '../pages/camera/CameraScan';
 import CameraScanPreview from '../pages/camera/CameraScanPreview';
-
-import {WView, Mask} from '../components/index';
+import CommonPage from '../pages/CommonPage';
+import {WView, ModalCustom} from '../components/index';
 import {navigationRef, navigate} from './RootNavigation.js';
-import {STATUS_BAR, headerTintColor} from '../utils/styles/common';
+import {
+  STATUS_BAR,
+  headerTintColor,
+  AdditionalBKColor,
+} from '../utils/styles/common';
 
 interface RouteOptions {
   title?: string;
   headerLeft?: any;
   headerShown?: boolean;
   headerRight: any;
+  headerStyle?: any;
 }
 interface RouteData {
   name: string;
@@ -158,6 +163,15 @@ const routeList: RouteData[] = [
     component: Journalism,
     options: {title: '新闻页', headerRight: () => null},
   },
+  {
+    name: 'commonPage',
+    component: CommonPage,
+    options: {
+      title: '',
+      headerRight: () => null,
+      headerStyle: {backgroundColor: AdditionalBKColor},
+    },
+  },
 ];
 
 class AppNavigator extends PureComponent<PropsEntry> {
@@ -230,12 +244,12 @@ class AppNavigator extends PureComponent<PropsEntry> {
           </Stack.Navigator>
         </NavigationContainer>
 
-        <Mask.UpdateVersionModal
+        <ModalCustom.UpdateVersionModal
           display={updateVersionData.show}
           data={updateVersionData}
         />
 
-        <Mask.Additional
+        <ModalCustom.Additional
           list={addFeatures}
           display={additional}
           onPress={() => {

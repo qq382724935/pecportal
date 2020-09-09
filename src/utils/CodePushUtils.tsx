@@ -106,7 +106,6 @@ export const checkForUpdate = async (dispatch: Function, appStart = false) => {
     if (type !== 'wifi' || !isInternetReachable || !isConnected) {
       return;
     }
-
     const data = await loadToken({key: STORAGE_KEY.APP_UPDATE_VERSION})
       .then((res) => res)
       .catch((err) => err);
@@ -116,6 +115,7 @@ export const checkForUpdate = async (dispatch: Function, appStart = false) => {
   }
   const deploymentKey = getDeploymentKey();
   const update = await codePush.checkForUpdate(deploymentKey);
+  console.log(update);
   myDispatch = dispatch;
   if (!update) {
     !appStart && Alert.alert('提示', '已是最新版本');

@@ -8,8 +8,9 @@ import {
   TouchableOpacity,
   ImageSourcePropType,
 } from 'react-native';
-import Mask from './Mask';
 import {AdditionalBKColor} from '../../utils/styles/common';
+import Modal from 'react-native-modal';
+
 export interface Additional {
   list: any[];
   display: boolean;
@@ -46,8 +47,15 @@ const Additional = ({list = [], display = false, onPress}: Additional) => {
   }
   return (
     <>
-      <Mask display={display} onPress={onPress} opacity={0} />
-      <View style={styles.add}>{listRender(list)}</View>
+      <Modal
+        animationIn="fadeIn"
+        animationOut="fadeOut"
+        style={{margin: 0}}
+        isVisible={display}
+        onBackdropPress={onPress}
+        backdropOpacity={0}>
+        <View style={styles.add}>{listRender(list)}</View>
+      </Modal>
     </>
   );
 };

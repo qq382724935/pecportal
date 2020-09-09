@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-08-05 16:48:57
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-09-07 14:07:59
+ * @LastEditTime: 2020-09-08 16:05:04
  * @Description:
  */
 import React from 'react';
@@ -226,7 +226,11 @@ export const readFileE = async (fixedPath: string, fileData: FileDataProps) => {
     .catch((err) => ({code: 210, data: err}));
 };
 
-/** 公共 */
+export const defaultAppIcon = require('../assets/messageIcon.jpeg');
+export const AppIcon = require('../assets/appicon.png');
+export const pecJson = require('../assets/pec.json');
+
+/** 公共结束 */
 
 const styles = StyleSheet.create({
   faLink: {
@@ -269,7 +273,7 @@ export const faList: ListItemProps[] = [
   {
     text: 'ECRC',
     icon: require('../assets/font14.png'),
-    time: '20/09/07',
+    other: '20/09/07',
     uri: 'WView',
     type: 'webview',
     applicationType: '子公司应用',
@@ -285,7 +289,7 @@ export const faList: ListItemProps[] = [
   {
     text: 'U订货',
     content: '收到一大堆消息!!!',
-    time: '20/09/07',
+    other: '20/09/07',
     icon: require('../assets/font4.png'),
     uri: 'WView',
     type: 'webview',
@@ -300,7 +304,7 @@ export const faList: ListItemProps[] = [
   },
   {
     text: '中台(离线)',
-    time: '08:10',
+    other: '08:10',
     content: '收到一条消息信息!',
     icon: require('../assets/font10.png'),
     uri: 'WView',
@@ -316,7 +320,7 @@ export const faList: ListItemProps[] = [
   },
   {
     text: 'H5',
-    time: '18:10',
+    other: '18:10',
     content:
       '收到来字H5收到一条消息信息收到来字H5收到一条消息信息收到来字H5收到一条消息信息!',
     icon: require('../assets/font6.png'),

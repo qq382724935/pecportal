@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Mask from './Mask';
 import {
   StyleSheet,
   View,
@@ -8,10 +7,12 @@ import {
   Dimensions,
   TouchableWithoutFeedback,
 } from 'react-native';
+import Modal from 'react-native-modal';
 import {connect} from 'react-redux';
 const {width} = Dimensions.get('window');
 import {syncImmediate} from '../../utils/CodePushUtils';
 import UpdateVersionProgress from './UpdateVersionProgress';
+import {BorderColor, CommonPageBKColor} from '../../utils/styles/common';
 export interface UpdateVersionModalProps {
   display: boolean;
   dispatch: Function;
@@ -40,7 +41,7 @@ class UpdateVersionModal extends Component<
       return null;
     }
     return (
-      <Mask display={display}>
+      <Modal>
         <View style={styles.modal}>
           <Image
             style={{
@@ -103,7 +104,7 @@ class UpdateVersionModal extends Component<
             <UpdateVersionProgress display={showProgress} progress={speed} />
           )}
         </View>
-      </Mask>
+      </Modal>
     );
   }
 }
@@ -115,13 +116,13 @@ const styles = StyleSheet.create({
   modal: {
     minWidth: width - 60,
     borderRadius: 5,
-    backgroundColor: '#fff',
+    backgroundColor: CommonPageBKColor,
   },
   content: {
     paddingHorizontal: 25,
     paddingVertical: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#e9e9e9',
+    borderBottomColor: BorderColor,
   },
   footer: {
     flexDirection: 'row',

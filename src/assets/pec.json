@@ -1,15 +1,16 @@
 {
     "appConfig": {
         "name": "up",
-        "version": "0.0.1",
+        "version": "1.0.1",
         "company": "tyzt",
         "organization": "yxqh",
         "department": "shtyzx",
         "advertising": {
-            "name": "欢迎页",
-            "url": "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2444296791,1030007830&fm=26&gp=0.jpg",
-            "show": false,
-            "showTime": 3000
+            "name": "广告页",
+            "url": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599561786643&di=c624b0a6a96aa8a6c29afa2293babaf7&imgtype=0&src=http%3A%2F%2Fimg3.redocn.com%2Ftupian%2F20160510%2Ftongyifangbianmianguanggaosheji_6303633.jpg",
+            "show": true,
+            "showTime": 5000,
+            "skipTime": 2000
         }
     },
     "h5": {

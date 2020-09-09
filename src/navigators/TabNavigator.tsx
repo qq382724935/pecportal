@@ -2,13 +2,13 @@
  * @Author: 刘利军
  * @Date: 2020-04-19 15:42:07
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-09-01 16:43:10
+ * @LastEditTime: 2020-09-08 16:56:19
  */
 
 import React, {Component} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../pages/Home';
-import Personal from '../pages/Personal';
+import Personal from '../pages/personal/Personal';
 import Application from '../pages/Application';
 import MessageCenter from '../pages/MessageCenter';
 import {StatusBar, Platform, Image} from 'react-native';
@@ -25,7 +25,11 @@ export default class DynamicTabNavigator extends Component {
       options: {title: '消息'},
     },
     {name: 'application', component: Application, options: {title: '应用'}},
-    {name: 'personal', component: Personal, options: {title: '我的'}},
+    {
+      name: 'personal',
+      component: Personal,
+      options: {title: '我的'},
+    },
   ];
 
   tabScreenRender = (data: any[]) =>
@@ -40,9 +44,7 @@ export default class DynamicTabNavigator extends Component {
   render() {
     return (
       <>
-        {Platform.OS === 'android' && (
-          <StatusBar backgroundColor={STATUS_BAR} barStyle="dark-content" />
-        )}
+        <StatusBar backgroundColor={STATUS_BAR} barStyle="dark-content" />
         <Tab.Navigator
           screenOptions={({route}) => ({
             tabBarIcon: ({focused, color, size}) => {
