@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-04-21 15:21:03
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-09-07 15:06:44
+ * @LastEditTime: 2020-09-09 16:57:04
  */
 import React from 'react';
 import {StyleSheet, ScrollView, View, Text} from 'react-native';
@@ -12,7 +12,7 @@ const FrequentlyApp = ({navigation}: any) => {
   let dataKey: string[] = [];
   faList.map((item) => {
     if (item.applicationType !== '全部') {
-      dataKey.push(item.applicationType);
+      item.applicationType && dataKey.push(item.applicationType);
     }
   });
   const dataRender = () => {

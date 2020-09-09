@@ -2,7 +2,7 @@
  * @Author: 刘利军
  * @Date: 2020-06-16 21:03:13
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-09-08 15:52:48
+ * @LastEditTime: 2020-09-09 16:56:12
  * @Description:
  */
 
@@ -28,7 +28,7 @@ export interface ListItemProps {
   type?: string; // 类别：例：webveiw，page
   icon?: any; // 显示的图标
   arrow?: boolean; // 右侧箭头是否显示
-  applicationType?: string; // 应用类型：例：常用应用，子公司应用
+  applicationType?: string | undefined; // 应用类型：例：常用应用，子公司应用
   params?: any;
   sort?: number;
   press?: () => void;
