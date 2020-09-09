@@ -41,12 +41,16 @@ class UpdateVersionModal extends Component<
       return null;
     }
     return (
-      <Modal>
+      <Modal
+        isVisible={display}
+        style={{margin: 0}}
+        animationIn="fadeIn"
+        animationOut="fadeOut">
         <View style={styles.modal}>
           <Image
             style={{
               width: width - 60,
-              height: 200,
+              height: 240,
               borderTopRightRadius: 5,
               borderTopLeftRadius: 5,
             }}
@@ -117,6 +121,7 @@ const styles = StyleSheet.create({
     minWidth: width - 60,
     borderRadius: 5,
     backgroundColor: CommonPageBKColor,
+    alignSelf: 'center',
   },
   content: {
     paddingHorizontal: 25,
