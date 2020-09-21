@@ -256,32 +256,32 @@ PODS:
   - react-native-amap3d (2.0.2):
     - AMap3DMap (~> 7.5.0)
     - React
-  - react-native-camera (3.37.0):
-    - React
-    - react-native-camera/RCT (= 3.37.0)
-    - react-native-camera/RN (= 3.37.0)
-  - react-native-camera/RCT (3.37.0):
-    - React
-  - react-native-camera/RN (3.37.0):
-    - React
+  - react-native-camera (3.40.0):
+    - React-Core
+    - react-native-camera/RCT (= 3.40.0)
+    - react-native-camera/RN (= 3.40.0)
+  - react-native-camera/RCT (3.40.0):
+    - React-Core
+  - react-native-camera/RN (3.40.0):
+    - React-Core
   - react-native-cameraroll (4.0.0):
     - React
-  - react-native-netinfo (5.9.6):
-    - React
-  - react-native-safe-area-context (3.1.6):
-    - React
+  - react-native-netinfo (5.9.7):
+    - React-Core
+  - react-native-safe-area-context (3.1.8):
+    - React-Core
   - react-native-splash-screen (3.2.0):
     - React
   - react-native-sqlite-storage (5.0.0):
     - React
-  - react-native-video (4.4.5):
+  - react-native-video (5.1.0-alpha8):
     - React
-    - react-native-video/Video (= 4.4.5)
-  - react-native-video/Video (4.4.5):
+    - react-native-video/Video (= 5.1.0-alpha8)
+  - react-native-video/Video (5.1.0-alpha8):
     - React
   - react-native-view-shot (3.1.2):
     - React
-  - react-native-webview (10.8.3):
+  - react-native-webview (10.9.0):
     - React
   - React-RCTActionSheet (0.62.2):
     - React-Core/RCTActionSheetHeaders (= 0.62.2)
@@ -350,20 +350,20 @@ PODS:
     - React
   - RNConfigReader (1.0.0):
     - React
-  - RNDeviceInfo (5.6.5):
-    - React
+  - RNDeviceInfo (6.0.4):
+    - React-Core
   - RNFS (2.16.6):
     - React
-  - RNGestureHandler (1.7.0):
+  - RNGestureHandler (1.8.0):
     - React
   - RNHttpCache (0.3.1):
     - React
-  - RNImageCropPicker (0.32.2):
+  - RNImageCropPicker (0.35.0):
     - React-Core
     - React-RCTImage
-    - RNImageCropPicker/QBImagePickerController (= 0.32.2)
+    - RNImageCropPicker/QBImagePickerController (= 0.35.0)
     - TOCropViewController
-  - RNImageCropPicker/QBImagePickerController (0.32.2):
+  - RNImageCropPicker/QBImagePickerController (0.35.0):
     - React-Core
     - React-RCTImage
     - TOCropViewController
@@ -371,11 +371,11 @@ PODS:
     - React
   - RNReanimated (1.13.0):
     - React
-  - RNScreens (2.10.1):
+  - RNScreens (2.11.0):
     - React
   - RNSVG (12.1.0):
     - React
-  - RNVectorIcons (7.0.0):
+  - RNVectorIcons (7.1.0):
     - React
   - RNZipArchive (5.0.6):
     - React
@@ -636,15 +636,15 @@ SPEC CHECKSUMS:
   React-jsinspector: 512e560d0e985d0e8c479a54a4e5c147a9c83493
   react-native-amap-geolocation: 5b42219a67e29b4c1ce0b75faf3b8869f97e2f7c
   react-native-amap3d: 26abcffc0fa7cd9f757cd9afe9bf7addb95105b0
-  react-native-camera: 584d595599f45ba537e2c6fca05fb7173ccfaf59
+  react-native-camera: 35854c4f764a4a6cf61c1c3525888b92f0fe4b31
   react-native-cameraroll: ae0a7c0cc8462508855707ff623b1e789b692865
-  react-native-netinfo: 38a1e0b3e89b48e4b5833ed475d8df5f049f6f90
-  react-native-safe-area-context: 4fb3cdeb4a405ec19f18aca80ef2144381ffc761
+  react-native-netinfo: 250dc0ca126512f618a8a2ca6a936577e1f66586
+  react-native-safe-area-context: 79fea126c6830c85f65947c223a5e3058a666937
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   react-native-sqlite-storage: 418ef4afc5e6df6ce3574c4617e5f0b65cffde55
-  react-native-video: eee541262ada11bc7ffe8ec5508e6a877937c462
+  react-native-video: dbb8df4f0bbdf80de6797c90fcad8bc12b19401d
   react-native-view-shot: 4475fde003fe8a210053d1f98fb9e06c1d834e1c
-  react-native-webview: 598605cd213f5096e695f5b33fbee210a47e60ab
+  react-native-webview: bfe5436586b214759bd5043658863549fffc8e92
   React-RCTActionSheet: f41ea8a811aac770e0cc6e0ad6b270c644ea8b7c
   React-RCTAnimation: 49ab98b1c1ff4445148b72a3d61554138565bad0
   React-RCTBlob: a332773f0ebc413a0ce85942a55b064471587a71
@@ -659,16 +659,16 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 2a692bcb9b69b76a2f1a95f33db057129700af64
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNConfigReader: 396da6a6444182a76e8ae0930b9436c7575045cb
-  RNDeviceInfo: c5f8f3a456adcbba405ace475254b08febc4c095
+  RNDeviceInfo: 5eb11f4aef9395cca403c0c92dff458252fc0b2c
   RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
-  RNGestureHandler: b6b359bb800ae399a9c8b27032bdbf7c18f08a08
+  RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNHttpCache: a0678072cede68e78173e30958c1a07d32490110
-  RNImageCropPicker: f0557a908758c4a3f83978894ec7227651529b45
+  RNImageCropPicker: 89352ad050ea8dd9bc1728802c477f5b38cd7b4c
   RNImageMarker: 3d2ad96afe3db0965ecff23ca97d65b812d06b47
   RNReanimated: 89f5e0a04d1dd52fbf27e7e7030d8f80a646a3fc
-  RNScreens: b748efec66e095134c7166ca333b628cd7e6f3e2
+  RNScreens: 0e91da98ab26d5d04c7b59a9b6bd694124caf88c
   RNSVG: ce9d996113475209013317e48b05c21ee988d42e
-  RNVectorIcons: da6fe858f5a65d7bbc3379540a889b0b12aa5976
+  RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
   RNZipArchive: 9dfdaa1d1ad49a423e83df505f292e0ae8126a5d
   SSZipArchive: fa16b8cc4cdeceb698e5e5d9f67e9558532fbf23
   TOCropViewController: 2a1ae1242600b1f2d996fd91a5268b2309a33b5c
