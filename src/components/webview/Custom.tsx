@@ -2,12 +2,11 @@
  * @Author: 刘利军
  * @Date: 2020-04-24 16:13:10
  * @LastEditors: 刘利军
- * @LastEditTime: 2020-09-07 14:02:37
+ * @LastEditTime: 2020-09-21 11:47:36
  */
 
-import React, {Component} from 'react';
+import React, {Component, useEffect} from 'react';
 import {WebView, WebViewMessageEvent} from 'react-native-webview';
-// import StaticServer from 'react-native-static-server';
 import {OS, exists} from '../../utils/fs';
 import {h5PostMessage} from '../../utils/webview';
 import {connect} from 'react-redux';
@@ -50,9 +49,6 @@ interface CustomState {
 class Custom extends Component<CustomProps, CustomState> {
   constructor(props: Readonly<CustomProps>) {
     super(props);
-    this.props.navigation.setOptions({
-      title: this.props.route.params.title,
-    });
     this.state = {
       path: '',
       uri: '',
@@ -63,6 +59,10 @@ class Custom extends Component<CustomProps, CustomState> {
     };
   }
   componentDidMount() {
+    const {navigation, route} = this.props;
+    navigation.setOptions({
+      title: route.params.title,
+    });
     this.initUri();
   }
   getFilePtah = (path: string) => `${FILE_PATH}/${path}`;
@@ -158,7 +158,6 @@ class Custom extends Component<CustomProps, CustomState> {
     const {goBack} = this.props.navigation;
     const {name} = this.props.route;
     const {showTop, renderError, errorName} = this.state;
-    console.log(name);
     return (
       <SafeAreaView style={styles.container}>
         {this.webviewRender()}
