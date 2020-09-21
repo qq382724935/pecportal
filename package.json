@@ -38,7 +38,7 @@
     "jcore-react-native": "^1.8.0",
     "jpush-react-native": "^2.8.1",
     "react": "16.13.1",
-    "react-native": "0.62.2",
+    "react-native": "0.63.2",
     "react-native-amap-geolocation": "^1.1.2",
     "react-native-amap3d": "^2.0.2",
     "react-native-barcode-mask": "^1.2.4",
@@ -83,7 +83,7 @@
     "babel-jest": "^26.3.0",
     "eslint": "^7.9.0",
     "jest": "^26.4.2",
-    "metro-react-native-babel-preset": "^0.62.0",
+    "metro-react-native-babel-preset": "^0.63.0",
     "prettier": "^2.1.2",
     "react-test-renderer": "16.13.1",
     "typescript": "^4.0.3"
